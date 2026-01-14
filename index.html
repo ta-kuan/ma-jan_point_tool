@@ -1,15 +1,572 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--Outputは305px-->
 <html>
   <head>
     <style>
+      body {
+        background-color: rgb(70,150,90);
+      }
+      .number_player {
+        position: relative;
+        border: none;
+        padding: 10px 10vw;
+        width: 80vw;
+        height: 200px;
+        display: block;
+      }
+      .yonmaton {
+        position: relative;
+        border: thick double;
+        border-color: rgb(0,0,0);
+        margin: 20px 0;
+        background-color: rgb(250,250,160);
+        width: 80vw;
+        height: 80px;
+      }
+      .yonmaton::after {
+        position: absolute;
+        content: "四麻東風";
+        font-size: 40px;
+        font-weight: bold;
+        margin: -30px 0;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .yonmahan {
+        position: relative;
+        border: thick double;
+        margin: 20px 0;
+        border-color: rgb(0,0,0);
+        background-color: rgb(250,250,160);
+        width: 80vw;
+        height: 80px;
+      }
+      .yonmahan::after {
+        position: absolute;
+        content: "四麻半荘";
+        font-size: 40px;
+        font-weight: bold;
+        margin: -30px 0;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .sanmaton {
+        position: relative;
+        border: thick double #32a1ce;
+        margin: 20px 0;
+        border-color: rgb(0,0,0);
+        background-color: rgb(250,250,160);
+        width: 80vw;
+        height: 80px;
+      }
+      .sanmaton::after {
+        position: absolute;
+        content: "三麻東風";
+        font-size: 40px;
+        font-weight: bold;
+        margin: -30px 0;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .sanmahan {
+        position: relative;
+        border: thick double #32a1ce;
+        margin: 20px 0;
+        border-color: rgb(0,0,0);
+        background-color: rgb(250,250,160);
+        width: 80vw;
+        height: 80px;
+      }
+      .sanmahan::after {
+        position: absolute;
+        content: "三麻半荘";
+        font-size: 40px;
+        font-weight: bold;
+        margin: -30px 0;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .number_player.off {
+        display: none;
+      }
+      
+      
+      .center {
+        position: absolute;
+        background-color: rgb(120,120,120);
+        width: 50vw;
+        height: 50vw;
+        margin: 0 25vw;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 10px;
+      }
+      .sita {
+        background-color: rgb(100,100,100);
+        color: rgb(255,255,255);
+        width: 10vw;
+        height: 10vw;
+        border-radius: 0 0 0 10px;
+        left: 0;
+        bottom: 0;
+        font-size: 7vw;
+        position: absolute;
+      }
+      .sita::after {
+        content: "";
+        transform: rotate(0deg);
+        position: absolute;
+        left: 1.5vw;
+        bottom: 0.5vw;
+      }
+      .sita.ton {
+        background-color: rgb(255,150,150);
+        color: rgb(0,0,0);
+      }
+      .sita.ton::after {
+        content: "東"
+      }
+      .migi {
+        background-color: rgb(100,100,100);
+        color: rgb(255,255,255);
+        width: 10vw;
+        height: 10vw;
+        border-radius: 0 0 10px 0;
+        right: 0;
+        bottom: 0;
+        font-size: 7vw;
+        position: absolute;
+      }
+      .migi::after {
+        content: "南";
+        transform: rotate(-90deg);
+        position: absolute;
+        right: 2vw;
+        bottom: 0.2vw;
+      }
+      .ue {
+        background-color: rgb(100,100,100);
+        color: rgb(255,255,255);
+        width: 10vw;
+        height: 10vw;
+        border-radius: 0 10px 0 0;
+        right: 0;
+        top: 0;
+        font-size: 7vw;
+        position: absolute;
+      }
+      .ue::after {
+        content: "西";
+        transform: rotate(180deg);
+        position: absolute;
+        right: 1.5vw;
+        top: 0.5vw;
+      }
+      .hidari {
+        background-color: rgb(100,100,100);
+        color: rgb(255,255,255);
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10px 0 0 0;
+        left: 0;
+        top: 0;
+        font-size: 7vw;
+        position: absolute;
+      }
+      .hidari::after {
+        content: "北";
+        transform: rotate(90deg);
+        position: absolute;
+        left: 2vw;
+        top: 0.2vw;
+      }
+      
+      
+      .saiarea {
+        position: absolute;
+        width: 30vw;
+        height: 30vw;
+        left: 10vw;
+        top: 10vw;
+        background-color: rgb(100,100,100);
+      }
+      .sai1 {
+        position: absolute;
+        width: 10vw;
+        height: 10vw;
+        background-color: rgb(255,255,255);
+        border-radius: 30%;
+        left: 3vw;
+        top: 10vw;
+      }
+      .me1,
+      .me2 {
+        position: absolute;
+        width: 2vw;
+        height: 2vw;
+        background-color: rgb(0,0,0);
+        border-radius: 100%;
+        display: none;
+      }
+      .me1::after,
+      .me2::after {
+        position: absolute;
+        width: 2vw;
+        height: 2vw;
+        background-color: rgb(0,0,0);
+        border-radius: 100%;
+        display: block;
+      }
+      .me1::before,
+      .me2::before {
+        position: absolute;
+        width: 2vw;
+        height: 2vw;
+        background-color: rgb(0,0,0);
+        border-radius: 100%;
+        display: block;
+      }
+      .me1.one{
+        background-color: rgb(255,0,0);
+        top: 4vw;
+        left: 4vw;
+        display: block;
+      }
+      .me1.two {
+        top: 2vw;
+        left: 5.5vw;
+        display: block;
+      }
+      .me1.two::after {
+        content: "";
+        position: absolute;
+        left: -3vw;
+        top: 4vw;
+      }
+      .me1.three {
+        top: 4vw;
+        left: 3.7vw;
+        display: block;
+      }
+      .me1.three::before {
+        content: "";
+        position: absolute;
+        left: 2.5vw;
+        top: -2.5vw;
+      }
+      .me1.three::after {
+        content: "";
+        position: absolute;
+        left: -2.5vw;
+        top: 2.5vw;
+      }
+      .me1.four {
+        top: 1.9vw;
+        left: 1.8vw;
+        box-shadow: 4.5vw 0;
+        display: block;
+      }
+      .me1.four::after {
+        content: "";
+        position: absolute;
+        top: 4vw;
+        box-shadow: 4.5vw 0;
+      }
+      .me1.five {
+        top: 1.6vw;
+        left: 1.6vw;
+        box-shadow: 4.7vw 0;
+        display: block;
+      }
+      .me1.five::after {
+        content: "";
+        position: absolute;
+        top: 4.5vw;
+        box-shadow: 4.7vw 0;
+      }
+      .me1.five::before {
+        content: "";
+        position: absolute;
+        top: 2.25vw;
+        left: 2.4vw;
+      }
+      .me1.six {
+        top: 1.4vw;
+        left: 1.6vw;
+        box-shadow: 4.7vw 0;
+        display: block;
+      }
+      .me1.six::after {
+        content: "";
+        position: absolute;
+        top: 5.3vw;
+        box-shadow: 4.7vw 0;
+      }
+      .me1.six::before {
+        content: "";
+        position: absolute;
+        top: 2.65vw;
+        box-shadow: 4.7vw 0;
+      }
+      .sai2 {
+        position: absolute;
+        width: 10vw;
+        height: 10vw;
+        background-color: rgb(255,255,255);
+        border-radius: 30%;
+        right: 3vw;
+        top: 10vw;
+      }
+      .me2.one{
+        background-color: rgb(255,0,0);
+        top: 4vw;
+        left: 4vw;
+        display: block;
+      }
+      .me2.two {
+        top: 2vw;
+        left: 5.5vw;
+        display: block;
+      }
+      .me2.two::after {
+        content: "";
+        position: absolute;
+        left: -3vw;
+        top: 4vw;
+      }
+      .me2.three {
+        top: 4vw;
+        left: 3.7vw;
+        display: block;
+      }
+      .me2.three::before {
+        content: "";
+        position: absolute;
+        left: 2.5vw;
+        top: -2.5vw;
+      }
+      .me2.three::after {
+        content: "";
+        position: absolute;
+        left: -2.5vw;
+        top: 2.5vw;
+      }
+      .me2.four {
+        top: 1.9vw;
+        left: 1.8vw;
+        box-shadow: 4.5vw 0;
+        display: block;
+      }
+      .me2.four::after {
+        content: "";
+        position: absolute;
+        top: 4vw;
+        box-shadow: 4.5vw 0;
+      }
+      .me2.five {
+        top: 1.6vw;
+        left: 1.6vw;
+        box-shadow: 4.7vw 0;
+        display: block;
+      }
+      .me2.five::after {
+        content: "";
+        position: absolute;
+        top: 4.5vw;
+        box-shadow: 4.7vw 0;
+      }
+      .me2.five::before {
+        content: "";
+        position: absolute;
+        top: 2.25vw;
+        left: 2.4vw;
+      }
+      .me2.six {
+        top: 1.4vw;
+        left: 1.6vw;
+        box-shadow: 4.7vw 0;
+        display: block;
+      }
+      .me2.six::after {
+        content: "";
+        position: absolute;
+        top: 5.3vw;
+        box-shadow: 4.7vw 0;
+      }
+      .me2.six::before {
+        content: "";
+        position: absolute;
+        top: 2.65vw;
+        box-shadow: 4.7vw 0;
+      }
+      .center.off {
+        display: none;
+      }
+      
+      
+      .karioya {
+        position: absolute;
+        border: thick double;
+        border-color: rgb(255,50,50);
+        margin: 20px 0;
+        background-color: rgb(255,180,180);
+        width: 40vw;
+        height: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50vw;
+      }
+      .karioya::after {
+        content: "仮親";
+        position: absolute;
+        font-size: 40px;
+        font-weight: bold;
+        margin: -30px 0;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50%;
+      }
+      .karioya.off {
+        display: none;
+      }
     </style>
     <meta charset="UTF-8">
     <title>麻雀点数計算＆管理ツール</title>
     <link rel="icon" href=".png">
   </head>
   <body>
-    <div>Test</div>
+    <div class="number_player">
+      <button class="yonmaton"></button>
+      <button class="yonmahan"></button>
+      <button class="sanmaton"></button>
+      <button class="sanmahan"></button>
+    </div>
+    <div class="center">
+      <div class="sita ton"></div>
+      <div class="sitaten"></div>
+      <div class="migi"></div>
+      <div class="migiten"></div>
+      <div class="ue"></div>
+      <div class="ueten"></div>
+      <div class="hidari"></div>
+      <div class="hidariten"></div>
+      <button class="saiarea">
+        <div class="sai1">
+          <div class="me1 one"></div>
+        </div>
+        <div class="sai2">
+          <div class="me2 five"></div>
+        </div>
+      </button>
+      <div class="karioya"></div>
+      <div class="titya"></div>
+    </div>
     <script>
+      let number_player = document.querySelector(".number_player")
+      let yonmatonB = document.querySelector(".yonmaton");
+      let yonmahanB = document.querySelector(".yonmahan");
+      let sanmatonB = document.querySelector(".sanmaton");
+      let sanmahanB = document.querySelector(".sanmahan");
+      let n1 = 0;
+      let n2 = 0;
+      let saiclasses = ["one","two","three","four","five","six"];
+      let me1 = document.querySelector(".me1");
+      let me2 = document.querySelector(".me2");
+      let saiareaB = 0;
+      let saiarea = document.querySelector(".saiarea");
+      let center = document.querySelector(".center");
+      let karioya = document.querySelector(".karioya");
+      let saisum = 0;
+      
+      number_player.classList.remove("off");
+      center.classList.add("off");
+      
+      
+      yonmatonB.addEventListener("click", function () {
+        number_player.classList.add("off");
+        center.classList.remove("off");
+      });
+      yonmahanB.addEventListener("click", function () {
+        number_player.classList.add("off");
+        center.classList.remove("off");
+      });
+      sanmatonB.addEventListener("click", function () {
+        number_player.classList.add("off");
+        center.classList.remove("off");
+      });
+      sanmahanB.addEventListener("click", function () {
+        number_player.classList.add("off");
+        center.classList.remove("off");
+      });
+      
+      
+      function spinsai() {
+        n1 = Math.floor(Math.random() * 6) + 1;
+        switch (n1) {
+          case 1:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("one");
+            break;
+          case 2:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("two");
+            break;
+          case 3:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("three");
+            break;
+          case 4:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("four");
+            break;
+          case 5:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("five");
+            break;
+          case 6:
+            me1.classList.remove(...saiclasses);
+            me1.classList.add("six");
+            break;
+        }
+        n2 = Math.floor(Math.random() * 6) + 1;
+        switch (n2) {
+          case 1:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("one");
+            break;
+          case 2:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("two");
+            break;
+          case 3:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("three");
+            break;
+          case 4:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("four");
+            break;
+          case 5:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("five");
+            break;
+          case 6:
+            me2.classList.remove(...saiclasses);
+            me2.classList.add("six");
+            break;
+        }
+      }
+      saiarea.addEventListener("click", function () {
+        if (saiareaB === 0) {
+          spinsai();
+          karioya.classList.add("off");
+          saiareaB = 1;
+        }
+      });
     </script>
   </body>
 </html>
