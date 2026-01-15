@@ -474,8 +474,8 @@
         border-color: rgb(255,50,50);
         margin: 3vh 0;
         background-color: rgb(255,180,180);
-        width: 40vw;
-        height: 10vh;
+        width: 36vw;
+        height: 8vh;
         left: 50%;
         transform: translateX(-50%);
         top: 50vw;
@@ -499,48 +499,53 @@
         position: absolute;
         border: thick double;
         border-color: rgb(255,255,0);
-        margin: 3vh 0;
         background-color: rgb(240,240,150);
         width: 40vw;
-        height: 10vh;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 50vw;
+        height: 17vw;
+        left: 5vw;
+        top: 53vw;
+        transform: translate(-50%, -50%);
       }
+      
       .start::after {
         content: "開局";
         color: rgb(0,0,0);
         position: absolute;
-        font-size: 7vh;
+        font-size: 13vw;
         font-weight: bold;
-        margin: -5.5vh 0;
         white-space: nowrap;
         left: 50%;
-        transform: translateX(-50%);
-        top: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
       }
+      
       .start.migiS {
         transform: rotate(-90deg);
-        left: 41vw;
-        top: 6vh
+        left: 83%;
+        top: 35%;
       }
       .start.ueS {
         transform: rotate(180deg);
-        left: 5vw;
-        top: -14vh;
+        top: -40%
       }
       .start.hidariS {
         transform: rotate(90deg);
-        left: -31vw;
-        top: 6vh;
+        left: -63%;
+        top: 35%;
       }
       .start.sitaS {
         transform: rotate(0deg);
-        left: 5vw;
-        top: 26vh
       }
       .start.off {
         display: none;
+      }
+      
+      
+      .riM,
+      .riU,
+      .riH,
+      .riS {
+        
       }
     </style>
     <meta charset="UTF-8">
@@ -575,6 +580,22 @@
       <div class="titya"></div>
       <button class="start"></button>
     </div>
+    <div class="migiB">
+      <div class="riM"></div>
+      <div class="hoM"></div>
+    </div>
+    <div class="ueB">
+      <div class="riU"></div>
+      <div class="hoU"></div>
+    </div>
+    <div class="hidariB">
+      <div class="riH"></div>
+      <div class="hoH"></div>
+    </div>
+    <div class="sitaB">
+      <div class="riS"></div>
+      <div class="hoS"></div>
+    </div>
     <script>
       const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
@@ -599,8 +620,9 @@
       const sai1 = document.querySelector(".sai1");
       const sai2 = document.querySelector(".sai2");
       let start = 0;
-      let startB = document.querySelector(".start");
+      const startB = document.querySelector(".start");
       let startclasses = ["migiS","ueS","hidariS","sita","off"];
+      let yonsan = 0;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -611,18 +633,22 @@
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
+        yonsan = 4;
       });
       yonmahanB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
+        yonsan = 4;
       });
       sanmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
+        yonsan = 3;
       });
       sanmahanB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
+        yonsan = 3;
       });
       
       
@@ -682,59 +708,87 @@
             break;
         }
       }
-      function hougaku() {
-        switch (saisum) {
-          case 2:
-          case 6:
-          case 10:
-            migi.classList.remove(...hougakuclasses);
-            ue.classList.remove(...hougakuclasses);
-            sita.classList.remove(...hougakuclasses);
-            hidari.classList.remove(...hougakuclasses);
-            migi.classList.add("ton");
-            ue.classList.add("nan");
-            hidari.classList.add("sya");
-            sita.classList.add("pei");
-            start = 1;
-            break;
-          case 3:
-          case 7:
-          case 11:
-            migi.classList.remove(...hougakuclasses);
-            ue.classList.remove(...hougakuclasses);
-            sita.classList.remove(...hougakuclasses);
-            hidari.classList.remove(...hougakuclasses);
-            migi.classList.add("pei");
-            ue.classList.add("ton");
-            hidari.classList.add("nan");
-            sita.classList.add("sya");
-            start = 2;
-            break;
-          case 4:
-          case 8:
-          case 12:
-            migi.classList.remove(...hougakuclasses);
-            ue.classList.remove(...hougakuclasses);
-            sita.classList.remove(...hougakuclasses);
-            hidari.classList.remove(...hougakuclasses);
-            migi.classList.add("sya");
-            ue.classList.add("pei");
-            hidari.classList.add("ton");
-            sita.classList.add("nan");
-            start = 3;
-            break;
-          case 5:
-          case 9:
-            migi.classList.remove(...hougakuclasses);
-            ue.classList.remove(...hougakuclasses);
-            sita.classList.remove(...hougakuclasses);
-            hidari.classList.remove(...hougakuclasses);
-            migi.classList.add("nan");
-            ue.classList.add("sya");
-            hidari.classList.add("pei");
-            sita.classList.add("ton");
-            start = 4;
-            break;
+      function risetmuki() {
+        migi.classList.remove(...hougakuclasses);
+        ue.classList.remove(...hougakuclasses);
+        sita.classList.remove(...hougakuclasses);
+        hidari.classList.remove(...hougakuclasses);
+      }
+      function hougakuyon() {
+        if (yonsan === 4) {
+          switch (saisum) {
+            case 2:
+            case 6:
+            case 10:
+              risetmuki();
+              migi.classList.add("ton");
+              ue.classList.add("nan");
+              hidari.classList.add("sya");
+              sita.classList.add("pei");
+              start = 1;
+              break;
+            case 3:
+            case 7:
+            case 11:
+              risetmuki();
+              migi.classList.add("pei");
+              ue.classList.add("ton");
+              hidari.classList.add("nan");
+              sita.classList.add("sya");
+              start = 2;
+              break;
+            case 4:
+            case 8:
+            case 12:
+              risetmuki();
+              migi.classList.add("sya");
+              ue.classList.add("pei");
+              hidari.classList.add("ton");
+              sita.classList.add("nan");
+              start = 3;
+              break;
+            case 5:
+            case 9:
+              risetmuki();
+              migi.classList.add("nan");
+              ue.classList.add("sya");
+              hidari.classList.add("pei");
+              sita.classList.add("ton");
+              start = 4;
+              break;
+          }
+        } else if (yonsan === 3) {
+          switch (saisum) {
+            case 2:
+            case 5:
+            case 8:
+            case 11:
+              risetmuki();
+              migi.classList.add("ton");
+              hidari.classList.add("nan");
+              sita.classList.add("sya");
+              start = 1;
+              break;
+            case 3:
+            case 6:
+            case 9:
+            case 12:
+              risetmuki();
+              migi.classList.add("sya");
+              hidari.classList.add("ton");
+              sita.classList.add("nan");
+              start = 2;
+              break;
+            case 4:
+            case 7:
+            case 10:
+              risetmuki();
+              migi.classList.add("nan");
+              hidari.classList.add("sya");
+              sita.classList.add("ton");
+              start = 3;
+              break;
+          }
         }
       }
       saiarea.addEventListener("click", function () {
@@ -743,7 +797,7 @@
           karioya.classList.add("off");
           saiareaB = 1;
           saisum = n1 + n2;
-          hougaku();
+          hougakuyon();
         } else if (saiareaB === 1) {
           spinsai();
           sai1.classList.add("off");
@@ -751,21 +805,38 @@
           saiareaB = 2;
           saisum = n1 + n2;
           startB.classList.remove(...startclasses);
-          switch (start) {
-            case 1:
-              startB.classList.add("migiS")
-              break;
-            case 2:
-              startB.classList.add("ueS")
-              break;
-            case 3:
-              startB.classList.add("hidariS")
-              break;
-            case 4:
-              startB.classList.add("sitaS")
-              break;
+          if (yonsan === 4) {
+            switch (start) {
+              case 1:
+                startB.classList.add("migiS")
+                break;
+              case 2:
+                startB.classList.add("ueS")
+                break;
+              case 3:
+                startB.classList.add("hidariS")
+                break;
+              case 4:
+                startB.classList.add("sitaS")
+                break;
+            }
+          } else if (yonsan === 3) {
+            switch (start) {
+              case 1:
+                startB.classList.add("migiS")
+                break;
+              case 2:
+                startB.classList.add("hidariS")
+                break;
+              case 3:
+                startB.classList.add("sitaS")
+                break;
+            }
           }
         }
+      });
+      startB.addEventListener("click", function () {
+        startB.classList.add("off");
       });
     </script>
   </body>
