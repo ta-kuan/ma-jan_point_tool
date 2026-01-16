@@ -608,8 +608,49 @@
       .hoS {
         transform: translate(calc(-50% + 13vw),calc(-50% + 40vw));
       }
+      .riboM,
+      .riboU,
+      .riboH,
+      .riboS {
+        position: absolute;
+        background-color: rgb(255,255,255);
+        width: 45vw;
+        height: 2vh;
+        border-radius: 3px;
+        left: 50%;
+        top: 50%;
+      }
+      .riboM::after,
+      .riboU::after,
+      .riboH::after,
+      .riboS::after {
+        content: "";
+        position: absolute;
+        background-color: rgb(255,0,0);
+        width: 2vw;
+        height: 2vw;
+        border-radius: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .riboH {
+        transform: translate(calc(-50% + -29vw),calc(-50%)) rotate(90deg);
+      }
+      .riboU {
+        transform: translate(calc(-50%),calc(-50% + -29vw)) rotate(180deg);
+      }
+      .riboM {
+        transform: translate(calc(-50% + 29vw),calc(-50%)) rotate(-90deg);
+      }
+      .riboS {
+        transform: translate(calc(-50%),calc(-50% + 29vw));
+      }
       .off{
         display: none;
+      }
+      .notclick {
+        pointer-events: none;
       }
     </style>
     <meta charset="UTF-8">
@@ -648,18 +689,22 @@
     <div class="migiB">
       <div class="riM"></div>
       <div class="hoM"></div>
+      <div class="riboM"></div>
     </div>
     <div class="ueB">
       <div class="riU"></div>
       <div class="hoU"></div>
+      <div class="riboU"></div>
     </div>
     <div class="hidariB">
       <div class="riH"></div>
       <div class="hoH"></div>
+      <div class="riboH"></div>
     </div>
     <div class="sitaB">
       <div class="riS"></div>
       <div class="hoS"></div>
+      <div class="riboS"></div>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -696,11 +741,16 @@
       const hoU = document.querySelector(".hoU");
       const hoH = document.querySelector(".hoH");
       const hoS = document.querySelector(".hoS");
+      const riboM = document.querySelector(".riboM");
+      const riboU = document.querySelector(".riboU");
+      const riboH = document.querySelector(".riboH");
+      const riboS = document.querySelector(".riboS");
       
       number_player.classList.remove("off");
       center.classList.add("off");
       sai1.classList.remove("off");
       sai2.classList.remove("off");
+      saiarea.classList.remove("notclick");
       startB.classList.add("off");
       riM.classList.add("off");
       riU.classList.add("off");
@@ -710,6 +760,10 @@
       hoU.classList.add("off");
       hoH.classList.add("off");
       hoS.classList.add("off");
+      riboM.classList.add("off");
+      riboU.classList.add("off");
+      riboH.classList.add("off");
+      riboS.classList.add("off");
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -883,6 +937,7 @@
           spinsai();
           sai1.classList.add("off");
           sai2.classList.add("off");
+          saiarea.classList.add("notclick");
           saiareaB = 2;
           saisum = n1 + n2;
           startB.classList.remove(...startclasses);
@@ -926,6 +981,22 @@
         hoU.classList.remove("off");
         hoH.classList.remove("off");
         hoS.classList.remove("off");
+      });
+      riM.addEventListener("click", function () {
+        riM.classList.add("off");
+        riboM.classList.remove("off");
+      });
+      riU.addEventListener("click", function () {
+        riU.classList.add("off");
+        riboU.classList.remove("off");
+      });
+      riH.addEventListener("click", function () {
+        riH.classList.add("off");
+        riboH.classList.remove("off");
+      });
+      riS.addEventListener("click", function () {
+        riS.classList.add("off");
+        riboS.classList.remove("off");
       });
     </script>
   </body>
