@@ -548,7 +548,6 @@
         color: rgb(0,0,0);
         position: absolute;
         font-size: 150%;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
@@ -587,7 +586,6 @@
         color: rgb(0,0,0);
         position: absolute;
         font-size: 150%;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
@@ -689,6 +687,10 @@
       const riU = document.querySelector(".riU");
       const riH = document.querySelector(".riH");
       const riS = document.querySelector(".riS");
+      const hoM = document.querySelector(".hoM");
+      const hoU = document.querySelector(".hoU");
+      const hoH = document.querySelector(".hoH");
+      const hoS = document.querySelector(".hoS");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -699,6 +701,10 @@
       riU.classList.add("off");
       riH.classList.add("off");
       riS.classList.add("off");
+      hoM.classList.add("off");
+      hoU.classList.add("off");
+      hoH.classList.add("off");
+      hoS.classList.add("off");
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -911,6 +917,10 @@
         riU.classList.remove("off");
         riH.classList.remove("off");
         riS.classList.remove("off");
+        hoM.classList.remove("off");
+        hoU.classList.remove("off");
+        hoH.classList.remove("off");
+        hoS.classList.remove("off");
       });
     </script>
   </body>
