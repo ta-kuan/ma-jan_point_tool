@@ -8,9 +8,6 @@
         font-weight: normal;
         font-style: normal;
       }
-      html {
-        touch-action: manipulation;
-      }
       body {
         background-color: rgb(70,150,90);
       }
@@ -35,7 +32,6 @@
         content: "四麻東風";
         color: rgb(0,0,0);
         font-size: 7vh;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
@@ -55,7 +51,6 @@
         content: "四麻半荘";
         color: rgb(0,0,0);
         font-size: 7vh;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
@@ -75,7 +70,6 @@
         content: "三麻東風";
         color: rgb(0,0,0);
         font-size: 7vh;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
@@ -95,14 +89,10 @@
         content: "三麻半荘";
         color: rgb(0,0,0);
         font-size: 7vh;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-      }
-      .number_player.off {
-        display: none;
       }
       
       
@@ -473,9 +463,6 @@
         top: 2.65vw;
         box-shadow: 4.7vw 0;
       }
-      .center.off {
-        display: none;
-      }
       
       
       .karioya {
@@ -494,14 +481,10 @@
         color: rgb(0,0,0);
         position: absolute;
         font-size: 7vh;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -53%);
-      }
-      .karioya.off {
-        display: none;
       }
       .start {
         position: absolute;
@@ -519,7 +502,6 @@
         color: rgb(0,0,0);
         position: absolute;
         font-size: 13vw;
-        font-weight: bold;
         white-space: nowrap;
         left: 50%;
         top: 45%;
@@ -543,9 +525,6 @@
       .start.sitaS {
         transform: rotate(0deg);
       }
-      .start.off {
-        display: none;
-      }
       
       
       .riM,
@@ -554,12 +533,11 @@
       .riS {
         position: absolute;
         border: thick double;
-        border-color: rgb(255,50,50);
-        background-color: rgb(255,180,180);
+        border-color: rgb(255,80,50);
+        background-color: rgb(255,180,100);
         width: 20vw;
         height: 6vh;
         left: 50%;
-        transform: translate(-50%);
         top: 50%;
       }
       .riM::after,
@@ -574,31 +552,61 @@
         white-space: nowrap;
         left: 50%;
         top: 50%;
-        transform: translate(-50% ,-50%);
-      }
-      .riM {
-        
-      }
-      .riM::after {
-        
-      }
-      .riU {
-        
-      }
-      .riU::after {
-        
+        transform: translate(-50%,-50%);
       }
       .riH {
-        
+        transform: translate(calc(-50% + -40vw),calc(-50% + -11vw)) rotate(90deg);
       }
-      .riH::after {
-        
+      .riU {
+        transform: translate(calc(-50% + 11vw),calc(-50% + -40vw)) rotate(180deg);
+      }
+      .riM {
+        transform: translate(calc(-50% + 40vw),calc(-50% + 11vw)) rotate(-90deg);
       }
       .riS {
-        
+        transform: translate(calc(-50% + -11vw),calc(-50% + 40vw));
       }
-      .riS::after {
-        
+      .hoM,
+      .hoU,
+      .hoH,
+      .hoS {
+        position: absolute;
+        border: thick double;
+        border-color: rgb(255,50,50);
+        background-color: rgb(255,180,180);
+        width: 20vw;
+        height: 6vh;
+        left: 50%;
+        top: 50%;
+      }
+      .hoM::after,
+      .hoU::after,
+      .hoH::after,
+      .hoS::after {
+        content: "和了";
+        color: rgb(0,0,0);
+        position: absolute;
+        font-size: 150%;
+        font-weight: bold;
+        white-space: nowrap;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .hoH {
+        transform: translate(calc(-50% + -40vw),calc(-50% + 13vw)) rotate(90deg);
+      }
+      .hoU {
+        transform: translate(calc(-50% + -13vw),calc(-50% + -40vw)) rotate(180deg);
+      }
+      .hoM {
+        transform: translate(calc(-50% + 40vw),calc(-50% + -13vw)) rotate(-90deg);
+      }
+      .hoS {
+        transform: translate(calc(-50% + 13vw),calc(-50% + 40vw));
+      }
+      .off{
+        display: none;
       }
     </style>
     <meta charset="UTF-8">
@@ -677,12 +685,20 @@
       const startB = document.querySelector(".start");
       let startclasses = ["migiS","ueS","hidariS","sita","off"];
       let yonsan = 0;
+      const riM = document.querySelector(".riM");
+      const riU = document.querySelector(".riU");
+      const riH = document.querySelector(".riH");
+      const riS = document.querySelector(".riS");
       
       number_player.classList.remove("off");
       center.classList.add("off");
       sai1.classList.remove("off");
       sai2.classList.remove("off");
       startB.classList.add("off");
+      riM.classList.add("off");
+      riU.classList.add("off");
+      riH.classList.add("off");
+      riS.classList.add("off");
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -891,6 +907,10 @@
       });
       startB.addEventListener("click", function () {
         startB.classList.add("off");
+        riM.classList.remove("off");
+        riU.classList.remove("off");
+        riH.classList.remove("off");
+        riS.classList.remove("off");
       });
     </script>
   </body>
