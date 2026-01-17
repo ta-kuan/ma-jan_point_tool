@@ -1241,12 +1241,16 @@
         tokutentop.classList.add("hidariT");
       });
       tokutentopH.addEventListener("click", function () {
-        tokutentopH.classList.toggle("toggleT");
-        tokutentopM.classList.toggle("toggleT");
+        if (tokutentopM.classList.contains("toggleT")) {
+          tokutentopH.classList.toggle("toggleT");
+          tokutentopM.classList.toggle("toggleT");
+        }
       });
       tokutentopM.addEventListener("click", function () {
-        tokutentopH.classList.toggle("toggleT");
-        tokutentopM.classList.toggle("toggleT");
+        if (tokutentopH.classList.contains("toggleT")) {
+          tokutentopH.classList.toggle("toggleT");
+          tokutentopM.classList.toggle("toggleT");
+        }
       });
     </script>
   </body>
