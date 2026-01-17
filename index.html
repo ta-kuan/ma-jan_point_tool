@@ -708,6 +708,89 @@
         line-height: 1;
         font-family: sans-serif;
       }
+      .tokuten {
+        position: absolute;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw;
+        height: 90vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: rgb(240,240,240);
+        left: 50%;
+        top: 50%;
+      }
+      .tokutentop {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .kakusi {
+        position: absolute;
+        background-color: rgb(70,150,90);
+        width: 100vw;
+        height: 11vw;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,calc(-50% + -50vw));
+      }
+      .tokutentopH {
+      　position: absolute;
+        width: 50vw;
+        height: 10vw;
+        border-radius: 5vw 5vw 0 0;
+        background-color: rgb(200,200,200);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,calc(-50% + -40vw));
+      }
+      .tokutentopH::after {
+        content: "計算";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(90,90,90);
+      }
+      .tokutentopM {
+      　position: absolute;
+        width: 50vw;
+        height: 10vw;
+        border-radius: 5vw 5vw 0 0;
+        background-color: rgb(200,200,200);
+        left: 50%;
+        top: 50%;
+        transform: translate(calc(-50% + 50vw),calc(-50% + -50vw));
+      }
+      .tokutentopM::after {
+        content: "入力";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(90,90,90);
+      }
+      .toggleT {
+        background-color: rgb(240,240,240);
+      }
+      .toggleT::after {
+        color: rgb(0,0,0);
+      }
+      .migiT {
+        transform: translate(calc(-50% + 5vw),-50%) rotate(-90deg); 
+      }
+      .ueT {
+        transform: translate(-50%,-50%) rotate(180deg); 
+      }
+      .sitaT {
+        transform: translate(-50%,-50%); 
+      }
+      .hidariT {
+        transform: translate(calc(-50% + -5vw),-50%) rotate(90deg); 
+      }
+      .keisan {
+        
+      }
       .off{
         display: none;
       }
@@ -768,6 +851,15 @@
       <div class="hoS"></div>
       <div class="riboS"></div>
     </div>
+    <div class="tokutentop">
+      <div class="kakusi"></div>
+      <div class="tokutentopH"></div>
+      <div class="tokutentopM"></div>
+    </div>
+    <div class="tokuten">
+      <div class="keisan"></div>
+      <div class="hanhu"></div>
+    </div>
     <script>
       const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
@@ -793,7 +885,7 @@
       const sai2 = document.querySelector(".sai2");
       let start = 0;
       const startB = document.querySelector(".start");
-      let startclasses = ["migiS","ueS","hidariS","sita","off"];
+      let startclasses = ["migiS","ueS","hidariS","sitaS","off"];
       let yonsan = 0;
       const riM = document.querySelector(".riM");
       const riU = document.querySelector(".riU");
@@ -816,6 +908,11 @@
       let tenU = motiten;
       let tenH = motiten;
       let tenS = motiten;
+      const tokuten = document.querySelector(".tokuten");
+      const tokutentop = document.querySelector(".tokutentop");
+      let tokutenclasses = ["migiT","ueT","hidariT","sitaT","off"];
+      const tokutentopH = document.querySelector(".tokutentopH");
+      const tokutentopM = document.querySelector(".tokutentopM");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -843,6 +940,10 @@
       migiten.textContent = motiten;
       ueten.textContent = motiten;
       hidariten.textContent = motiten;
+      tokuten.classList.add("off");
+      tokutentop.classList.add("off");
+      tokutentopH.classList.add("toggleT");
+      tokutentopM.classList.remove("toggleT");
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -1011,6 +1112,16 @@
         ueten.textContent = tenU;
         hidariten.textContent = tenH;
       }
+      function kesuB() {
+        riM.classList.add("off");
+        hoM.classList.add("off");
+        riU.classList.add("off");
+        hoU.classList.add("off");
+        riH.classList.add("off");
+        hoH.classList.add("off");
+        riS.classList.add("off");
+        hoS.classList.add("off");
+      }
       saiarea.addEventListener("click", function () {
         if (saiareaB === 0) {
           spinsai();
@@ -1018,15 +1129,11 @@
           saiareaB = 1;
           saisum = n1 + n2;
           hougakuyon();
+          sitaten.classList.remove("off");
+          hidariten.classList.remove("off");
+          migiten.classList.remove("off");
           if (yonsan === 4) {
-            sitaten.classList.remove("off");
             ueten.classList.remove("off");
-            hidariten.classList.remove("off");
-            migiten.classList.remove("off");
-          } else if (yonsan === 3) {
-            sitaten.classList.remove("off");
-            hidariten.classList.remove("off");
-            migiten.classList.remove("off");
           }
         } else if (saiareaB === 1) {
           spinsai();
@@ -1069,13 +1176,15 @@
         sai1.classList.add("off");
         sai2.classList.add("off");
         riM.classList.remove("off");
-        riU.classList.remove("off");
-        riH.classList.remove("off");
-        riS.classList.remove("off");
         hoM.classList.remove("off");
-        hoU.classList.remove("off");
+        riH.classList.remove("off");
         hoH.classList.remove("off");
+        riS.classList.remove("off");
         hoS.classList.remove("off");
+        if (yonsan === 4) {
+          riU.classList.remove("off");
+          hoU.classList.remove("off");
+        }
       });
       riM.addEventListener("click", function () {
         riM.classList.add("off");
@@ -1100,6 +1209,42 @@
         riboS.classList.remove("off");
         tenS -= 1000;
         update();
+      });
+      hoM.addEventListener("click", function () {
+        kesuB();
+        tokuten.classList.remove(...tokutenclasses);
+        tokutentop.classList.remove("off");
+        tokuten.classList.add("migiT");
+        tokutentop.classList.add("migiT");
+      });
+      hoU.addEventListener("click", function () {
+        kesuB();
+        tokuten.classList.remove(...tokutenclasses);
+        tokutentop.classList.remove("off");
+        tokuten.classList.add("ueT");
+        tokutentop.classList.add("ueT");
+      });
+      hoS.addEventListener("click", function () {
+        kesuB();
+        tokuten.classList.remove(...tokutenclasses);
+        tokutentop.classList.remove("off");
+        tokuten.classList.add("sitaT");
+        tokutentop.classList.add("sitaT");
+      });
+      hoH.addEventListener("click", function () {
+        kesuB();
+        tokuten.classList.remove(...tokutenclasses);
+        tokutentop.classList.remove("off");
+        tokuten.classList.add("hidariT");
+        tokutentop.classList.add("hidariT");
+      });
+      tokutentopH.addEventListener("click", function () {
+        tokutentopH.classList.toggle("toggleT");
+        tokutentopM.classList.toggle("toggleT");
+      });
+      tokutentopM.addEventListener("click", function () {
+        tokutentopH.classList.toggle("toggleT");
+        tokutentopM.classList.toggle("toggleT");
       });
     </script>
   </body>
