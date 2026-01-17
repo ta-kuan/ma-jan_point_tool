@@ -646,6 +646,62 @@
       .riboS {
         transform: translate(calc(-50%),calc(-50% + 29vw));
       }
+      .sitaten {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,calc(-50% + 20vw));
+        width: 30vw;
+        height: 10vW;
+        color: rgb(255,200,0);
+        font-size: 8vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+      }
+      .migiten {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(calc(-50% + 20vw),-50%) rotate(-90deg);
+        width: 30vw;
+        height: 10vW;
+        color: rgb(255,200,0);
+        font-size: 8vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+      }
+      .ueten {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,calc(-50% + -20vw)) rotate(180deg);
+        width: 30vw;
+        height: 10vW;
+        color: rgb(255,200,0);
+        font-size: 8vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+      }
+      .hidariten {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(calc(-50% + -20vw),-50%) rotate(90deg);
+        width: 30vw;
+        height: 10vW;
+        color: rgb(255,200,0);
+        font-size: 8vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+      }
       .off{
         display: none;
       }
@@ -745,6 +801,15 @@
       const riboU = document.querySelector(".riboU");
       const riboH = document.querySelector(".riboH");
       const riboS = document.querySelector(".riboS");
+      const sitaten = document.querySelector(".sitaten");
+      const migiten = document.querySelector(".migiten");
+      const ueten = document.querySelector(".ueten");
+      const hidariten = document.querySelector(".hidariten");
+      let motiten = 35000;
+      let tenM = motiten;
+      let tenU = motiten;
+      let tenH = motiten;
+      let tenS = motiten;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -764,6 +829,14 @@
       riboU.classList.add("off");
       riboH.classList.add("off");
       riboS.classList.add("off");
+      sitaten.classList.add("off");
+      ueten.classList.add("off");
+      hidariten.classList.add("off");
+      migiten.classList.add("off");
+      sitaten.textContent = motiten;
+      migiten.textContent = motiten;
+      ueten.textContent = motiten;
+      hidariten.textContent = motiten;
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -926,6 +999,12 @@
           }
         }
       }
+      function update() {
+        sitaten.textContent = tenS;
+        migiten.textContent = tenM;
+        ueten.textContent = tenU;
+        hidariten.textContent = tenH;
+      }
       saiarea.addEventListener("click", function () {
         if (saiareaB === 0) {
           spinsai();
@@ -933,10 +1012,18 @@
           saiareaB = 1;
           saisum = n1 + n2;
           hougakuyon();
+          if (yonsan === 4) {
+            sitaten.classList.remove("off");
+            ueten.classList.remove("off");
+            hidariten.classList.remove("off");
+            migiten.classList.remove("off");
+          } else if (yonsan === 3) {
+            sitaten.classList.remove("off");
+            hidariten.classList.remove("off");
+            migiten.classList.remove("off");
+          }
         } else if (saiareaB === 1) {
           spinsai();
-          sai1.classList.add("off");
-          sai2.classList.add("off");
           saiarea.classList.add("notclick");
           saiareaB = 2;
           saisum = n1 + n2;
@@ -973,6 +1060,8 @@
       });
       startB.addEventListener("click", function () {
         startB.classList.add("off");
+        sai1.classList.add("off");
+        sai2.classList.add("off");
         riM.classList.remove("off");
         riU.classList.remove("off");
         riH.classList.remove("off");
@@ -985,18 +1074,26 @@
       riM.addEventListener("click", function () {
         riM.classList.add("off");
         riboM.classList.remove("off");
+        tenM -= 1000;
+        update();
       });
       riU.addEventListener("click", function () {
         riU.classList.add("off");
         riboU.classList.remove("off");
+        tenU -= 1000;
+        update();
       });
       riH.addEventListener("click", function () {
         riH.classList.add("off");
         riboH.classList.remove("off");
+        tenH -= 1000;
+        update();
       });
       riS.addEventListener("click", function () {
         riS.classList.add("off");
         riboS.classList.remove("off");
+        tenS -= 1000;
+        update();
       });
     </script>
   </body>
