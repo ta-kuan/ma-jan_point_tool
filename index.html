@@ -865,6 +865,7 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
+        font-size: 6.5vw;
       }
       .setteiK {
         position: absolute;
@@ -880,7 +881,8 @@
         left: 3vw;
         top: 5vw;
         height: 7vw;
-        color: rgb(90,90,90);
+        color: rgb(0,0,0);
+        white-space: nowrap;
       }
       .syokiten {
         position: absolute;
@@ -894,7 +896,8 @@
         left: 3vw;
         top: 25vw;
         height: 7vw;
-        color: rgb(90,90,90);
+        color: rgb(0,0,0);
+        white-space: nowrap;
       }
       .tumozon {
         width: 15vw;
@@ -922,6 +925,42 @@
         transition: left 0.4s;
       }
       .tumozonS.on {
+        left: 7vw;
+      }
+      .kiriageL {
+        position: absolute;
+        left: -37vw;
+        top: 20vw;
+        height: 7vw;
+        color: rgb(0,0,0);
+        white-space: nowrap;
+      }
+      .kiriage {
+        width: 15vw;
+        height: 8vw;
+        background-color: #ccc;
+        border-radius: 5vw;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.4s;
+        top: 20vw;
+        left: 0vw;
+      }
+      .kiriage.on {
+        background-color: #34c759;
+      }
+      .kiriageS {
+        width: 7vw;
+        height: 7vw;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); 
+        left: 1vw;
+        transition: left 0.4s;
+      }
+      .kiriageS.on {
         left: 7vw;
       }
       .off{
@@ -1009,6 +1048,10 @@
       <div id="tumozon" class="tumozon">
         <div class="tumozonS">
       </div>
+      <label for="kriage" class="kiriageL">切り上げ満貫</label>
+      <div id="kiriage" class="kiriage">
+        <div class="kiriageS">
+      </div>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -1067,8 +1110,10 @@
       let tenU = motiten;
       let tenH = motiten;
       let tenS = motiten;
-      const sw = document.querySelector(".tumozon");
-      const swS = document.querySelector(".tumozonS");
+      const sw1 = document.querySelector(".tumozon");
+      const swS1 = document.querySelector(".tumozonS");
+      const sw2 = document.querySelector(".kiriage");
+      const swS2 = document.querySelector(".kiriageS");
       let kaisi =0;
       
       number_player.classList.remove("off");
@@ -1428,10 +1473,14 @@
           update();
         }
       });
-sw.addEventListener("click", () => {
-  sw.classList.toggle("on");
-  swS.classList.toggle("on");
-});
+      sw1.addEventListener("click", () => {
+        sw1.classList.toggle("on");
+        swS1.classList.toggle("on");
+      });
+      sw2.addEventListener("click", () => {
+        sw2.classList.toggle("on");
+        swS2.classList.toggle("on");
+      });
     </script>
   </body>
 </html>
