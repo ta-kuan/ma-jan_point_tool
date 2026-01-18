@@ -12,6 +12,7 @@
         background-color: rgb(70,150,90);
         font-family: yujiboku, sans-serif;
         -webkit-user-select: none;
+        touch-action: manipulation;
       }
       *::after {
         font-family: yujiboku, sans-serif;
@@ -710,7 +711,6 @@
       }
       .tokuten {
         position: absolute;
-        -webkit-overflow-scrolling: touch;
         width: 100vw;
         height: 90vw;
         overflow-y: auto;
@@ -790,8 +790,139 @@
       .hidariT {
         transform: translate(calc(-50% + -5vw),-50%) rotate(90deg); 
       }
-      .keisan {
-        
+      .settei {
+        position: absolute;
+        background-color: rgb(210,210,210);
+        width: 9.5vw;
+        height: 9.5vw;
+        border: solid 0.5vw;
+        border-color: rgb(50,50,50);
+        bottom: 4vw;
+      }
+      .bo1 {
+        position: absolute;
+        width: 2vw;
+        height: 8.3vw;
+        background-color: rgb(150,150,150);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .bo2 {
+        position: absolute;
+        width: 2vw;
+        height: 8vw;
+        background-color: rgb(150,150,150);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+      }
+      .bo3 {
+        position: absolute;
+        width: 2vw;
+        height: 8.3vw;
+        background-color: rgb(150,150,150);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(90deg);
+      }
+      .bo4 {
+        position: absolute;
+        width: 2vw;
+        height: 8vw;
+        background-color: rgb(150,150,150);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(135deg);
+      }
+      .en1 {
+        position: absolute;
+        width: 6vw;
+        height: 6vw;
+        border-radius: 3vw;
+        background-color: rgb(150,150,150);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .en2 {
+        position: absolute;
+        width: 2.5vw;
+        height: 2.5vw;
+        border-radius: 3vw;
+        background-color: rgb(210,210,210);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .setteiG {
+        position: absolute;
+        width: 100vw;
+        height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: rgb(240,240,240);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .setteiK {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .syokitenL {
+        position: absolute;
+        left: 3vw;
+        top: 5vw;
+        height: 7vw;
+        color: rgb(90,90,90);
+      }
+      .syokiten {
+        position: absolute;
+        width: 50vw;
+        height: 7vw;
+        top: 5vw;
+        left: 40vw;
+      }
+      .tumozonL {
+        position: absolute;
+        left: 3vw;
+        top: 25vw;
+        height: 7vw;
+        color: rgb(90,90,90);
+      }
+      .tumozon {
+        width: 15vw;
+        height: 8vw;
+        background-color: #ccc;
+        border-radius: 5vw;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.4s;
+        top: 25vw;
+        left: 40vw;
+      }
+      .tumozon.on {
+        background-color: #34c759;
+      }
+      .tumozonS {
+        width: 7vw;
+        height: 7vw;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); 
+        left: 1vw;
+        transition: left 0.4s;
+      }
+      .tumozonS.on {
+        left: 7vw;
       }
       .off{
         display: none;
@@ -862,6 +993,23 @@
       <div class="keisan"></div>
       <div class="hanhu"></div>
     </div>
+    <div class="settei">
+      <div class="bo1"></div>
+      <div class="bo2"></div>
+      <div class="bo3"></div>
+      <div class="bo4"></div>
+      <div class="en1"></div>
+      <div class="en2"></div>
+    </div>
+    <div class="setteiK"></div>
+    <div class="setteiG">
+      <label for="syokiten" class="syokitenL">配給原点</label>
+      <input id="syokiten" class="syokiten" value="25000"></input>
+      <label for="tumozon" class="tumozonL">ツモ損</label>
+      <div id="tumozon" class="tumozon">
+        <div class="tumozonS">
+      </div>
+    </div>
     <script>
       const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
@@ -905,16 +1053,23 @@
       const migiten = document.querySelector(".migiten");
       const ueten = document.querySelector(".ueten");
       const hidariten = document.querySelector(".hidariten");
-      let motiten = 35000;
-      let tenM = motiten;
-      let tenU = motiten;
-      let tenH = motiten;
-      let tenS = motiten;
       const tokuten = document.querySelector(".tokuten");
       const tokutentop = document.querySelector(".tokutentop");
       let tokutenclasses = ["migiT","ueT","hidariT","sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
       const tokutentopM = document.querySelector(".tokutentopM");
+      const settei = document.querySelector(".settei");
+      const setteiG = document.querySelector(".setteiG");
+      const setteiK = document.querySelector(".setteiK");
+      const syokiten = document.querySelector(".syokiten");
+      let motiten = Number(syokiten.value);
+      let tenM = motiten;
+      let tenU = motiten;
+      let tenH = motiten;
+      let tenS = motiten;
+      const sw = document.querySelector(".tumozon");
+      const swS = document.querySelector(".tumozonS");
+      let kaisi =0;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -946,6 +1101,8 @@
       tokutentop.classList.add("off");
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
+      setteiG.classList.add("off");
+      setteiK.classList.add("off");
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -1183,6 +1340,7 @@
         hoH.classList.remove("off");
         riS.classList.remove("off");
         hoS.classList.remove("off");
+        kaisi = 1;
         if (yonsan === 4) {
           riU.classList.remove("off");
           hoU.classList.remove("off");
@@ -1252,6 +1410,28 @@
           tokutentopM.classList.toggle("toggleT");
         }
       });
+      settei.addEventListener("click", function () {
+        setteiG.classList.remove("off");
+        setteiK.classList.remove("off");
+      });
+      setteiK.addEventListener("click", function () {
+        setteiG.classList.add("off");
+        setteiK.classList.add("off");
+      });
+      syokiten.addEventListener("change", () => {
+        motiten = Number(syokiten.value);
+        tenM = motiten;
+        tenU = motiten;
+        tenH = motiten;
+        tenS = motiten;
+        if (kaisi === 0) {
+          update();
+        }
+      });
+sw.addEventListener("click", () => {
+  sw.classList.toggle("on");
+  swS.classList.toggle("on");
+});
     </script>
   </body>
 </html>
