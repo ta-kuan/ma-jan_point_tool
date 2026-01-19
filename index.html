@@ -891,10 +891,25 @@
         top: 5vw;
         left: 40vw;
       }
-      .tumozonL {
+      .hituyoutenL {
         position: absolute;
         left: 3vw;
         top: 25vw;
+        height: 7vw;
+        color: rgb(0,0,0);
+        white-space: nowrap;
+      }
+      .hituyouten {
+        position: absolute;
+        width: 50vw;
+        height: 7vw;
+        top: 25vw;
+        left: 40vw;
+      }
+      .tumozonL {
+        position: absolute;
+        left: 3vw;
+        top: 45vw;
         height: 7vw;
         color: rgb(0,0,0);
         white-space: nowrap;
@@ -907,7 +922,7 @@
         position: absolute;
         cursor: pointer;
         transition: background-color 0.4s;
-        top: 25vw;
+        top: 45vw;
         left: 40vw;
       }
       .tumozon.on {
@@ -930,7 +945,7 @@
       .kiriageL {
         position: absolute;
         left: 3vw;
-        top: 45vw;
+        top: 65vw;
         height: 7vw;
         color: rgb(0,0,0);
         white-space: nowrap;
@@ -943,7 +958,7 @@
         position: absolute;
         cursor: pointer;
         transition: background-color 0.4s;
-        top: 45vw;
+        top: 65vw;
         left: 40vw;
       }
       .kiriage.on {
@@ -1044,7 +1059,9 @@
     <div class="setteiG">
       <label for="syokiten" class="syokitenL">配給原点</label>
       <input id="syokiten" class="syokiten" value="25000"></input>
-      <div class="tumozonL">ツモ損</div>
+      <label for="hituyouten" class="hituyoutenL">一位必要点</label>
+      <input id="hituyouten" class="hituyouten" value="30000"></input>
+      <div class="tumozonL">ツモ損(三麻)</div>
       <div class="tumozon">
         <div class="tumozonS"></div>
       </div>
@@ -1110,6 +1127,8 @@
       let tenU = motiten;
       let tenH = motiten;
       let tenS = motiten;
+      const hituyouten = document.querySelector(".hituyouten");
+      let agariten = Number(hituyouten.value);
       const sw1 = document.querySelector(".tumozon");
       const swS1 = document.querySelector(".tumozonS");
       const sw2 = document.querySelector(".kiriage");
@@ -1174,6 +1193,7 @@
       
       function savedata() {
         localStorage.setItem("syokiten", syokiten.value);
+        localStorage.setItem("hituyouten", hituyouten.value);
         localStorage.setItem("tumozon", sw1.classList.contains("on"));
         localStorage.setItem("kiriage", sw2.classList.contains("on"));
       }
@@ -1189,6 +1209,11 @@
           if (kaisi === 0) {
             update();
           }
+        }
+        const savedHituyouten = localStorage.getItem("hituyouten");
+        if (savedHituyouten !== null) {
+          hituyouten.value = savedHituyouten;
+          agariten = Number(hituyouten.value);
         }
         if (localStorage.getItem("tumozon") === "true") {
           sw1.classList.add("on");
@@ -1501,6 +1526,10 @@
         if (kaisi === 0) {
           update();
         }
+        savedata();
+      });
+      hituyouten.addEventListener("change", () => {
+        agariten = Number(hituyouten.value);
         savedata();
       });
       sw1.addEventListener("click", () => {
