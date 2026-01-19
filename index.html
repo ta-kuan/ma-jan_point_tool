@@ -1148,6 +1148,7 @@
       tokutentopM.classList.remove("toggleT");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
+      loaddata();
       
       yonmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
@@ -1170,6 +1171,34 @@
         yonsan = 3;
       });
       
+      
+      function savedata() {
+        localStorage.setItem("syokiten", syokiten.value);
+        localStorage.setItem("tumozon", sw1.classList.contains("on"));
+        localStorage.setItem("kiriage", sw2.classList.contains("on"));
+      }
+      function loaddata() {
+        const savedSyokiten = localStorage.getItem("syokiten");
+        if (savedSyokiten !== null) {
+          syokiten.value = savedSyokiten;
+          motiten = Number(syokiten.value);
+          tenM = motiten;
+          tenU = motiten;
+          tenH = motiten;
+          tenS = motiten;
+          if (kaisi === 0) {
+            update();
+          }
+        }
+        if (localStorage.getItem("tumozon") === "true") {
+          sw1.classList.add("on");
+          swS1.classList.add("on");
+        }
+        if (localStorage.getItem("kiriage") === "true") {
+          sw2.classList.add("on");
+          swS2.classList.add("on");
+        }
+      }
       
       function spinsai() {
         n1 = Math.floor(Math.random() * 6) + 1;
@@ -1472,14 +1501,17 @@
         if (kaisi === 0) {
           update();
         }
+        savedata();
       });
       sw1.addEventListener("click", () => {
         sw1.classList.toggle("on");
         swS1.classList.toggle("on");
+        savedata();
       });
       sw2.addEventListener("click", () => {
         sw2.classList.toggle("on");
         swS2.classList.toggle("on");
+        savedata();
       });
     </script>
   </body>
