@@ -350,7 +350,7 @@
       .me1.five {
         top: 1.6vw;
         left: 1.6vw;
-        box-shadow: 4.7vw 0;
+        box-shadow: 4.7vw 0 rgb(0,0,0);
         display: block;
       }
       .me1.five::after {
@@ -796,16 +796,16 @@
       .settei {
         position: absolute;
         background-color: rgb(210,210,210);
-        width: 9.5vw;
-        height: 9.5vw;
+        width: 8vw;
+        height: 8vw;
         border: solid 0.5vw;
         border-color: rgb(50,50,50);
         bottom: 4vw;
       }
       .bo1 {
         position: absolute;
-        width: 2vw;
-        height: 8.3vw;
+        width: 1.5vw;
+        height: 7vw;
         background-color: rgb(150,150,150);
         left: 50%;
         top: 50%;
@@ -813,8 +813,8 @@
       }
       .bo2 {
         position: absolute;
-        width: 2vw;
-        height: 8vw;
+        width: 1.5vw;
+        height: 6.9vw;
         background-color: rgb(150,150,150);
         left: 50%;
         top: 50%;
@@ -822,8 +822,8 @@
       }
       .bo3 {
         position: absolute;
-        width: 2vw;
-        height: 8.3vw;
+        width: 1.5vw;
+        height: 7vw;
         background-color: rgb(150,150,150);
         left: 50%;
         top: 50%;
@@ -831,8 +831,8 @@
       }
       .bo4 {
         position: absolute;
-        width: 2vw;
-        height: 8vw;
+        width: 1.5vw;
+        height: 6.9vw;
         background-color: rgb(150,150,150);
         left: 50%;
         top: 50%;
@@ -840,8 +840,8 @@
       }
       .en1 {
         position: absolute;
-        width: 6vw;
-        height: 6vw;
+        width: 5vw;
+        height: 5vw;
         border-radius: 3vw;
         background-color: rgb(150,150,150);
         left: 50%;
@@ -893,6 +893,8 @@
         height: 7vw;
         top: 5vw;
         left: 40vw;
+        font-size: 6vw;
+        font-family: sans-serif;
       }
       .hituyoutenL {
         position: absolute;
@@ -908,6 +910,8 @@
         height: 7vw;
         top: 25vw;
         left: 40vw;
+        font-size: 6vw;
+        font-family: sans-serif;
       }
       .tumozonL {
         position: absolute;
@@ -1048,7 +1052,42 @@
     </div>
     <div class="tokuten">
       <div class="keisan"></div>
-      <div class="hanhu"></div>
+      <div class="hanhu">
+        <form class="tumoron">
+          <label>
+            <input type="radio" name="mode" value="1">
+            ツモ
+          </label>
+          <label>
+            <input type="radio" name="mode" value="0">
+            ロン
+          </label>
+        </form>
+        <label for="hansu" class="hansuL">翻数</label>
+        <select id="hansu" class="hansu">
+          <option value="">翻数</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6,7</option>
+          <option value="8">8,9,10</option>
+          <option value="11">11,12</option>
+          <option value="13">役満</option>
+          <option value="14">二倍役満</option>
+          <option value="15">三倍役満</option>
+          <option value="16">四倍役満</option>
+          <option value="17">五倍役満</option>
+          <option value="18">六倍役満</option>
+        </select>
+        <label for="hu" class="huL">符</label>
+        <select id="hu" class="hu">
+          <option value="符">符</option>
+        </select>
+        <br>
+        <div id="tensuH" class="tensuH">点数：</div>
+      </div>
     </div>
     <div class="settei">
       <div class="bo1"></div>
@@ -1136,7 +1175,19 @@
       const swS1 = document.querySelector(".tumozonS");
       const sw2 = document.querySelector(".kiriage");
       const swS2 = document.querySelector(".kiriageS");
-      let kaisi =0;
+      let kaisi = 0;
+      const select1 = document.getElementById("hansu");
+      const select2 = document.getElementById("hu");
+      let oya = 0;
+      let hora = -1;
+      const tensuH = document.getElementById("tensuH");
+      const hansu = document.querySelector(".hansu");
+      const hu = document.querySelector(".hu");
+      const tumoron = document.querySelector(".tumoron");
+      let map = 0;
+      let han = 0;
+      let husu = 0;
+      
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -1478,6 +1529,9 @@
         tokutentop.classList.remove("off");
         tokuten.classList.add("migiT");
         tokutentop.classList.add("migiT");
+        if (migi.classList.contains("ton")) {
+          oya = 1;
+        }
       });
       hoU.addEventListener("click", function () {
         kesuB();
@@ -1485,6 +1539,9 @@
         tokutentop.classList.remove("off");
         tokuten.classList.add("ueT");
         tokutentop.classList.add("ueT");
+        if (ue.classList.contains("ton")) {
+          oya = 1;
+        }
       });
       hoS.addEventListener("click", function () {
         kesuB();
@@ -1492,6 +1549,9 @@
         tokutentop.classList.remove("off");
         tokuten.classList.add("sitaT");
         tokutentop.classList.add("sitaT");
+        if (sita.classList.contains("ton")) {
+          oya = 1;
+        }
       });
       hoH.addEventListener("click", function () {
         kesuB();
@@ -1499,6 +1559,9 @@
         tokutentop.classList.remove("off");
         tokuten.classList.add("hidariT");
         tokutentop.classList.add("hidariT");
+        if (hidari.classList.contains("ton")) {
+          oya = 1;
+        }
       });
       tokutentopH.addEventListener("click", function () {
         if (tokutentopM.classList.contains("toggleT")) {
@@ -1511,6 +1574,183 @@
           tokutentopH.classList.toggle("toggleT");
           tokutentopM.classList.toggle("toggleT");
         }
+      });
+      function sentaku() {
+        select2.innerHTML = "";
+        const mode = document.querySelector('input[name="mode"]:checked')?.value;
+        let options = [];
+        if (select1.value === "1") {
+          options = [30,40,50,60,70,80,90,100,110];
+        } else if (select1.value === "2") {
+          if (mode === "1") {
+            options = [20,30,40,50,60,70,80,90,100,110];
+          } else if (mode === "0") {
+            options = [25,30,40,50,60,70,80,90,100,110];
+          }
+        } else if (select1.value === "3") {
+          if (mode === "1") {
+            options = [20,25,30,40,50,60,"70以上"];
+          } else if (mode === "0") {
+            options = [25,30,40,50,60,"70以上"];
+          }
+        } else if (select1.value === "4") {
+          if (mode === "1") {
+            options = [20,25,30,"40以上"];
+          } else if (mode === "0") {
+            options = [25,30,"40以上"];
+        }
+        } else {
+          options = [];
+        }
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "符";
+        defaultOption.value = "";
+        select2.appendChild(defaultOption);
+        options.forEach(value => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          select2.appendChild(option);
+        });
+      }
+      function keisan() {
+        han = Number(select1.value);
+        husuM = select2.value;
+        if (husuM === "70以上" || husuM === "40以上") {
+          if (han === 3 || han === 4) {
+            map = 8000;
+        　  if (oya === 1) {
+              map = map * 1.5;
+            }
+            tensuH.textContent = "点数：" + map;
+            return;
+          }
+        }
+        husu = Number(select2.value);
+        if (han <= 4) {
+          map = husu * (2 ** (han + 2));
+          map = Math.min(map, 2000);
+          if (oya === 1 && hora === 1) {
+            if (husu === 20) {
+              if (han === 2) {
+                map = 2100;
+              } else if (han === 3) {
+                map = 3900;
+              } else if (han === 4) {
+                map = 7800;
+              }
+            } else if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
+              map = 12000;
+            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
+              map = 12000;
+            } else {
+              map = Math.ceil(map * 6 / 100) * 100;
+            }
+          } else if (oya === 0 && hora === 1 && husu === 20) {
+            if (han === 2) {
+              map = 1500;
+            } else if (han === 3) {
+              map = 2700;
+            } else if (han === 4) {
+              map = 5200;
+            } else {
+              map = Math.ceil(map * 4 / 100) * 100;
+            }
+          } else if (oya === 1 && hora === 0) {
+            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
+              map = 12000;
+            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
+              map = 12000;
+            } else {
+              map = Math.ceil(map * 6 / 100) * 100;
+            }
+          } else if (oya === 0 && hora === 0) {
+            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
+              map = 8000;
+            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
+              map = 8000;
+            } else {
+              map = Math.ceil(map * 4 / 100) * 100;
+            }
+          } else if (oya === 0 && hora === 1) {
+            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
+              map = 8000;
+            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
+              map = 8000;
+            } else {
+              map = Math.ceil(map * 4 / 100) * 100;
+            }
+          }
+        } else if (han === 5) {
+          map = 8000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 6) {
+          map = 12000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 8) {
+          map = 16000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 11) {
+          map = 24000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 13) {
+          map = 32000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 14) {
+          map = 64000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 15) {
+          map = 96000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 16) {
+          map = 128000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 17) {
+          map = 160000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        } else if (han === 18) {
+          map = 192000;
+          if (oya === 1) {
+            map = map * 1.5;
+          }
+        }
+        tensuH.textContent = "点数：" + map;
+      }
+      tumoron.addEventListener("change", () => {
+        sentaku();
+        keisan();
+      });
+      select1.addEventListener("change", () => {
+        sentaku();
+        keisan();
+      });
+      select2.addEventListener("change", () => {
+        keisan();
+      });
+      const radios = document.querySelectorAll('input[name="mode"]');
+      radios.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          hora = Number(e.target.value);
+          sentaku();
+        });
       });
       settei.addEventListener("click", function () {
         setteiG.classList.remove("off");
@@ -1544,6 +1784,8 @@
         sw2.classList.toggle("on");
         swS2.classList.toggle("on");
         savedata();
+        sentaku();
+        keisan();
       });
     </script>
   </body>
