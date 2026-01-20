@@ -1163,6 +1163,8 @@
       let tokutenclasses = ["migiT","ueT","hidariT","sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
       const tokutentopM = document.querySelector(".tokutentopM");
+      const keisan = document.querySelector(".keisan");
+      const hanhu = document.querySelector(".hanhu");
       const settei = document.querySelector(".settei");
       const setteiG = document.querySelector(".setteiG");
       const setteiK = document.querySelector(".setteiK");
@@ -1222,6 +1224,8 @@
       tokutentop.classList.add("off");
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
+      keisan.classList.add("toggleB");
+      hanhu.classList.remove("toggleB");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
       loaddata();
@@ -1570,12 +1574,16 @@
         if (tokutentopM.classList.contains("toggleT")) {
           tokutentopH.classList.toggle("toggleT");
           tokutentopM.classList.toggle("toggleT");
+          keisan.classList.toggle("toggleB");
+          hanhu.classList.toggle("toggleB");
         }
       });
       tokutentopM.addEventListener("click", function () {
         if (tokutentopH.classList.contains("toggleT")) {
           tokutentopH.classList.toggle("toggleT");
           tokutentopM.classList.toggle("toggleT");
+          keisan.classList.toggle("toggleB");
+          hanhu.classList.toggle("toggleB");
         }
       });
       function sentaku() {
