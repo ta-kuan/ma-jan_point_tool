@@ -778,6 +778,9 @@
       .toggleT {
         background-color: rgb(240,240,240);
       }
+      .toggleB {
+        display: none;
+      }
       .toggleT::after {
         color: rgb(0,0,0);
       }
@@ -1224,8 +1227,8 @@
       tokutentop.classList.add("off");
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
-      keisan.classList.add("toggleB");
-      hanhu.classList.remove("toggleB");
+      keisan.classList.remove("toggleB");
+      hanhu.classList.add("toggleB");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
       loaddata();
@@ -1624,7 +1627,7 @@
           select2.appendChild(option);
         });
       }
-      function keisan() {
+      function keisanT() {
         han = Number(select1.value);
         husuM = select2.value;
         if (husuM === "70以上" || husuM === "40以上") {
@@ -1747,14 +1750,14 @@
       }
       tumoron.addEventListener("change", () => {
         sentaku();
-        keisan();
+        keisanT();
       });
       select1.addEventListener("change", () => {
         sentaku();
-        keisan();
+        keisanT();
       });
       select2.addEventListener("change", () => {
-        keisan();
+        keisanT();
       });
       const radios = document.querySelectorAll('input[name="mode"]');
       radios.forEach(radio => {
@@ -1796,7 +1799,7 @@
         swS2.classList.toggle("on");
         savedata();
         sentaku();
-        keisan();
+        keisanT();
       });
     </script>
   </body>
