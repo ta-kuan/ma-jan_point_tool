@@ -263,8 +263,6 @@
         top: 10vw;
         background-color: rgb(100,100,100);
         transform: rotate(180deg);
-        touch-action: manipulation;
-        -webkit-user-select: none;
       }
       .sai1 {
         position: absolute;
@@ -1063,7 +1061,7 @@
       <div class="hanhu">
         <form class="tumoron">
           <label>
-            <input type="radio" name="mode" value="1">
+            <input type="radio" name="mode" value="1" checked>
             ツモ
           </label>
           <label>
@@ -1596,7 +1594,9 @@
         const mode = document.querySelector('input[name="mode"]:checked')?.value;
         let options = [];
         if (select1.value === "1") {
-          options = [30,40,50,60,70,80,90,100,110];
+          if (mode === "1" || mode === "0") {
+            options = [30,40,50,60,70,80,90,100,110];
+          }
         } else if (select1.value === "2") {
           if (mode === "1") {
             options = [20,30,40,50,60,70,80,90,100,110];
