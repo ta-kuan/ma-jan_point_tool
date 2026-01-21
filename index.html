@@ -784,17 +784,8 @@
       .toggleT::after {
         color: rgb(0,0,0);
       }
-      .migiT {
-        transform: translate(calc(-50% + 5vw),-50%) rotate(-90deg); 
-      }
-      .ueT {
-        transform: translate(-50%,-50%) rotate(180deg); 
-      }
       .sitaT {
         transform: translate(-50%,-50%); 
-      }
-      .hidariT {
-        transform: translate(calc(-50% + -5vw),-50%) rotate(90deg); 
       }
       .settei {
         position: absolute;
@@ -1163,7 +1154,7 @@
       const hidariten = document.querySelector(".hidariten");
       const tokuten = document.querySelector(".tokuten");
       const tokutentop = document.querySelector(".tokutentop");
-      let tokutenclasses = ["migiT","ueT","hidariT","sitaT","off"];
+      let tokutenclasses = ["sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
       const tokutentopM = document.querySelector(".tokutentopM");
       const keisan = document.querySelector(".keisan");
@@ -1195,6 +1186,7 @@
       let map = 0;
       let han = 0;
       let husu = 0;
+      let mc = 0;
       
       
       number_player.classList.remove("off");
@@ -1547,8 +1539,8 @@
         kesuB();
         tokuten.classList.remove(...tokutenclasses);
         tokutentop.classList.remove("off");
-        tokuten.classList.add("ueT");
-        tokutentop.classList.add("ueT");
+        tokuten.classList.add("sitaT");
+        tokutentop.classList.add("sitaT");
         if (ue.classList.contains("ton")) {
           oya = 1;
         }
@@ -1567,8 +1559,8 @@
         kesuB();
         tokuten.classList.remove(...tokutenclasses);
         tokutentop.classList.remove("off");
-        tokuten.classList.add("hidariT");
-        tokutentop.classList.add("hidariT");
+        tokuten.classList.add("sitaT");
+        tokutentop.classList.add("sitaT");
         if (hidari.classList.contains("ton")) {
           oya = 1;
         }
@@ -1591,6 +1583,10 @@
       });
       function sentaku() {
         select2.innerHTML = "";
+        if (mc === 0) {
+          hora = 1;
+          mc = 1;
+        }
         const mode = document.querySelector('input[name="mode"]:checked')?.value;
         let options = [];
         if (select1.value === "1") {
