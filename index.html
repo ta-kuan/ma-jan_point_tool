@@ -716,11 +716,108 @@
         position: absolute;
         width: 100vw;
         height: 90vw;
-        overflow-y: auto;
-        overflow-x: hidden;
         background-color: rgb(240,240,240);
         left: 50%;
         top: 50%;
+      }
+      .kettei {
+        position: absolute;
+        right: 4vw;
+        bottom: 3vw;
+        width: 17vw;
+        height: 10vw;
+        border-radius: 3vw;
+        border: none;
+        background-color: rgb(120,255,120);
+      }
+      .kettei::after {
+        content: "OK";
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .naiyou1 {
+        position: absolute;
+        white-space: nowrap;
+        left: 13vw;
+        top: 20vw;
+      }
+      .naiyou2 {
+        position: absolute;
+        white-space: nowrap;
+        left: 13vw;
+        top: 30vw;
+      }
+      .kyanseru {
+        position: absolute;
+        right: 25vw;
+        bottom: 3vw;
+        width: 26vw;
+        height: 10vw;
+        border-radius: 3vw;
+        border: none;
+        background-color: rgb(190,190,190);
+      }
+      .kyanseru::after {
+        content: "キャンセル";
+        color: rgb(0,0,0);
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .kakutei {
+        position: absolute;
+        right: 4vw;
+        bottom: 3vw;
+        width: 17vw;
+        height: 10vw;
+        border-radius: 3vw;
+        border: none;
+        background-color: rgb(255,120,120);
+      }
+      .kakutei::after {
+        content: "確定";
+        color: rgb(0,0,0);
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .m1 {
+        position: absolute;
+        left: 3vw;
+        top: 3vw;
+      }
+      .m1::after {
+        content: "内容確認";
+        color: rgb(0,0,0);
+        white-space: nowrap;
+        font-size: 5vw;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .tokutenKetteiK {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .tokutenKettei {
+        position: absolute;
+        width: 70vw;
+        height: 70vw;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background-color: rgb(255,255,200);
       }
       .tokutentop {
         position: absolute;
@@ -1048,7 +1145,9 @@
       <div class="tokutentopM"></div>
     </div>
     <div class="tokuten">
-      <div class="keisan"></div>
+      <div class="keisan">
+        
+      </div>
       <div class="hanhu">
         <form class="tumoron">
           <label>
@@ -1078,12 +1177,36 @@
           <option value="17">五倍役満</option>
           <option value="18">六倍役満</option>
         </select>
+        <br>
         <label for="hu" class="huL">符</label>
         <select id="hu" class="hu">
           <option value="符">符</option>
         </select>
-        <br>
+        <form class="hozyu">
+          <label>
+            <input type="radio" name="zyu" value="0">
+            上家
+          </label>
+          <label>
+            <input type="radio" name="zyu" value="1">
+            対面
+          </label>
+          <label>
+            <input type="radio" name="zyu" value="2">
+            下家
+          </label>
+        </form>
         <div id="tensuH" class="tensuH">点数：</div>
+        <button class="kettei"></button>
+      </div>
+      <div class="tokutenKetteiK"></div>
+      <div class="tokutenKettei">
+        <div class="m1"></div>
+        <div class="hanhuKettei"></div>
+        <div class="naiyou1"></div>
+        <div class="naiyou2"></div>
+        <button class="kyanseru"></button>
+        <button class="kakutei"></button>
       </div>
     </div>
     <div class="settei">
@@ -1183,10 +1306,23 @@
       const hansu = document.querySelector(".hansu");
       const hu = document.querySelector(".hu");
       const tumoron = document.querySelector(".tumoron");
-      let map = 0;
+      let base = 0;
+      let map  = 0;
+      let pay  = [];
+      let mapH = 0;
+      let mapH2 = 0;
       let han = 0;
       let husu = 0;
       let mc = 0;
+      const kettei = document.querySelector(".kettei");
+      const tokutenKettei = document.querySelector(".tokutenKettei");
+      const tokutenKetteiK = document.querySelector(".tokutenKetteiK");
+      const kyanseru = document.querySelector(".kyanseru");
+      const kakutei = document.querySelector(".kakutei");
+      const naiyou1 = document.querySelector(".naiyou1");
+      const naiyou2 = document.querySelector(".naiyou2");
+      const hozyu = document.querySelector(".hozyu");
+      
       
       
       number_player.classList.remove("off");
@@ -1223,6 +1359,9 @@
       hanhu.classList.add("toggleB");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
+      tokutenKettei.classList.add("off");
+      tokutenKetteiK.classList.add("off");
+      hozyu.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
@@ -1581,6 +1720,34 @@
           hanhu.classList.toggle("toggleB");
         }
       });
+      kettei.addEventListener("click", function () {
+        tokutenKettei.classList.remove("off");
+        tokutenKetteiK.classList.remove("off");
+        if (hora === 1) {
+          if (oya === 1) {
+            naiyou1.textContent = "支払い：" + pay[1] + "オール";
+            naiyou2.textContent = "得点：" + map;
+          } else if (oya === 0) {
+            naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+            naiyou2.textContent = "得点：" + map
+          }
+        } else if (hora === 0) {
+          mapH = map / yonsan;
+          naiyou1.textContent = "支払い：" + map;
+          naiyou2.textContent = "得点：" + map;
+        }
+      });
+      tokutenKetteiK.addEventListener("click", function () {
+        tokutenKettei.classList.add("off");
+        tokutenKetteiK.classList.add("off");
+      });
+      kyanseru.addEventListener("click", function () {
+        tokutenKettei.classList.add("off");
+        tokutenKetteiK.classList.add("off");
+      });
+      kyanseru.addEventListener("click", function () {
+        
+      });
       function sentaku() {
         select2.innerHTML = "";
         if (mc === 0) {
@@ -1626,142 +1793,87 @@
         });
       }
       function keisanT() {
-        han = Number(select1.value);
+        map = 0;
+        pay = [];
+        han  = Number(select1.value);
         husuM = select2.value;
-        if (husuM === "70以上" || husuM === "40以上") {
-          if (han === 3 || han === 4) {
-            map = 8000;
-        　  if (oya === 1) {
-              map = map * 1.5;
+        if (husuM === "40以上") {
+          husu = 40;
+        } else if (husuM === "70以上") {
+          husu = 70;
+        } else {
+          husu = Number(husuM);
+        }
+        base = husu * (2 ** (han + 2));
+        if (base > 2000) base = 2000;
+        if (sw2.classList.contains("on") && han <= 4 && base >= 1920) {
+          base = 2000;
+        }
+        if (hora === 0) {
+          let mul = 0;
+          if (yonsan === 4) {
+            mul = (oya === 1) ? 6 : 4;
+          } else {
+            mul = (oya === 1) ? 4 : 3;
+          }
+          map = Math.ceil(base * mul / 100) * 100;
+          pay = [ -map ];
+        } else {
+          if (yonsan === 4) {
+            if (oya === 1) {
+              const p = Math.ceil(base * 2 / 100) * 100;
+              pay = [ -p, -p, -p ];
+              map = p * 3;
+            } else {
+              const pOya = Math.ceil(base * 2 / 100) * 100;
+              const pKo  = Math.ceil(base * 1 / 100) * 100;
+              pay = [ -pOya, -pKo, -pKo ];
+              map = pOya + pKo * 2;
             }
-            tensuH.textContent = "点数：" + map;
-            return;
+          } else {
+            const ron4 = Math.ceil(base * (oya === 1 ? 6 : 4) / 100) * 100;
+            if (sw1.classList.contains("on")) {
+              map = ron4;
+            } else {
+              map = Math.ceil(ron4 * 4 / 3 / 100) * 100;
+            }
+            if (oya === 1) {
+              const p = Math.ceil(map / 2 / 100) * 100;
+              pay = [ -p, -p ];
+            } else {
+              const pOya = Math.ceil(map * 2 / 3 / 100) * 100;
+              const pKo  = Math.ceil(map / 3 / 100) * 100;
+              pay = [ -pOya, -pKo ];
+            }
           }
         }
-        husu = Number(select2.value);
-        if (han <= 4) {
-          map = husu * (2 ** (han + 2));
-          map = Math.min(map, 2000);
-          if (oya === 1 && hora === 1) {
-            if (husu === 20) {
-              if (han === 2) {
-                map = 2100;
-              } else if (han === 3) {
-                map = 3900;
-              } else if (han === 4) {
-                map = 7800;
-              }
-            } else if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
-              map = 12000;
-            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
-              map = 12000;
-            } else {
-              map = Math.ceil(map * 6 / 100) * 100;
-            }
-          } else if (oya === 0 && hora === 1 && husu === 20) {
-            if (han === 2) {
-              map = 1500;
-            } else if (han === 3) {
-              map = 2700;
-            } else if (han === 4) {
-              map = 5200;
-            } else {
-              map = Math.ceil(map * 4 / 100) * 100;
-            }
-          } else if (oya === 1 && hora === 0) {
-            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
-              map = 12000;
-            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
-              map = 12000;
-            } else {
-              map = Math.ceil(map * 6 / 100) * 100;
-            }
-          } else if (oya === 0 && hora === 0) {
-            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
-              map = 8000;
-            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
-              map = 8000;
-            } else {
-              map = Math.ceil(map * 4 / 100) * 100;
-            }
-          } else if (oya === 0 && hora === 1) {
-            if (husu === 60 && han === 3 && sw2.classList.contains("on")) {
-              map = 8000;
-            } else if (husu === 30 && han === 4 && sw2.classList.contains("on")) {
-              map = 8000;
-            } else {
-              map = Math.ceil(map * 4 / 100) * 100;
-            }
-          }
-        } else if (han === 5) {
-          map = 8000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 6) {
-          map = 12000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 8) {
-          map = 16000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 11) {
-          map = 24000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 13) {
-          map = 32000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 14) {
-          map = 64000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 15) {
-          map = 96000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 16) {
-          map = 128000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 17) {
-          map = 160000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        } else if (han === 18) {
-          map = 192000;
-          if (oya === 1) {
-            map = map * 1.5;
-          }
-        }
+        pay = pay.map(v => -v);
         tensuH.textContent = "点数：" + map;
       }
       tumoron.addEventListener("change", () => {
         sentaku();
         keisanT();
+        tensuH.textContent = "点数：" + map;
       });
       select1.addEventListener("change", () => {
         sentaku();
         keisanT();
+        tensuH.textContent = "点数：" + map;
+      });
+      select1.addEventListener("change", () => {
+        keisanT();
+        tensuH.textContent = "点数：" + map;
       });
       select2.addEventListener("change", () => {
         keisanT();
+        tensuH.textContent = "点数：" + map;
       });
       const radios = document.querySelectorAll('input[name="mode"]');
       radios.forEach(radio => {
         radio.addEventListener("change", (e) => {
           hora = Number(e.target.value);
           sentaku();
+          hozyu.classList.toggle("off");
         });
       });
       settei.addEventListener("click", function () {
@@ -1798,6 +1910,7 @@
         savedata();
         sentaku();
         keisanT();
+        tensuH.textContent = "点数：" + map;
       });
     </script>
   </body>
