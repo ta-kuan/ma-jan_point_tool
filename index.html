@@ -1735,15 +1735,15 @@
           if (hora === 1) {
             if (oya === 1) {
               naiyou1.textContent = "支払い：" + pay[1] + "オール";
-              naiyou2.textContent = "得点：" + map + (rihon * 1000);
+              naiyou2.textContent = "得点：" + (map + rihon * 1000);
             } else if (oya === 0) {
               naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
-              naiyou2.textContent = "得点：" + map + (rihon * 1000);
+              naiyou2.textContent = "得点：" + (map + rihon * 1000);
             }
           } else if (hora === 0) {
             mapH = map / yonsan;
             naiyou1.textContent = "支払い：" + map;
-            naiyou2.textContent = "得点：" + map + (rihon * 1000);
+            naiyou2.textContent = "得点：" + (map + rihon * 1000);
           }
         }
       });
@@ -1847,38 +1847,22 @@
               break;
             }
           } else if (oya === 0) {
-            switch (horaWho) {
-              case 1:
-                tenM -= pay[1];
-                tenS -= pay[0];
-                if (yonsan === 4) {
-                  tenH -= pay[0];
+            const seats = [
+              { who: 1, ten: () => tenU, set: v => tenU = v, dom: migi },
+              { who: 2, ten: () => tenM, set: v => tenM = v, dom: sita },
+              { who: 3, ten: () => tenS, set: v => tenS = v, dom: hidari },
+              { who: 4, ten: () => tenH, set: v => tenH = v, dom: ue }
+            ];
+              seats.forEach(seat => {
+                if (seat.who === horaWho) return;
+                if (yonsan === 3 && seat.who === 4) return;
+                if (seat.dom.classList.contains("ton")) {
+                  seat.set(seat.ten() - pay[0]);
+                } else {
+                  seat.set(seat.ten() - pay[1]);
                 }
-                update();
-                break;
-              case 2:
-                tenU -= pay[1];
-                tenS -= pay[0];
-                if (yonsan === 4) {
-                  tenH -= pay[0];
-                }
-                update();
-                break;
-              case 3:
-                tenU -= pay[0];
-                tenM -= pay[1];
-                if (yonsan === 4) {
-                  tenH -= pay[0];
-                }
-                update();
-                break;
-              case 4:
-                tenU -= pay[0];
-                tenM -= pay[1];
-                tenS -= pay[0];
-                update();
-                break;
-            }
+              });
+            update();
           }
         }
         tokuten.classList.add("off");
