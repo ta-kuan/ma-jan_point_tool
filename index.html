@@ -1182,17 +1182,17 @@
         <select id="hu" class="hu">
           <option value="符">符</option>
         </select>
-        <form class="hozyu">
+        <form class="hozyu">放銃者
           <label>
-            <input type="radio" name="zyu" value="0">
+            <input type="radio" name="zyu" value="1">
             上家
           </label>
           <label>
-            <input type="radio" name="zyu" value="1">
+            <input type="radio" name="zyu" value="2">
             対面
           </label>
           <label>
-            <input type="radio" name="zyu" value="2">
+            <input type="radio" name="zyu" value="3">
             下家
           </label>
         </form>
@@ -1301,7 +1301,7 @@
       const select1 = document.getElementById("hansu");
       const select2 = document.getElementById("hu");
       let oya = 0;
-      let hora = -1;
+      let hora = 1;
       const tensuH = document.getElementById("tensuH");
       const hansu = document.querySelector(".hansu");
       const hu = document.querySelector(".hu");
@@ -1309,11 +1309,11 @@
       let base = 0;
       let map  = 0;
       let pay  = [];
-      let mapH = 0;
-      let mapH2 = 0;
       let han = 0;
       let husu = 0;
-      let mc = 0;
+      let hozyuWho = 0;
+      let horaWho = 0;
+      let rihon = 0;
       const kettei = document.querySelector(".kettei");
       const tokutenKettei = document.querySelector(".tokutenKettei");
       const tokutenKetteiK = document.querySelector(".tokutenKetteiK");
@@ -1644,24 +1644,28 @@
         riM.classList.add("off");
         riboM.classList.remove("off");
         tenM -= 1000;
+        rihon += 1;
         update();
       });
       riU.addEventListener("click", function () {
         riU.classList.add("off");
         riboU.classList.remove("off");
         tenU -= 1000;
+        rihon += 1;
         update();
       });
       riH.addEventListener("click", function () {
         riH.classList.add("off");
         riboH.classList.remove("off");
         tenH -= 1000;
+        rihon += 1;
         update();
       });
       riS.addEventListener("click", function () {
         riS.classList.add("off");
         riboS.classList.remove("off");
         tenS -= 1000;
+        rihon += 1;
         update();
       });
       hoM.addEventListener("click", function () {
@@ -1673,6 +1677,7 @@
         if (migi.classList.contains("ton")) {
           oya = 1;
         }
+        horaWho = 1;
       });
       hoU.addEventListener("click", function () {
         kesuB();
@@ -1683,6 +1688,7 @@
         if (ue.classList.contains("ton")) {
           oya = 1;
         }
+        horaWho = 2;
       });
       hoS.addEventListener("click", function () {
         kesuB();
@@ -1693,6 +1699,7 @@
         if (sita.classList.contains("ton")) {
           oya = 1;
         }
+        horaWho = 3;
       });
       hoH.addEventListener("click", function () {
         kesuB();
@@ -1703,6 +1710,7 @@
         if (hidari.classList.contains("ton")) {
           oya = 1;
         }
+        horaWho = 4;
       });
       tokutentopH.addEventListener("click", function () {
         if (tokutentopM.classList.contains("toggleT")) {
@@ -1721,20 +1729,22 @@
         }
       });
       kettei.addEventListener("click", function () {
-        tokutenKettei.classList.remove("off");
-        tokutenKetteiK.classList.remove("off");
-        if (hora === 1) {
-          if (oya === 1) {
-            naiyou1.textContent = "支払い：" + pay[1] + "オール";
-            naiyou2.textContent = "得点：" + map;
-          } else if (oya === 0) {
-            naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
-            naiyou2.textContent = "得点：" + map
+        if (hora === 1 || !(hozyuWho === 0)) {
+          tokutenKettei.classList.remove("off");
+          tokutenKetteiK.classList.remove("off");
+          if (hora === 1) {
+            if (oya === 1) {
+              naiyou1.textContent = "支払い：" + pay[1] + "オール";
+              naiyou2.textContent = "得点：" + map + (rihon * 1000);
+            } else if (oya === 0) {
+              naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+              naiyou2.textContent = "得点：" + map + (rihon * 1000);
+            }
+          } else if (hora === 0) {
+            mapH = map / yonsan;
+            naiyou1.textContent = "支払い：" + map;
+            naiyou2.textContent = "得点：" + map + (rihon * 1000);
           }
-        } else if (hora === 0) {
-          mapH = map / yonsan;
-          naiyou1.textContent = "支払い：" + map;
-          naiyou2.textContent = "得点：" + map;
         }
       });
       tokutenKetteiK.addEventListener("click", function () {
@@ -1745,15 +1755,147 @@
         tokutenKettei.classList.add("off");
         tokutenKetteiK.classList.add("off");
       });
-      kyanseru.addEventListener("click", function () {
-        
+      kakutei.addEventListener("click", function () {
+        if (hora === 0) {
+          if (horaWho === 1) {
+            switch (hozyuWho) {
+              case 1:
+                tenS -= pay[0];
+                update();
+                break;
+              case 2:
+                tenH -= pay[0];
+                update();
+                break;
+              case 3:
+                tenU -= pay[0];
+                update();
+                break;
+            }
+          } else if (horaWho === 2) {
+            switch (hozyuWho) {
+              case 1:
+                tenM -= pay[0];
+                update();
+                break;
+              case 2:
+                tenS -= pay[0];
+                update();
+                break;
+              case 3:
+                tenH -= pay[0];
+                update();
+                break;
+            }
+          } else if (horaWho === 3) {
+            switch (hozyuWho) {
+              case 1:
+                tenH -= pay[0];
+                update();
+                break;
+              case 2:
+                tenU -= pay[0];
+                update();
+                break;
+              case 3:
+                tenM -= pay[0];
+                update();
+                break;
+            }
+          } else if (horaWho === 4) {
+            switch (hozyuWho) {
+              case 1:
+                tenS -= pay[0];
+                update();
+                break;
+              case 2:
+                tenM -= pay[0];
+                update();
+                break;
+              case 3:
+                tenH -= pay[0];
+                update();
+                break;
+            }
+          }
+        } else if (hora === 1) {
+          if (oya === 1) {
+            switch (horaWho) {
+            case 1:
+              tenU -= pay[0];
+              tenS -= pay[0];
+              tenH -= pay[0];
+              update();
+              break;
+            case 2:
+              tenM -= pay[0];
+              tenS -= pay[0];
+              tenH -= pay[0];
+              update();
+              break;
+            case 3:
+              tenM -= pay[0];
+              tenH -= pay[0];
+              tenU -= pay[0];
+              update();
+              break;
+            case 4:
+              tenM -= pay[0];
+              tenS -= pay[0];
+              tenU -= pay[0];
+              update();
+              break;
+            }
+          } else if (oya === 0) {
+            switch (horaWho) {
+              case 1:
+                tenM -= pay[1];
+                tenS -= pay[0];
+                if (sanma === 0) {
+                  tenH -= pay[0];
+                }
+                update();
+                break;
+              case 2:
+                tenU -= pay[1];
+                tenS -= pay[0];
+                if (sanma === 0) {
+                  tenH -= pay[0];
+                }
+                update();
+                break;
+              case 3:
+                tenU -= pay[0];
+                tenM -= pay[1];
+                if (sanma === 0) {
+                  tenH -= pay[0];
+                }
+                update();
+                break;
+              case 4:
+                tenU -= pay[0];
+                tenM -= pay[1];
+                tenS -= pay[0];
+                update();
+                break;
+            }
+          }
+        }
+        tokuten.classList.add("off");
+        tokutentop.classList.add("off");
+        saiarea.classList.remove("notclick");
+        saiarea.classList.remove("off");
+        sai1.classList.remove("off");
+        sai2.classList.remove("off");
+        saiareaB = 1;
+        tokutenKettei.classList.add("off");
+        tokutenKetteiK.classList.add("off");
+        me1.classList.remove(...saiclasses);
+        me2.classList.remove(...saiclasses);
+        rihon = 0;
       });
       function sentaku() {
         select2.innerHTML = "";
-        if (mc === 0) {
-          hora = 1;
-          mc = 1;
-        }
         const mode = document.querySelector('input[name="mode"]:checked')?.value;
         let options = [];
         if (select1.value === "1") {
@@ -1793,80 +1935,70 @@
         });
       }
       function keisanT() {
-        map = 0;
-        pay = [];
-        han  = Number(select1.value);
-        husuM = select2.value;
-        if (husuM === "40以上") {
-          husu = 40;
-        } else if (husuM === "70以上") {
-          husu = 70;
+        map = 0
+        pay = []
+        han = Number(select1.value)
+        husuM = select2.value
+        if (husuM === "40以上") husu = 40
+        else if (husuM === "70以上") husu = 70
+        else husu = Number(husuM)
+        if (han >= 5) {
+          switch(han) {
+            case 5: base = 2000; break
+            case 6: case 7: base = 3000; break
+            case 8: case 9: case 10: base = 4000; break
+            case 11: case 12: base = 6000; break
+            case 13: base = 8000; break
+            case 14: base = 16000; break
+            case 15: base = 24000; break
+            case 16: base = 32000; break
+            case 17: base = 40000; break
+            case 18: base = 48000; break
+            default: base = 8000
+          }
         } else {
-          husu = Number(husuM);
-        }
-        base = husu * (2 ** (han + 2));
-        if (base > 2000) base = 2000;
-        if (sw2.classList.contains("on") && han <= 4 && base >= 1920) {
-          base = 2000;
+          base = husu * (2 ** (han + 2))
+          if (base > 2000) base = 2000
+          if (sw2.classList.contains("on") && han <= 4 && base >= 1920) base = 2000
         }
         if (hora === 0) {
-          let mul = 0;
-          if (yonsan === 4) {
-            mul = (oya === 1) ? 6 : 4;
-          } else {
-            mul = (oya === 1) ? 4 : 3;
-          }
-          map = Math.ceil(base * mul / 100) * 100;
-          pay = [ -map ];
+          let mul = yonsan === 4 ? (oya === 1 ? 6 : 4) : (oya === 1 ? 4 : 3)
+          map = Math.ceil(base * mul / 100) * 100
+          pay = [-map]
         } else {
           if (yonsan === 4) {
             if (oya === 1) {
-              const p = Math.ceil(base * 2 / 100) * 100;
-              pay = [ -p, -p, -p ];
-              map = p * 3;
+              const p = Math.ceil(base * 2 / 100) * 100
+              pay = [-p, -p, -p]
+              map = p * 3
             } else {
-              const pOya = Math.ceil(base * 2 / 100) * 100;
-              const pKo  = Math.ceil(base * 1 / 100) * 100;
-              pay = [ -pOya, -pKo, -pKo ];
-              map = pOya + pKo * 2;
+              const pOya = Math.ceil(base * 2 / 100) * 100
+              const pKo = Math.ceil(base * 1 / 100) * 100
+              pay = [-pOya, -pKo, -pKo]
+              map = pOya + pKo * 2
             }
           } else {
-            const ron4 = Math.ceil(base * (oya === 1 ? 6 : 4) / 100) * 100;
-            if (sw1.classList.contains("on")) {
-              map = ron4;
-            } else {
-              map = Math.ceil(ron4 * 4 / 3 / 100) * 100;
-            }
+            const ron4 = Math.ceil(base * (oya === 1 ? 6 : 4) / 100) * 100
+            map = sw1.classList.contains("on") ? ron4 : Math.ceil(ron4 * 4 / 3 / 100) * 100
             if (oya === 1) {
-              const p = Math.ceil(map / 2 / 100) * 100;
-              pay = [ -p, -p ];
+              const p = Math.ceil(map / 2 / 100) * 100
+              pay = [-p, -p]
             } else {
-              const pOya = Math.ceil(map * 2 / 3 / 100) * 100;
-              const pKo  = Math.ceil(map / 3 / 100) * 100;
-              pay = [ -pOya, -pKo ];
+              const pOya = Math.ceil(map * 2 / 3 / 100) * 100
+              const pKo = Math.ceil(map / 3 / 100) * 100
+              pay = [-pOya, -pKo]
             }
           }
         }
         pay = pay.map(v => -v);
         tensuH.textContent = "点数：" + map;
       }
-      tumoron.addEventListener("change", () => {
-        sentaku();
-        keisanT();
-        tensuH.textContent = "点数：" + map;
-      });
       select1.addEventListener("change", () => {
         sentaku();
         keisanT();
-        tensuH.textContent = "点数：" + map;
-      });
-      select1.addEventListener("change", () => {
-        keisanT();
-        tensuH.textContent = "点数：" + map;
       });
       select2.addEventListener("change", () => {
         keisanT();
-        tensuH.textContent = "点数：" + map;
       });
       const radios = document.querySelectorAll('input[name="mode"]');
       radios.forEach(radio => {
@@ -1874,6 +2006,14 @@
           hora = Number(e.target.value);
           sentaku();
           hozyu.classList.toggle("off");
+          sentaku();
+          keisanT();
+        });
+      });
+      const radios2 = document.querySelectorAll('input[name="zyu"]');
+      radios2.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          hozyuWho = Number(e.target.value);
         });
       });
       settei.addEventListener("click", function () {
@@ -1910,7 +2050,6 @@
         savedata();
         sentaku();
         keisanT();
-        tensuH.textContent = "点数：" + map;
       });
     </script>
   </body>
