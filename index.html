@@ -1864,21 +1864,75 @@
               break;
             }
           } else if (oya === 0) {
-            const seats = [
-              { who: 1, ten: () => tenU, set: v => tenU = v, dom: migi },
-              { who: 2, ten: () => tenM, set: v => tenM = v, dom: sita },
-              { who: 3, ten: () => tenS, set: v => tenS = v, dom: hidari },
-              { who: 4, ten: () => tenH, set: v => tenH = v, dom: ue }
-            ];
-            seats.forEach(seat => {
-              if (seat.who === horaWho) return;
-              if (yonsan === 3 && seat.who === 4) return;
-              if (seat.dom.classList.contains("ton")) {
-                seat.set(seat.ten() - pay[0]);
-              } else {
-                seat.set(seat.ten() - pay[1]);
+            if (horaWho === 1) {
+              if (ue.classList.contains("ton")) {
+                tenU -= pay[0];
+                tenS -= pay[1];
+                tenH -= pay[1];
+                tenM += map + rihon * 1000;
+              } else if (sita.classList.contains("ton")) {
+                tenU -= pay[1];
+                tenS -= pay[0];
+                tenH -= pay[1];
+                tenM += map + rihon * 1000;
+              } else if (hidari.classList.contains("ton")) {
+                tenU -= pay[1];
+                tenS -= pay[1];
+                tenH -= pay[0];
+                tenM += map + rihon * 1000;
               }
-            });
+            } else if (horaWho === 2) {
+              if (migi.classList.contains("ton")) {
+                tenM -= pay[0];
+                tenS -= pay[1];
+                tenH -= pay[1];
+                tenU += map + rihon * 1000;
+              } else if (sita.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenS -= pay[0];
+                tenH -= pay[1];
+                tenU += map + rihon * 1000;
+              } else if (hidari.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenS -= pay[1];
+                tenH -= pay[0];
+                tenU += map + rihon * 1000;
+              }
+            } else if (horaWho === 3) {
+              if (migi.classList.contains("ton")) {
+                tenM -= pay[0];
+                tenH -= pay[1];
+                tenU -= pay[1];
+                tenS += map + rihon * 1000;
+              } else if (hidari.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenH -= pay[0];
+                tenU -= pay[1];
+                tenS += map + rihon * 1000;
+              } else if (ue.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenH -= pay[1];
+                tenU -= pay[0];
+                tenS += map + rihon * 1000;
+              }
+            } else if (horaWho === 4) {
+              if (migi.classList.contains("ton")) {
+                tenM -= pay[0];
+                tenS -= pay[1];
+                tenU -= pay[1];
+                tenH += map + rihon * 1000;
+              } else if (sita.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenS -= pay[0];
+                tenU -= pay[1];
+                tenH += map + rihon * 1000;
+              } else if (ue.classList.contains("ton")) {
+                tenM -= pay[1];
+                tenS -= pay[1];
+                tenU -= pay[0];
+                tenH += map + rihon * 1000;
+              }
+            }
           }
         }
         update();
