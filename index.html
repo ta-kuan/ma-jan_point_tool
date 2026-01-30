@@ -1761,62 +1761,54 @@
             switch (hozyuWho) {
               case 1:
                 tenS -= pay[0];
-                update();
                 break;
               case 2:
                 tenH -= pay[0];
-                update();
                 break;
               case 3:
                 tenU -= pay[0];
-                update();
                 break;
             }
+            tenM += map + rihon * 1000;
           } else if (horaWho === 2) {
             switch (hozyuWho) {
               case 1:
                 tenM -= pay[0];
-                update();
                 break;
               case 2:
                 tenS -= pay[0];
-                update();
                 break;
               case 3:
                 tenH -= pay[0];
-                update();
                 break;
             }
+            tenU += map + rihon * 1000;
           } else if (horaWho === 3) {
             switch (hozyuWho) {
               case 1:
                 tenH -= pay[0];
-                update();
                 break;
               case 2:
                 tenU -= pay[0];
-                update();
                 break;
               case 3:
                 tenM -= pay[0];
-                update();
                 break;
             }
+            tenS += map + rihon * 1000;
           } else if (horaWho === 4) {
             switch (hozyuWho) {
               case 1:
                 tenS -= pay[0];
-                update();
                 break;
               case 2:
                 tenM -= pay[0];
-                update();
                 break;
               case 3:
                 tenH -= pay[0];
-                update();
                 break;
             }
+            tenH += map + rihon * 1000;
           }
         } else if (hora === 1) {
           if (oya === 1) {
@@ -1825,25 +1817,25 @@
               tenU -= pay[0];
               tenS -= pay[0];
               tenH -= pay[0];
-              update();
+              tenM += map + rihon * 1000;
               break;
             case 2:
               tenM -= pay[0];
               tenS -= pay[0];
               tenH -= pay[0];
-              update();
+              tenU += map + rihon * 1000;
               break;
             case 3:
               tenM -= pay[0];
               tenH -= pay[0];
               tenU -= pay[0];
-              update();
+              tenS += map + rihon * 1000;
               break;
             case 4:
               tenM -= pay[0];
               tenS -= pay[0];
               tenU -= pay[0];
-              update();
+              tenH += map + rihon * 1000;
               break;
             }
           } else if (oya === 0) {
@@ -1853,17 +1845,17 @@
               { who: 3, ten: () => tenS, set: v => tenS = v, dom: hidari },
               { who: 4, ten: () => tenH, set: v => tenH = v, dom: ue }
             ];
-              seats.forEach(seat => {
-                if (seat.who === horaWho) return;
-                if (yonsan === 3 && seat.who === 4) return;
-                if (seat.dom.classList.contains("ton")) {
-                  seat.set(seat.ten() - pay[0]);
-                } else {
-                  seat.set(seat.ten() - pay[1]);
-                }
-              });
-            update();
+            seats.forEach(seat => {
+              if (seat.who === horaWho) return;
+              if (yonsan === 3 && seat.who === 4) return;
+              if (seat.dom.classList.contains("ton")) {
+                seat.set(seat.ten() - pay[0]);
+              } else {
+                seat.set(seat.ten() - pay[1]);
+              }
+            });
           }
+          update();
         }
         tokuten.classList.add("off");
         tokutentop.classList.add("off");
