@@ -1575,6 +1575,31 @@
         riS.classList.add("off");
         hoS.classList.add("off");
       }
+      function nextH() {
+        migi.classList.remove(...hougakuclasses);
+        ue.classList.remove(...hougakuclasses);
+        hidari.classList.remove(...hougakuclasses);
+        sita.classList.remove(...hougakuclasses);
+        if (yonsan === 4) {
+          if (el.classList.contains("ton")) {
+            el.classList.add("nan");
+          } else if (el.classList.contains("nan")) {
+            el.classList.add("sya");
+          } else if (el.classList.contains("sya")) {
+            el.classList.add("pei");
+          } else if (el.classList.contains("pei")) {
+            el.classList.add("ton");
+          }
+        } else if (yonsan === 3) {
+          if (el.classList.contains("ton")) {
+            el.classList.add("nan");
+          } else if (el.classList.contains("nan")) {
+            el.classList.add("sya");
+          } else if (el.classList.contains("sya")) {
+            el.classList.add("ton");
+          }
+        }
+      }
       saiarea.addEventListener("click", function () {
         if (saiareaB === 0) {
           spinsai();
