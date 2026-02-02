@@ -2,7 +2,7 @@
 <html>
   <head>
     <style>
-      @font-face {
+            @font-face {
         font-family: "yujiboku";
         src: url("YujiBoku-Regular.ttf") format("truetype");
         font-weight: normal;
@@ -1145,60 +1145,59 @@
       <div class="tokutentopM"></div>
     </div>
     <div class="tokuten">
+      <form class="tumoron">
+        <label>
+          <input type="radio" name="mode" value="1" checked>
+          ツモ
+        </label>
+        <label>
+          <input type="radio" name="mode" value="0">
+          ロン
+        </label>
+      </form>
+      <form class="hozyu">放銃者
+        <label>
+          <input type="radio" name="zyu" value="1">
+          上家
+        </label>
+        <label>
+          <input type="radio" name="zyu" value="2">
+          対面
+        </label>
+        <label>
+          <input type="radio" name="zyu" value="3">
+          下家
+        </label>
+      </form>
+      <label for="hansu" class="hansuL">翻数</label>
+      <select id="hansu" class="hansu">
+        <option value="">翻数</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6,7</option>
+        <option value="8">8,9,10</option>
+        <option value="11">11,12</option>
+        <option value="13">役満</option>
+        <option value="14">二倍役満</option>
+        <option value="15">三倍役満</option>
+        <option value="16">四倍役満</option>
+        <option value="17">五倍役満</option>
+        <option value="18">六倍役満</option>
+      </select>
       <div class="keisan">
-        
+        <label class="huL">符</label>
       </div>
       <div class="hanhu">
-        <form class="tumoron">
-          <label>
-            <input type="radio" name="mode" value="1" checked>
-            ツモ
-          </label>
-          <label>
-            <input type="radio" name="mode" value="0">
-            ロン
-          </label>
-        </form>
-        <label for="hansu" class="hansuL">翻数</label>
-        <select id="hansu" class="hansu">
-          <option value="">翻数</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6,7</option>
-          <option value="8">8,9,10</option>
-          <option value="11">11,12</option>
-          <option value="13">役満</option>
-          <option value="14">二倍役満</option>
-          <option value="15">三倍役満</option>
-          <option value="16">四倍役満</option>
-          <option value="17">五倍役満</option>
-          <option value="18">六倍役満</option>
-        </select>
-        <br>
         <label for="hu" class="huL">符</label>
         <select id="hu" class="hu">
           <option value="符">符</option>
         </select>
-        <form class="hozyu">放銃者
-          <label>
-            <input type="radio" name="zyu" value="1">
-            上家
-          </label>
-          <label>
-            <input type="radio" name="zyu" value="2">
-            対面
-          </label>
-          <label>
-            <input type="radio" name="zyu" value="3">
-            下家
-          </label>
-        </form>
-        <div id="tensuH" class="tensuH">点数：</div>
-        <button class="kettei"></button>
       </div>
+      <div id="tensuH" class="tensuH">点数：</div>
+      <button class="kettei"></button>
       <div class="tokutenKetteiK"></div>
       <div class="tokutenKettei">
         <div class="m1"></div>
@@ -1233,7 +1232,7 @@
       </div>
     </div>
     <script>
-      const number_player = document.querySelector(".number_player")
+            const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
       const yonmahanB = document.querySelector(".yonmahan");
       const sanmatonB = document.querySelector(".sanmaton");
@@ -2016,7 +2015,10 @@
             case 16: base = 32000; break
             case 17: base = 40000; break
             case 18: base = 48000; break
-            default: base = 8000
+            default: base = 8000;
+          }
+          if (yonsan === 3) {
+            base *= 0.75;
           }
         } else {
           base = husu * (2 ** (han + 2))
