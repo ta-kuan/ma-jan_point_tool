@@ -1203,11 +1203,7 @@
         <span class="huLk">符</span>
         <div class="hukeisan">
           <label for="tokusyu">　固定符</label>
-          <select id="tokusyu">
-            <option value="0">なし</option>
-            <option value="1">平和ツモ</option>
-            <option value="2">七対子</option>
-          </select>
+          <select id="tokusyu"></select>
           <div class="notkotei">
             <br>
             <span class="yaoL">　么九牌</span>
@@ -1430,9 +1426,10 @@
       const naiyou2 = document.querySelector(".naiyou2");
       const hozyu = document.querySelector(".hozyu");
       const huro = document.querySelector(".huro");
-      const huroradio = document.querySelector('input[name="huro"][value="0"]');
+      let huroor = 0;
       const huL = document.querySelector(".huL");
       const huLk = document.querySelector(".huLk");
+      const tokusyu = document.getElementById("tokusyu");
       const hukeisan = document.querySelector(".hukeisan");
       const notkotei = document.querySelector(".notkotei");
       const select10 = document.getElementById("tokusyu");
@@ -2141,6 +2138,23 @@
           option.textContent = value;
           select2.appendChild(option);
         });
+        tokusyu.innerHTML = "";
+        let optionks = [];
+        if (select1.value > 1 && huroor === 0) {
+          if (hora === 1) {
+            optionks = ["なし","平和ツモ","七対子"];
+          } else {
+            optionks = ["なし","七対子"];
+          }
+        } else {
+         optionks = ["なし"];
+        }
+        optionks.forEach(value => {
+          const optionk = document.createElement("option");
+          optionk.value = value;
+          optionk.textContent = value;
+          tokusyu.appendChild(optionk);
+        });
         if (select1.value > 4) {
           huL.classList.add("off");
           hu.classList.add("off");
@@ -2151,7 +2165,7 @@
           hu.classList.remove("off");
           huLk.classList.remove("off");
           hukeisan.classList.remove("off");
-          if (Number(select10.value) === 0) {
+          if (select10.value === "なし") {
             notkotei.classList.remove("off");
           } else {
             notkotei.classList.add("off");
@@ -2171,7 +2185,7 @@
           husu = 20;
           if (hora === 1) {
             husu += 2;
-          } else if (tumoron === 0 && huroradio.checked) {
+          } else if (hora === 0 && huroor === 0) {
             husu += 10;
           }
           ymp = Number(select11.value);
@@ -2195,10 +2209,10 @@
           }
           if (husu < 30) husu = 30;
           husu = Math.ceil(husu / 10) * 10;
-          tks = Number(select10.value);
-          if (tks === 1) {
+          tks = select10.value;
+          if (tks === "平和ツモ") {
             husu = 20;
-          } else if (tks === 2) {
+          } else if (tks === "七対子") {
             husu = 25;
           }
         }
@@ -2326,6 +2340,14 @@
       radios2.forEach(radio => {
         radio.addEventListener("change", (e) => {
           hozyuWho = Number(e.target.value);
+        });
+      });
+      const radios3 = document.querySelectorAll('input[name="huro"]');
+      radios3.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          huroor = Number(e.target.value);
+          sentaku();
+          keisanT();
         });
       });
       settei.addEventListener("click", function () {
