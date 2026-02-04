@@ -719,11 +719,12 @@
         background-color: rgb(240,240,240);
         left: 50%;
         top: 50%;
+        overflow: scroll;
       }
       .kettei {
-        position: absolute;
-        right: 4vw;
-        bottom: 3vw;
+        position: sticky;
+        transform: translate(80vw,10vw);
+        bottom: 15vw;
         width: 17vw;
         height: 10vw;
         border-radius: 3vw;
@@ -1078,8 +1079,9 @@
       }
       .tensuH {
         font-family: sans-serif;
+        position: absolute;
       }
-      .off{
+      .off {
         display: none;
       }
       .notclick {
@@ -1155,6 +1157,16 @@
           ロン
         </label>
       </form>
+      <form class="huro">副露
+        <label>
+          <input type="radio" name="huro" value="1">
+          あり
+        </label>
+        <label>
+          <input type="radio" name="huro" value="0" checked>
+          なし
+        </label>
+      </form>
       <form class="hozyu">放銃者
         <label>
           <input type="radio" name="zyu" value="1">
@@ -1188,7 +1200,103 @@
         <option value="18">六倍役満</option>
       </select>
       <div class="keisan">
-        <label class="huL">符</label>
+        <span class="huLk">符</span>
+        <div class="hukeisan">
+          <label for="tokusyu">　固定符</label>
+          <select id="tokusyu">
+            <option value="0">なし</option>
+            <option value="1">平和ツモ</option>
+            <option value="2">七対子</option>
+          </select>
+          <div class="notkotei">
+            <br>
+            <span class="yaoL">　么九牌</span>
+            <br>
+            <label for="minko" class="ympL">　　明刻</label>
+            <select id="minko">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <label for="anko" class="yapL">暗刻</label>
+            <select id="anko">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <label for="minkan" class="ymkL">明槓</label>
+            <select id="minkan">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <label for="anko" class="yakL">暗槓</label>
+            <select id="ankan">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <br>
+            <span class="tyuL">　中張牌</span>
+            <br>
+            <label for="minkot" class="tmpL">　　明刻</label>
+            <select id="minkot">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <label for="ankot" class="tapL">暗刻</label>
+            <select id="ankot">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <label for="minkant" class="tmkL">明槓</label>
+            <select id="minkant">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <label for="ankot" class="takL">暗槓</label>
+            <select id="ankant">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <br>
+            <br>
+            <label for="atama" class="atmL">　雀頭</label>
+            <select id="atama">
+              <option value="0">雀頭</option>
+              <option value="1">数牌</option>
+              <option value="2">役牌</option>
+              <option value="3">連風牌</option>
+            </select>
+            <br>
+            <br>
+            <label for="mati" class="mtL">　待ち方</label>
+            <select id="mati">
+              <option value="0">待ち方</option>
+              <option value="1">リャンメン</option>
+              <option value="2">カンチャン</option>
+              <option value="3">ペンチャン</option>
+              <option value="4">シャンポン</option>
+              <option value="5">単騎</option>
+            </select>
+            <br>
+            <br>
+          </div>
+        </div>
       </div>
       <div class="hanhu">
         <label for="hu" class="huL">符</label>
@@ -1321,8 +1429,34 @@
       const naiyou1 = document.querySelector(".naiyou1");
       const naiyou2 = document.querySelector(".naiyou2");
       const hozyu = document.querySelector(".hozyu");
-      
-      
+      const huro = document.querySelector(".huro");
+      const huroradio = document.querySelector('input[name="huro"][value="0"]');
+      const huL = document.querySelector(".huL");
+      const huLk = document.querySelector(".huLk");
+      const hukeisan = document.querySelector(".hukeisan");
+      const notkotei = document.querySelector(".notkotei");
+      const select10 = document.getElementById("tokusyu");
+      const select11 = document.getElementById("minko");
+      const select12 = document.getElementById("anko");
+      const select13 = document.getElementById("minkan");
+      const select14 = document.getElementById("ankan");
+      const select15 = document.getElementById("minkot");
+      const select16 = document.getElementById("ankot");
+      const select17 = document.getElementById("minkant");
+      const select18 = document.getElementById("ankant");
+      const select19 = document.getElementById("atama");
+      const select20 = document.getElementById("mati");
+      let ymp = 0;
+      let yap = 0;
+      let ymk = 0;
+      let yak = 0;
+      let tmp = 0;
+      let tap = 0;
+      let tmk = 0;
+      let tak = 0;
+      let atm = 0;
+      let mt = 0;
+      let tks = 0;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -1361,6 +1495,7 @@
       tokutenKettei.classList.add("off");
       tokutenKetteiK.classList.add("off");
       hozyu.classList.add("off");
+      huro.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
@@ -1745,6 +1880,12 @@
           tokutentopM.classList.toggle("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
+          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
+            huro.classList.remove("off");
+          } else {
+            huro.classList.add("off");
+          }
+          keisanT();
         }
       });
       tokutentopM.addEventListener("click", function () {
@@ -1753,6 +1894,12 @@
           tokutentopM.classList.toggle("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
+          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
+            huro.classList.remove("off");
+          } else {
+            huro.classList.add("off");
+          }
+          keisanT();
         }
       });
       kettei.addEventListener("click", function () {
@@ -1994,15 +2141,67 @@
           option.textContent = value;
           select2.appendChild(option);
         });
+        if (select1.value > 4) {
+          huL.classList.add("off");
+          hu.classList.add("off");
+          huLk.classList.add("off");
+          hukeisan.classList.add("off");
+        } else {
+          huL.classList.remove("off");
+          hu.classList.remove("off");
+          huLk.classList.remove("off");
+          hukeisan.classList.remove("off");
+          if (Number(select10.value) === 0) {
+            notkotei.classList.remove("off");
+          } else {
+            notkotei.classList.add("off");
+          }
+        }
       }
       function keisanT() {
         map = 0
         pay = []
         han = Number(select1.value)
-        husuM = select2.value
-        if (husuM === "40以上") husu = 40
-        else if (husuM === "70以上") husu = 70
-        else husu = Number(husuM)
+        if (tokutentopM.classList.contains("toggleT")) {
+          husuM = select2.value;
+          if (husuM === "40以上") husu = 40
+          else if (husuM === "70以上") husu = 70
+          else husu = Number(husuM)
+        } else if (tokutentopH.classList.contains("toggleT")) {
+          husu = 20;
+          if (hora === 1) {
+            husu += 2;
+          } else if (tumoron === 0 && huroradio.checked) {
+            husu += 10;
+          }
+          ymp = Number(select11.value);
+          yap = Number(select12.value);
+          ymk = Number(select13.value);
+          yak = Number(select14.value);
+          tmp = Number(select15.value);
+          tap = Number(select16.value);
+          tmk = Number(select17.value);
+          tak = Number(select18.value);
+          husu += (ymp * 4) + (yap * 8) + (ymk * 16) + (yak * 32) + (tmp * 2) + (tap * 4) + (tmk * 8) + (tak * 16);
+          atm = Number(select19.value);
+          if (atm === 2) {
+            husu += 2;
+          } else if (atm === 3) {
+            husu += 4;
+          }
+          mt = Number(select20.value);
+          if (mt === 2 || mt === 3 || mt === 5) {
+            husu += 2;
+          }
+          if (husu < 30) husu = 30;
+          husu = Math.ceil(husu / 10) * 10;
+          tks = Number(select10.value);
+          if (tks === 1) {
+            husu = 20;
+          } else if (tks === 2) {
+            husu = 25;
+          }
+        }
         if (han >= 5) {
           switch(han) {
             case 5: base = 2000; break
@@ -2064,12 +2263,61 @@
       select2.addEventListener("change", () => {
         keisanT();
       });
+      select10.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select11.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select12.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select13.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select14.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select15.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select16.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select17.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select18.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select19.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
+      select20.addEventListener("change", () => {
+        sentaku();
+        keisanT();
+      });
       const radios = document.querySelectorAll('input[name="mode"]');
       radios.forEach(radio => {
         radio.addEventListener("change", (e) => {
           hora = Number(e.target.value);
           sentaku();
           hozyu.classList.toggle("off");
+          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
+            huro.classList.remove("off");
+          } else {
+            huro.classList.add("off");
+          }
           sentaku();
           keisanT();
         });
