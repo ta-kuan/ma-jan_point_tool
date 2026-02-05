@@ -1312,14 +1312,14 @@
         <button class="kakutei"></button>
       </div>
     </div>
-    <div class="settei">
+    <button class="settei">
       <div class="bo1"></div>
       <div class="bo2"></div>
       <div class="bo3"></div>
       <div class="bo4"></div>
       <div class="en1"></div>
       <div class="en2"></div>
-    </div>
+    </button>
     <div class="setteiK"></div>
     <div class="setteiG">
       <label for="syokiten" class="syokitenL">配給原点</label>
@@ -1912,7 +1912,6 @@
               naiyou2.textContent = "得点：" + (map + rihon * 1000);
             }
           } else if (hora === 0) {
-            mapH = map / yonsan;
             naiyou1.textContent = "支払い：" + map;
             naiyou2.textContent = "得点：" + (map + rihon * 1000);
           }
@@ -2098,6 +2097,7 @@
         riboH.classList.add("off");
         riboS.classList.add("off");
         rihon = 0;
+        oya = 0;
       });
       function sentaku() {
         select2.innerHTML = "";
