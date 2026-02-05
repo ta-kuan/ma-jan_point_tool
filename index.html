@@ -2255,15 +2255,27 @@
               map = pOya + pKo * 2
             }
           } else {
-            const ron4 = Math.ceil(base * (oya === 1 ? 6 : 4) / 100) * 100
-            map = sw1.classList.contains("on") ? ron4 : Math.ceil(ron4 * 4 / 3 / 100) * 100
-            if (oya === 1) {
-              const p = Math.ceil(map / 2 / 100) * 100
-              pay = [-p, -p]
+            const pOya4 = Math.ceil(base * 2 / 100) * 100
+            const pKo4 = Math.ceil(base * 1 / 100) * 100
+            if (sw1.classList.contains("on")) {
+              if (oya === 1) {
+                pay = [-pOya4, -pOya4]
+                map = pOya4 * 2
+              } else {
+                pay = [-pOya4, -pKo4]
+                map = pOya4 + pKo4
+              }
             } else {
-              const pOya = Math.ceil(map * 2 / 3 / 100) * 100
-              const pKo = Math.ceil(map / 3 / 100) * 100
-              pay = [-pOya, -pKo]
+              if (oya === 1) {
+                const p = Math.ceil(pOya4 * 3 / 2 / 100) * 100
+                pay = [-p, -p]
+                map = p * 2
+              } else {
+                const pOya = Math.ceil((pOya4 + pKo4 / 2) / 100) * 100
+                const pKo = Math.ceil(pKo4 * 3 / 2 / 100) * 100
+                pay = [-pOya, -pKo]
+                map = pOya + pKo
+              }
             }
           }
         }
