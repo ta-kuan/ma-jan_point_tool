@@ -1077,6 +1077,42 @@
       .kiriageS.on {
         left: 7vw;
       }
+      .tobiL {
+        position: absolute;
+        left: 3vw;
+        top: 85vw;
+        height: 7vw;
+        color: rgb(0,0,0);
+        white-space: nowrap;
+      }
+      .tobi {
+        width: 15vw;
+        height: 8vw;
+        background-color: #ccc;
+        border-radius: 5vw;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.4s;
+        top: 85vw;
+        left: 40vw;
+      }
+      .tobi.on {
+        background-color: #34c759;
+      }
+      .tobiS {
+        width: 7vw;
+        height: 7vw;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); 
+        left: 1vw;
+        transition: left 0.4s;
+      }
+      .tobiS.on {
+        left: 7vw;
+      }
       .tensuH {
         font-family: sans-serif;
         position: absolute;
@@ -1334,6 +1370,10 @@
       <div class="kiriage">
         <div class="kiriageS"></div>
       </div>
+      <div class="tobiL">飛　び</div>
+      <div class="tobi">
+        <div class="tobiS"></div>
+      </div>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -1400,6 +1440,8 @@
       const swS1 = document.querySelector(".tumozonS");
       const sw2 = document.querySelector(".kiriage");
       const swS2 = document.querySelector(".kiriageS");
+      const sw3 = document.querySelector(".tobi");
+      const swS3 = document.querySelector(".tobiS");
       let kaisi = 0;
       const select1 = document.getElementById("hansu");
       const select2 = document.getElementById("hu");
@@ -1522,6 +1564,7 @@
         localStorage.setItem("hituyouten", hituyouten.value);
         localStorage.setItem("tumozon", sw1.classList.contains("on"));
         localStorage.setItem("kiriage", sw2.classList.contains("on"));
+        localStorage.setItem("tobi", sw3.classList.contains("on"));
       }
       function loaddata() {
         const savedSyokiten = localStorage.getItem("syokiten");
@@ -1548,6 +1591,10 @@
         if (localStorage.getItem("kiriage") === "true") {
           sw2.classList.add("on");
           swS2.classList.add("on");
+        }
+        if (localStorage.getItem("tobi") === "true") {
+          sw3.classList.add("on");
+          swS3.classList.add("on");
         }
       }
       
@@ -1905,7 +1952,11 @@
           tokutenKetteiK.classList.remove("off");
           if (hora === 1) {
             if (oya === 1) {
-              naiyou1.textContent = "支払い：" + pay[1] + "オール";
+              if (pay[0] === pay[1]) {
+                naiyou1.textContent = "支払い：" + pay[1] + "オール";
+              } else {
+                naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+              }
               naiyou2.textContent = "得点：" + (map + rihon * 1000);
             } else if (oya === 0) {
               naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
@@ -2230,17 +2281,14 @@
             case 18: base = 48000; break
             default: base = 8000;
           }
-          if (yonsan === 3) {
-            base *= 0.75;
-          }
         } else {
           base = husu * (2 ** (han + 2))
           if (base > 2000) base = 2000
           if (sw2.classList.contains("on") && han <= 4 && base >= 1920) base = 2000
         }
+        const ronMap = Math.ceil(base * (oya === 1 ? 6 : 4) / 100) * 100
         if (hora === 0) {
-          let mul = yonsan === 4 ? (oya === 1 ? 6 : 4) : (oya === 1 ? 4 : 3)
-          map = Math.ceil(base * mul / 100) * 100
+          map = ronMap
           pay = [-map]
         } else {
           if (yonsan === 4) {
@@ -2265,15 +2313,16 @@
                 pay = [-pOya4, -pKo4]
                 map = pOya4 + pKo4
               }
+            } else {
               if (oya === 1) {
-                const p = Math.ceil(pOya4 * 3 / 2 / 100) * 100
+                const p = Math.ceil((ronMap / 2) / 100) * 100
                 pay = [-p, -p]
                 map = p * 2
               } else {
-                const pOya = Math.ceil((base * 5 / 2) / 100) * 100
-                const pKo = Math.ceil((base * 3 / 2) / 100) * 100
-                pay = [-pOya, -pKo]
-                map = pOya + pKo
+                const pHigh = Math.ceil((ronMap / 2) / 100) * 100
+                const pLow = ronMap - pHigh
+                pay = [-pHigh, -pLow]
+                map = ronMap
               }
             }
           }
@@ -2387,15 +2436,18 @@
         sw1.classList.toggle("on");
         swS1.classList.toggle("on");
         savedata();
-        sentaku();
         keisanT();
       });
       sw2.addEventListener("click", () => {
         sw2.classList.toggle("on");
         swS2.classList.toggle("on");
         savedata();
-        sentaku();
         keisanT();
+      });
+      sw3.addEventListener("click", () => {
+        sw3.classList.toggle("on");
+        swS3.classList.toggle("on");
+        savedata();
       });
     </script>
   </body>
