@@ -1117,11 +1117,61 @@
         font-family: sans-serif;
         position: absolute;
       }
+      .ryukyoku {
+        position: absolute;
+        background-color: rgb(230,220,240);
+        width: 24vw;
+        height: 12vw;
+        border: solid 0.5vw;
+        border-color: rgb(50,50,50);
+        bottom: 4vw;
+        right: 4vw;
+      }
+      .ryukyoku::after {
+        content: "流 局";
+        position: absolute;
+        color: rgb(0,0,0);
+        font-family: kihon;
+        font-size: 8vw;
+        white-space:  nowrap;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .ryukyokuG {
+        position: absolute;
+        width: 100vw;
+        height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: rgb(240,240,240);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 5vw;
+      }
+      .ryukyokuK {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
       .off {
         display: none;
       }
       .notclick {
         pointer-events: none;
+      }
+      .red {
+        background-color: rgb();
+        border-color: rgb();
+      }
+      .blue {
+        background-color: rgb();
+        border-color: rgb();
       }
     </style>
     <meta charset="UTF-8">
@@ -1162,21 +1212,25 @@
       <div class="hoM"></div>
       <div class="riboM"></div>
     </div>
+    <div class="migimai"></div>
     <div class="ueB">
       <div class="riU"></div>
       <div class="hoU"></div>
       <div class="riboU"></div>
     </div>
+    <div class="uemai"></div>
     <div class="hidariB">
       <div class="riH"></div>
       <div class="hoH"></div>
       <div class="riboH"></div>
     </div>
+    <div class="hidarimai"></div>
     <div class="sitaB">
       <div class="riS"></div>
       <div class="hoS"></div>
       <div class="riboS"></div>
     </div>
+    <div class="sitamai"></div>
     <div class="tokutentop">
       <div class="kakusi"></div>
       <div class="tokutentopH"></div>
@@ -1375,6 +1429,11 @@
         <div class="tobiS"></div>
       </div>
     </div>
+    <button class="ryukyoku"></button>
+    <div class="ryukyokuK"></div>
+    <div class="ryukyokuG">
+      
+    </div>
     <script>
       const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
@@ -1428,6 +1487,9 @@
       const settei = document.querySelector(".settei");
       const setteiG = document.querySelector(".setteiG");
       const setteiK = document.querySelector(".setteiK");
+      const ryukyoku = document.querySelector(".ryukyoku");
+      const ryukyokuG = document.querySelector(".ryukyokuG");
+      const ryukyokuK = document.querySelector(".ryukyokuK");
       const syokiten = document.querySelector(".syokiten");
       let motiten = Number(syokiten.value);
       let tenM = motiten;
@@ -1458,6 +1520,9 @@
       let husu = 0;
       let hozyuWho = 0;
       let horaWho = 0;
+      let kyoku = 1;
+      let honba = 0;
+      let nansyu = 0;
       let rihon = 0;
       const kettei = document.querySelector(".kettei");
       const tokutenKettei = document.querySelector(".tokutenKettei");
@@ -1531,6 +1596,8 @@
       hanhu.classList.add("toggleB");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
+      ryukyokuG.classList.add("off");
+      ryukyokuK.classList.add("off");
       tokutenKettei.classList.add("off");
       tokutenKetteiK.classList.add("off");
       hozyu.classList.add("off");
@@ -1541,21 +1608,25 @@
         number_player.classList.add("off");
         center.classList.remove("off");
         yonsan = 4;
+        nansyu = 1;
       });
       yonmahanB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
         yonsan = 4;
+        nansyu = 2;
       });
       sanmatonB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
         yonsan = 3;
+        nansyu = 1;
       });
       sanmahanB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
         yonsan = 3;
+        nansyu = 2;
       });
       
       
@@ -2148,6 +2219,20 @@
         riboH.classList.add("off");
         riboS.classList.add("off");
         rihon = 0;
+        if (oya === 1) {
+          honba += 1;
+        } else {
+          if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku * 2 && nansyu === 2)) {
+            syukyoku();
+          } else {
+            honba = 0;
+            kyoku += 1;
+            nextH(migi);
+            nextH(ue);
+            nextH(sita);
+            nextH(hidari);
+          }
+        }
         oya = 0;
       });
       function sentaku() {
@@ -2417,6 +2502,14 @@
       setteiK.addEventListener("click", function () {
         setteiG.classList.add("off");
         setteiK.classList.add("off");
+      });
+      ryukyoku.addEventListener("click", function () {
+        ryukyokuG.classList.remove("off");
+        ryukyokuK.classList.remove("off");
+      });
+      ryukyokuK.addEventListener("click", function () {
+        ryukyokuG.classList.add("off");
+        ryukyokuK.classList.add("off");
       });
       syokiten.addEventListener("change", () => {
         motiten = Number(syokiten.value);
