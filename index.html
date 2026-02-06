@@ -2216,11 +2216,6 @@
           hu.classList.remove("off");
           huLk.classList.remove("off");
           hukeisan.classList.remove("off");
-          if (select10.value === "なし") {
-            notkotei.classList.remove("off");
-          } else {
-            notkotei.classList.add("off");
-          }
         }
       }
       function keisanT() {
@@ -2339,6 +2334,11 @@
         keisanT();
       });
       select10.addEventListener("change", () => {
+        if (select10.value === "なし") {
+          notkotei.classList.remove("off");
+        } else {
+          notkotei.classList.add("off");
+        }
         keisanT();
       });
       select11.addEventListener("change", () => {
