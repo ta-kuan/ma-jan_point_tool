@@ -1128,10 +1128,10 @@
         right: 4vw;
       }
       .ryukyoku::after {
-        content: "流 局";
+        content: "流局";
         position: absolute;
         color: rgb(0,0,0);
-        font-family: kihon;
+        font-family: yujiboku;
         font-size: 8vw;
         white-space:  nowrap;
         left: 50%;
@@ -1596,6 +1596,7 @@
       hanhu.classList.add("toggleB");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
+      ryukyoku.classList.add("off");
       ryukyokuG.classList.add("off");
       ryukyokuK.classList.add("off");
       tokutenKettei.classList.add("off");
@@ -1815,6 +1816,7 @@
         hidariten.textContent = tenH;
       }
       function kesuB() {
+        ryukyoku.classList.add("off");
         riM.classList.add("off");
         hoM.classList.add("off");
         riU.classList.add("off");
@@ -1905,6 +1907,7 @@
         startB.classList.add("off");
         sai1.classList.add("off");
         sai2.classList.add("off");
+        ryukyoku.classList.remove("off");
         riM.classList.remove("off");
         hoM.classList.remove("off");
         riH.classList.remove("off");
