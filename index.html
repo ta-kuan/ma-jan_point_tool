@@ -1432,7 +1432,12 @@
     <button class="ryukyoku"></button>
     <div class="ryukyokuK"></div>
     <div class="ryukyokuG">
-      
+      <button class="totyuryu"></button>
+      <button class="huturyu"></button>
+      <button class="tenpaiM"></button>
+      <button class="tenpaiU"></button>
+      <button class="tenpaiS"></button>
+      <button class="tenpaiH"></button>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -1561,6 +1566,8 @@
       let atm = 0;
       let mt = 0;
       let tks = 0;
+      const totyuryu = document.querySelector(".totyuryu");
+      const huturyu = document.querySelector(".huturyu")
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2545,6 +2552,18 @@
         sw3.classList.toggle("on");
         swS3.classList.toggle("on");
         savedata();
+      });
+      totyuryu.addEventListener("click", () => {
+        if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku * 2 && nansyu === 2)) {
+          syukyoku();
+        } else {
+          honba = 0;
+          kyoku += 1;
+          nextH(migi);
+          nextH(ue);
+          nextH(sita);
+          nextH(hidari);
+        }
       });
     </script>
   </body>
