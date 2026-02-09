@@ -1251,6 +1251,48 @@
         left: 1vw;
         transition: 0.4s;
       }
+      .huturyu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,50%);
+        background-color: rgb(230,220,240);
+        width: 70%;
+        height: 30%;
+        border: solid 3vw;
+        border-color: rgb(0,0,0);
+      }
+      .huturyu::after {
+        conmtent: "荒牌平局";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(0,0,0);
+        fontfamily: yujiboku;
+        font-size: 10vw;
+      }
+      .totyuryu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-150%);
+        background-color: rgb(230,220,240);
+        width: 70%;
+        height: 30%;
+        border: solid 3vw;
+        border-color: rgb(0,0,0);
+      }
+      .totyuryu::after {
+        conmtent: "途中流局";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(0,0,0);
+        fontfamily: yujiboku;
+        font-size: 10vw;
+      }
       .off {
         display: none;
       }
