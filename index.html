@@ -2189,24 +2189,26 @@
         }
       });
       kettei.addEventListener("click", function () {
-        if (hora === 1 || !(hozyuWho === 0)) {
-          tokutenKettei.classList.remove("off");
-          tokutenKetteiK.classList.remove("off");
-          if (hora === 1) {
-            if (oya === 1) {
-              if (pay[0] === pay[1]) {
-                naiyou1.textContent = "支払い：" + pay[1] + "オール";
-              } else {
+        if (!Number.isNaN(map)) {
+          if (hora === 1 || !(hozyuWho === 0)) {
+            tokutenKettei.classList.remove("off");
+            tokutenKetteiK.classList.remove("off");
+            if (hora === 1) {
+              if (oya === 1) {
+                if (pay[0] === pay[1]) {
+                  naiyou1.textContent = "支払い：" + pay[1] + "オール";
+                } else {
+                  naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+                }
+                naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
+              } else if (oya === 0) {
                 naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+                naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
               }
-              naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
-            } else if (oya === 0) {
-              naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
+            } else if (hora === 0) {
+              naiyou1.textContent = "支払い：" + map;
               naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
             }
-          } else if (hora === 0) {
-            naiyou1.textContent = "支払い：" + map;
-            naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
           }
         }
       });
