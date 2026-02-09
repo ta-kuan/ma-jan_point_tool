@@ -1086,10 +1086,10 @@
         white-space: nowrap;
       }
       .tobi {
-        width: 15vw;
+        width: 16vw;
         height: 8vw;
         background-color: #ccc;
-        border-radius: 5vw;
+        border-radius: 1vw;
         position: absolute;
         cursor: pointer;
         transition: background-color 0.4s;
@@ -1097,13 +1097,13 @@
         left: 40vw;
       }
       .tobi.on {
-        background-color: #34c759;
+        background-color: rgb(150,190,255);
       }
       .tobiS {
         width: 7vw;
         height: 7vw;
         background-color: #fff;
-        border-radius: 50%;
+        border-radius: 2vw;
         position: absolute;
         top: 50%;
         transform: translateY(-50%); 
@@ -1111,7 +1111,7 @@
         transition: left 0.4s;
       }
       .tobiS.on {
-        left: 7vw;
+        left: 9vw;
       }
       .tensuH {
         font-family: sans-serif;
@@ -1435,10 +1435,18 @@
       <button class="totyuryu"></button>
       <button class="huturyu"></button>
       <button class="huturyukettei"></button>
-      <button class="tenpaiM"></button>
-      <button class="tenpaiU"></button>
-      <button class="tenpaiS"></button>
-      <button class="tenpaiH"></button>
+      <div class="tenpaiM">
+        <div class="tenpaiMS"></div>
+      </div>
+      <div class="tenpaiU">
+        <div class="tenpaiUS"></div>
+      </div>
+      <div class="tenpaiS">
+        <div class="tenpaiSS"></div>
+      </div>
+      <div class="tenpaiH">
+        <div class="tenpaiHS"></div>
+      </div>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -2587,21 +2595,29 @@
         tenpaiU.classList.remove("off");
         tenpaiS.classList.remove("off");
         tenpaiH.classList.remove("off");
+        tenpaiM.classList.remove("on");
+        tenpaiU.classList.remove("on");
+        tenpaiS.classList.remove("on");
+        tenpaiH.classList.remove("on");
       });
       huturyukettei.addEventListener("click", () => {
 
       });
       tenpaiM.addEventListener("click", () => {
-        
+        tenpaiM.classList.toggle("on");
+        tenpaiMS.classList.toggle("on");
       });
       tenpaiU.addEventListener("click", () => {
-        
+        tenpaiU.classList.toggle("on");
+        tenpaiUS.classList.toggle("on");
       });
       tenpaiS.addEventListener("click", () => {
-        
+        tenpaiS.classList.toggle("on");
+        tenpaiSS.classList.toggle("on");
       });
       tenpaiH.addEventListener("click", () => {
-        
+        tenpaiH.classList.toggle("on");
+        tenpaiHS.classList.toggle("on");
       });
     </script>
   </body>
