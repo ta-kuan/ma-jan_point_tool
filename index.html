@@ -1118,7 +1118,11 @@
       }
       .tumozonS::after,
       .kiriageS::after,
-      .tobiS::after {
+      .tobiS::after,
+      .tenpaiMS::after,
+      .tenpaiUS::after,
+      .tenpaiHS::after,
+      .tenpaiSS::after {
         content: "";
         background-color: rgb(180,180,180);
         position: absolute;
@@ -1131,7 +1135,11 @@
       }
       .tumozonS::before,
       .kiriageS::before,
-      .tobiS::before {
+      .tobiS::before,
+      .tenpaiMS::before,
+      .tenpaiUS::before,
+      .tenpaiSS::before,
+      .tenpaiHS::before {
         content: "";
         background-color: rgb(180,180,180);
         position: absolute;
@@ -2619,6 +2627,8 @@
         }
       });
       huturyu.addEventListener("click", () => {
+        huturyu.classList.add("off");
+        totyuryu.classList.add("off");
         huturyukettei.classList.remove("off");
         tenpaiM.classList.remove("off");
         tenpaiU.classList.remove("off");
