@@ -2681,9 +2681,11 @@
         huturyu.classList.remove("off");
         huturyukettei.classList.add("off");
         tenpaiM.classList.add("off");
-        tenpaiU.classList.add("off");
         tenpaiS.classList.add("off");
         tenpaiH.classList.add("off");
+        if (yonsan === 4) {
+          tenpaiU.classList.add("off");
+        }
       });
       ryukyokuK.addEventListener("click", function () {
         ryukyokuG.classList.add("off");
@@ -2738,17 +2740,19 @@
         totyuryu.classList.add("off");
         huturyukettei.classList.remove("off");
         tenpaiM.classList.remove("off");
-        tenpaiU.classList.remove("off");
         tenpaiS.classList.remove("off");
         tenpaiH.classList.remove("off");
         tenpaiM.classList.remove("on");
-        tenpaiU.classList.remove("on");
         tenpaiS.classList.remove("on");
         tenpaiH.classList.remove("on");
         tenpaiMS.classList.remove("on");
-        tenpaiUS.classList.remove("on");
         tenpaiSS.classList.remove("on");
         tenpaiHS.classList.remove("on");
+        if (yonsan === 4) {
+          tenpaiU.classList.remove("off");
+          tenpaiUS.classList.remove("on");
+          tenpaiU.classList.remove("on");
+        }
       });
       huturyukettei.addEventListener("click", () => {
 
