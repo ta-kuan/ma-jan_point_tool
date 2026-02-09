@@ -1196,6 +1196,54 @@
         top: 50%;
         transform: translate(-50%,-50%);
       }
+      .tenpaiM,
+      .tenpaiU,
+      .tenpaiS,
+      .tenpaiH  {
+        width: 16vw;
+        height: 8vw;
+        background-color: #ccc;
+        border-radius: 1vw;
+        position: absolute;
+        cursor: pointer;
+        transition: background-color 0.4s;
+      }
+      .tenpaiM {
+        left: 70vw;
+        top: 50vw;
+      }
+      .tenpaiU {
+        left: 50vw;
+        top: 30vw;
+      }
+      .tenpaiS {
+        left: 50vw;
+        top: 70vw;
+      }
+      .tenpaiH {
+        left: 30vw;
+        top: 50vw;
+      }
+      .tenpaiMS.on,
+      .tenpaiUS.on,
+      .tenpaiSS.on,
+      .tenpaiHS.on {
+        background-color: rgb(150,190,255);
+      }
+      .tenpaiMS,
+      .tenpaiUS,
+      .tenpaiSS,
+      .tenpaiHS {
+        width: 6.5vw;
+        height: 6.5vw;
+        background-color: #fff;
+        border-radius: 2vw;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); 
+        left: 1vw;
+        transition: 0.4s;
+      }
       .off {
         display: none;
       }
