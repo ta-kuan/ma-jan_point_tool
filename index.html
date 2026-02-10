@@ -472,34 +472,21 @@
         top: 2.65vw;
         box-shadow: 4.7vw 0 rgb(0,0,0);
       }
-      .centerm {
+      .centermu {
         position: absolute;
-        left: 0;
-        top: 0;
-        width: 30vw;
-        height: 30vw;
-        left: 10vw;
-        top: 10vw;
-      }
-      .centerm::after {
-        content: "東1局";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,20%);
-        font-size: 7vw;
         white-space: nowrap;
-        color: rgb(255,255,255);
-      }
-      .centerm::before {
-        content: "0本場";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-120%);
         font-size: 7vw;
-        white-space: nowrap;
         color: rgb(255,255,255);
+        left: 15vw;
+        top: 15vw;
+      }
+      .centerms {
+        position: absolute;
+        white-space: nowrap;
+        font-size: 7vw;
+        color: rgb(255,255,255);
+        left: 15vw;
+        top: 35vw;
       }
       .karioya {
         position: absolute;
@@ -1395,7 +1382,8 @@
       <div class="karioya"></div>
       <div class="titya"></div>
       <button class="start"></button>
-      <div class="centerm"></div>
+      <div class="centermu"></div>
+      <div class="centerms"></div>
     </div>
     <div class="migiB">
       <div class="riM"></div>
@@ -1652,7 +1640,8 @@
       let saiareaB = 0;
       const saiarea = document.querySelector(".saiarea");
       const center = document.querySelector(".center");
-      const centerm = document.querySelector(".centerm");
+      const centermu = document.querySelector(".centermu");
+      const centerms = document.querySelector(".centerms");
       const karioya = document.querySelector(".karioya");
       let saisum = 0;
       const sita = document.querySelector(".sita");
@@ -2460,6 +2449,7 @@
         rihon = 0;
         if (oya === 1) {
           honba += 1;
+          
         } else {
           if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku * 2 && nansyu === 2)) {
             syukyoku();
