@@ -1702,6 +1702,7 @@
       let nansyu = 0;
       let rihon = 0;
       let honba = 0;
+      let honbaten = 0;
       const kettei = document.querySelector(".kettei");
       const tokutenKettei = document.querySelector(".tokutenKettei");
       const tokutenKetteiK = document.querySelector(".tokutenKetteiK");
@@ -2225,6 +2226,7 @@
       });
       kettei.addEventListener("click", function () {
         if (!Number.isNaN(map)) {
+          honbaten = honba * ((yonsan - 1) * 100);
           if (hora === 1 || !(hozyuWho === 0)) {
             tokutenKettei.classList.remove("off");
             tokutenKetteiK.classList.remove("off");
@@ -2235,14 +2237,14 @@
                 } else {
                   naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
                 }
-                naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
+                naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
               } else if (oya === 0) {
                 naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
-                naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
+                naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
               }
             } else if (hora === 0) {
               naiyou1.textContent = "支払い：" + map;
-              naiyou2.textContent = "得点：" + (map + (rihon + honba) * 1000);
+              naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
             }
           }
         }
