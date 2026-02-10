@@ -1650,6 +1650,7 @@
       let saiareaB = 0;
       const saiarea = document.querySelector(".saiarea");
       const center = document.querySelector(".center");
+      const centerm = document.querySelector(".centerm");
       const karioya = document.querySelector(".karioya");
       let saisum = 0;
       const sita = document.querySelector(".sita");
@@ -1778,6 +1779,7 @@
       
       number_player.classList.remove("off");
       center.classList.add("off");
+      centerm.classList.remove("off");
       sai1.classList.remove("off");
       sai2.classList.remove("off");
       saiarea.classList.remove("notclick");
@@ -2134,6 +2136,7 @@
       startB.addEventListener("click", function () {
         startB.classList.add("off");
         sai1.classList.add("off");
+        centerm.classList.remove("off");
         sai2.classList.add("off");
         ryukyoku.classList.remove("off");
         riM.classList.remove("off");
