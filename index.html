@@ -472,8 +472,27 @@
         top: 2.65vw;
         box-shadow: 4.7vw 0 rgb(0,0,0);
       }
-      
-      
+      .centerm {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .centerm::after {
+        content: "東1局";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-25%);
+        font-size: 3vw;
+      }
+      .centerm::before {
+        content: "0本場";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-75%);
+        font-size: 3vw;
+      }
       .karioya {
         position: absolute;
         border: thick double;
