@@ -1933,12 +1933,14 @@
         center.classList.remove("off");
         yonsan = 3;
         nansyu = 1;
+        uezyun.classList.add("off");
       });
       sanmahanB.addEventListener("click", function () {
         number_player.classList.add("off");
         center.classList.remove("off");
         yonsan = 3;
         nansyu = 2;
+        uezyun.classList.add("off");
       });
       
       
@@ -2240,14 +2242,20 @@
         }
       });
       function syukyoku() {
-        const rankTargets = [
-          { ten: tenM, kitya: kityaM, el: migizyun },
-          { ten: tenS, kitya: kityaS, el: sitazyun },
-          { ten: tenH, kitya: kityaH, el: hidarizyun },
-          { ten: tenU, kitya: kityaU, el: uezyun }
-        ];
-        rankTargets.forEach((target) => {
-          target.el.classList.remove(...zyunclasses);
+        const rankTargets = yonsan === 3
+          ? [
+              { ten: tenM, kitya: kityaM, el: migizyun },
+              { ten: tenS, kitya: kityaS, el: sitazyun },
+              { ten: tenH, kitya: kityaH, el: hidarizyun }
+            ]
+          : [
+              { ten: tenM, kitya: kityaM, el: migizyun },
+              { ten: tenS, kitya: kityaS, el: sitazyun },
+              { ten: tenH, kitya: kityaH, el: hidarizyun },
+              { ten: tenU, kitya: kityaU, el: uezyun }
+            ];
+        [migizyun, sitazyun, hidarizyun, uezyun].forEach((el) => {
+          el.classList.remove(...zyunclasses);
         });
         rankTargets
           .slice()
