@@ -1355,24 +1355,25 @@
       .sitazyu {
         position: absolute;
       }
-      .migizyu,
-      .hidarizyu {
+      .migizyu::after {
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(-90deg);
+        left: 30vw;
       }
-      .uezyu,
-      .sitazyu {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .migizyu::after {
-        transform: translate(-50%,-50%) rotate(-90deg);
-      }
-      .migizyu::after {
-        transform: translate(-50%,-50%) rotate(90deg);
+      .hidarizyu::after {
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        left: 30vw;
       }
       .uezyu::after {
-        transform: translate(-50%,-50%) rotate(180deg);
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg);
+        top: 30vw;
+      }
+      .sitazyu::after {
+        left: 50%;
+        transform: translateX(-50%) rotate(0deg);
+        top: 30vw;
       }
       .itii::after {
         content: "一位";
