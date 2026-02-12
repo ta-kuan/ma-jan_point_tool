@@ -1760,6 +1760,11 @@
       const ueten = document.querySelector(".ueten");
       const hidariten = document.querySelector(".hidariten");
       const tokuten = document.querySelector(".tokuten");
+      const migizyun = document.querySelector(".migizyun");
+      const uezyun = document.querySelector(".uezyun");
+      const hidarizyun = document.querySelector(".hidarizyun");
+      const sitazyun = document.querySelector(".sitazyun");
+      let zyunclasses = ["itii","nii","sani","yoni"];
       const tokutentop = document.querySelector(".tokutentop");
       let tokutenclasses = ["sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
@@ -2235,6 +2240,26 @@
         }
       });
       function syukyoku() {
+        const rankTargets = [
+          { ten: tenM, kitya: kityaM, el: migizyun },
+          { ten: tenS, kitya: kityaS, el: sitazyun },
+          { ten: tenH, kitya: kityaH, el: hidarizyun },
+          { ten: tenU, kitya: kityaU, el: uezyun }
+        ];
+        rankTargets.forEach((target) => {
+          target.el.classList.remove(...zyunclasses);
+        });
+        rankTargets
+          .slice()
+          .sort((a, b) => {
+            if (a.ten !== b.ten) {
+              return b.ten - a.ten;
+            }
+            return b.kitya - a.kitya;
+          })
+          .forEach((target, index) => {
+            target.el.classList.add(zyunclasses[index]);
+          });
         saiarea.classList.add("syuu");
         kesuB();
         sai1.classList.add("off");
