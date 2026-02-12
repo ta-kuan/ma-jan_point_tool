@@ -2454,7 +2454,7 @@
           honba += 1;
           
         } else {
-          if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku * 2 && nansyu === 2)) {
+          if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
             syukyoku();
           } else {
             honba = 0;
@@ -2785,7 +2785,7 @@
         savedata();
       });
       totyuryu.addEventListener("click", () => {
-        if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku * 2 && nansyu === 2)) {
+        if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
           syukyoku();
         } else {
           saiarea.classList.remove("notclick");
