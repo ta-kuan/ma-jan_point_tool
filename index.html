@@ -3075,11 +3075,23 @@
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
-            kyoku += 1;
-            nextH(migi);
-            nextH(ue);
-            nextH(sita);
-            nextH(hidari);
+            if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
+              if (migi.classList.contains("ton")) {
+                
+              } else if (ue.classList.contains("ton")) {
+                
+              } else if (sita.classList.contains("ton")) {
+                
+              } else if (hidari.classList.contains("ton")) {
+                
+              }
+            } else {
+              kyoku += 1;
+              nextH(migi);
+              nextH(ue);
+              nextH(sita);
+              nextH(hidari);
+            }
           }
         }
       });
