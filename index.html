@@ -3023,10 +3023,44 @@
         riboU.classList.add("off");
         riboH.classList.add("off");
         riboS.classList.add("off");
-        rihon = 0;
         ryukyoku.classList.add("off");
         ryukyokuG.classList.add("off");
         ryukyokuK.classList.add("off");
+        const tenpaiTargets = [
+          { on: tenpaiM.classList.contains("on"), key: "M" },
+          ...(yonsan === 4 ? [{ on: tenpaiU.classList.contains("on"), key: "U" }] : []),
+          { on: tenpaiH.classList.contains("on"), key: "H" },
+          { on: tenpaiS.classList.contains("on"), key: "S" }
+        ];
+        const tenpaiCount = tenpaiTargets.filter((target) => target.on).length;
+        if (tenpaiCount > 0 && tenpaiCount < tenpaiTargets.length) {
+          const gain = Math.floor(3000 / tenpaiCount);
+          const loss = Math.floor(3000 / (tenpaiTargets.length - tenpaiCount));
+          tenpaiTargets.forEach((target) => {
+            if (target.on) {
+              if (target.key === "M") {
+                tenM += gain;
+              } else if (target.key === "U") {
+                tenU += gain;
+              } else if (target.key === "H") {
+                tenH += gain;
+              } else if (target.key === "S") {
+                tenS += gain;
+              }
+            } else {
+              if (target.key === "M") {
+                tenM -= loss;
+              } else if (target.key === "U") {
+                tenU -= loss;
+              } else if (target.key === "H") {
+                tenH -= loss;
+              } else if (target.key === "S") {
+                tenS -= loss;
+              }
+            }
+          });
+          update();
+        }
         if ((migi.classList.contains("ton") && tenpaiM.classList.contains("on")) || (ue.classList.contains("ton") && tenpaiU.classList.contains("on")) || (hidari.classList.contains("ton") && tenpaiH.classList.contains("on")) || (sita.classList.contains("ton") && tenpaiS.classList.contains("on"))) {
           honba += 1;
         } else {
