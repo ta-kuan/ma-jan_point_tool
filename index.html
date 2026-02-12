@@ -262,6 +262,16 @@
         background-color: rgb(100,100,100);
         transform: rotate(180deg);
       }
+      .saiarea.syuu::after {
+        content: "終局";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%) rotate(180deg);
+        color: rggb(255,255,255);
+        font-size: 10vw;
+        white-space: nowrap;
+      }
       .sai1 {
         position: absolute;
         width: 10vw;
@@ -2119,6 +2129,7 @@
         }
       });
       function syukyoku() {
+        saiarea.classList.add("syuu");
         kesuB();
         sai1.classList.add("off");
         sai2.classList.add("off");
