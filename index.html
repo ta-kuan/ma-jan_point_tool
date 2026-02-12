@@ -2146,15 +2146,25 @@
         if (yonsan === 4) {
           riU.classList.remove("off");
           hoU.classList.remove("off");
-        }
-        if (kyoku < 5) {
-          centermu.textContent = "東" + kyoku + "局";
-        } else if  (kyoku < 9) {
-          centermu.textContent = "南" + (kyoku - 4)+ "局";
-        } else if  (kyoku < 13) {
-          centermu.textContent = "西" + (kyoku - 8) + "局";
-        } else if (kyoku < 17) {
-          centermu.textContent = "北" + (kyoku - 12) + "局";
+          if (kyoku < 5) {
+            centermu.textContent = "東" + kyoku + "局";
+          } else if  (kyoku < 9) {
+            centermu.textContent = "南" + (kyoku - 4)+ "局";
+          } else if  (kyoku < 13) {
+            centermu.textContent = "西" + (kyoku - 8) + "局";
+          } else if (kyoku < 17) {
+            centermu.textContent = "北" + (kyoku - 12) + "局";
+          }
+        } else if (yonsan === 3) {
+          if (kyoku < 4) {
+            centermu.textContent = "東" + kyoku + "局";
+          } else if  (kyoku < 7) {
+            centermu.textContent = "南" + (kyoku - 3)+ "局";
+          } else if  (kyoku < 10) {
+            centermu.textContent = "西" + (kyoku - 6) + "局";
+          } else if (kyoku < 13) {
+            centermu.textContent = "北" + (kyoku - 9) + "局";
+          }
         }
         centerms.textContent = honba + "本場";
       });
