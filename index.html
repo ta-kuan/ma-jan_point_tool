@@ -2630,7 +2630,7 @@
         if (oya === 1) {
           honba += 1;
         } else {
-          if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
+          if (((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
             honba = 0;
@@ -2641,7 +2641,7 @@
             nextH(hidari);
           }
         }
-        if ((tenM < 0 || tenU < 0 || tenH < 0 || tenS < 0) && sw3.classList.contains("on")) {
+        if (((tenM < 0 || tenU < 0 || tenH < 0 || tenS < 0) && sw3.classList.contains("on")) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
           syukyoku();
         }
         oya = 0;
@@ -2964,7 +2964,7 @@
         savedata();
       });
       totyuryu.addEventListener("click", () => {
-        if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
+        if (((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
           syukyoku();
         } else {
           centermu.classList.add("off");
@@ -3072,7 +3072,7 @@
         if ((migi.classList.contains("ton") && tenpaiM.classList.contains("on")) || (ue.classList.contains("ton") && tenpaiU.classList.contains("on")) || (hidari.classList.contains("ton") && tenpaiH.classList.contains("on")) || (sita.classList.contains("ton") && tenpaiS.classList.contains("on"))) {
           honba += 1;
         } else {
-          if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
+          if (((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
             kyoku += 1;
