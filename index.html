@@ -2281,6 +2281,22 @@
         tokutentop.classList.add("off");
         saiarea.classList.add("notclick");
       }
+      function oyaTop() {
+        let oyaTen = -Infinity;
+        if (migi.classList.contains("ton")) {
+          oyaTen = tenM;
+        } else if (ue.classList.contains("ton")) {
+          oyaTen = tenU;
+        } else if (hidari.classList.contains("ton")) {
+          oyaTen = tenH;
+        } else if (sita.classList.contains("ton")) {
+          oyaTen = tenS;
+        }
+        if (yonsan === 4) {
+          return oyaTen >= tenM && oyaTen >= tenU && oyaTen >= tenH && oyaTen >= tenS;
+        }
+        return oyaTen >= tenM && oyaTen >= tenH && oyaTen >= tenS;
+      }
       startB.addEventListener("click", function () {
         startB.classList.add("off");
         sai1.classList.add("off");
@@ -3076,14 +3092,14 @@
             syukyoku();
           } else {
             if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
-              if (migi.classList.contains("ton")) {
-                
-              } else if (ue.classList.contains("ton")) {
-                
-              } else if (sita.classList.contains("ton")) {
-                
-              } else if (hidari.classList.contains("ton")) {
-                
+              if (oyaTop()) {
+                syukyoku();
+              } else {
+                kyoku += 1;
+                nextH(migi);
+                nextH(ue);
+                nextH(sita);
+                nextH(hidari);
               }
             } else {
               kyoku += 1;
