@@ -1779,6 +1779,11 @@
       const tenpaiUS = document.querySelector(".tenpaiUS");
       const tenpaiSS = document.querySelector(".tenpaiSS");
       const tenpaiHS = document.querySelector(".tenpaiHS");
+      let kityaM = 0;
+      let kityaU = 0;
+      let kityaS = 0;
+      let kityaH = 0;
+      let kityacheck = 0;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -1968,6 +1973,10 @@
               ue.classList.add("nan");
               hidari.classList.add("sya");
               sita.classList.add("pei");
+              kityaM = 4;
+              kityaU = 3;
+              kityaH = 2;
+              kityaS = 1;
               start = 1;
               break;
             case 3:
@@ -1978,6 +1987,10 @@
               ue.classList.add("ton");
               hidari.classList.add("nan");
               sita.classList.add("sya");
+              kityaM = 1;
+              kityaU = 4;
+              kityaH = 3;
+              kityaS = 2;
               start = 2;
               break;
             case 4:
@@ -1988,6 +2001,10 @@
               ue.classList.add("pei");
               hidari.classList.add("ton");
               sita.classList.add("nan");
+              kityaM = 2;
+              kityaU = 1;
+              kityaH = 4;
+              kityaS = 3;
               start = 3;
               break;
             case 5:
@@ -1997,6 +2014,10 @@
               ue.classList.add("sya");
               hidari.classList.add("pei");
               sita.classList.add("ton");
+              kityaM = 3;
+              kityaU = 2;
+              kityaH = 1;
+              kityaS = 4;
               start = 4;
               break;
           }
@@ -2010,6 +2031,9 @@
               migi.classList.add("ton");
               hidari.classList.add("nan");
               sita.classList.add("sya");
+              kityaM = 3;
+              kityaH = 2;
+              kityaS = 1;
               start = 1;
               break;
             case 3:
@@ -2020,6 +2044,9 @@
               migi.classList.add("sya");
               hidari.classList.add("ton");
               sita.classList.add("nan");
+              kityaM = 1;
+              kityaH = 3;
+              kityaS = 2;
               start = 2;
               break;
             case 4:
@@ -2029,6 +2056,9 @@
               migi.classList.add("nan");
               hidari.classList.add("sya");
               sita.classList.add("ton");
+              kityaM = 2;
+              kityaH = 1;
+              kityaS = 3;
               start = 3;
               break;
           }
