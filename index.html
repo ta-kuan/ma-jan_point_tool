@@ -2445,6 +2445,8 @@
           }
         }
         update();
+        centermu.classList.add("off");
+        centerms.classList.add("off");
         tokuten.classList.add("off");
         tokutentop.classList.add("off");
         saiarea.classList.remove("notclick");
@@ -2799,6 +2801,8 @@
         if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
           syukyoku();
         } else {
+          centermu.classList.add("off");
+          centerms.classList.add("off");
           saiarea.classList.remove("notclick");
           saiarea.classList.remove("off");
           sai1.classList.remove("off");
@@ -2845,6 +2849,8 @@
         }
       });
       huturyukettei.addEventListener("click", () => {
+        centermu.classList.add("off");
+        centerms.classList.add("off");
         saiarea.classList.remove("notclick");
         saiarea.classList.remove("off");
         sai1.classList.remove("off");
