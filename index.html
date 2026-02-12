@@ -1347,6 +1347,58 @@
         font-size: 12vw;
         white-space: nowrap;
       }
+      .migizyu,
+      .uezyu,
+      .hidarizyu,
+      .sitazyu {
+        position: absolute;
+      }
+      .migizyu,
+      .hidarizyu {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .uezyu,
+      .sitazyu {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .itii::after {
+        content: "一位";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(255,255,0);
+        font-size: 10vw;
+      }
+      .nii::after {
+        content: "二位";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(230,230,230);
+        font-size: 10vw;
+      }
+      .sani::after {
+        content: "三位";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(255,200,0);
+        font-size: 10vw;
+      }
+      .yoni::after {
+        content: "四位";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(150,150,255);
+        font-size: 10vw;
+      }
       .off {
         display: none;
       }
