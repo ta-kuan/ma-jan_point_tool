@@ -2649,7 +2649,7 @@
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
-            if (oyaTop()) {
+            if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
               syukyoku();
             } else {
               honba = 0;
@@ -2987,7 +2987,7 @@
         if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
           syukyoku();
         } else {
-          if (oyaTop()) {
+          if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
             syukyoku();
           } else {
             centermu.classList.add("off");
@@ -3100,7 +3100,7 @@
             syukyoku();
           } else {
             if ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) {
-              if (oyaTop()) {
+              if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
                 syukyoku();
               } else {
                 kyoku += 1;
