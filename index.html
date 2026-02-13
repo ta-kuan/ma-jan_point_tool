@@ -2645,19 +2645,20 @@
         rihon = 0;
         if (oya === 1) {
           honba += 1;
-          if ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) {
-            syukyoku();
-          }
         } else {
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
-            honba = 0;
-            kyoku += 1;
-            nextH(migi);
-            nextH(ue);
-            nextH(sita);
-            nextH(hidari);
+            if (oyaTop()) {
+              syukyoku();
+            } else {
+              honba = 0;
+              kyoku += 1;
+              nextH(migi);
+              nextH(ue);
+              nextH(sita);
+              nextH(hidari);
+            }
           }
         }
         if ((tenM < 0 || tenU < 0 || tenH < 0 || tenS < 0) && sw3.classList.contains("on")) {
@@ -2986,32 +2987,36 @@
         if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
           syukyoku();
         } else {
-          centermu.classList.add("off");
-          centerms.classList.add("off");
-          saiarea.classList.remove("notclick");
-          saiarea.classList.remove("off");
-          sai1.classList.remove("off");
-          sai2.classList.remove("off");
-          saiareaB = 1;
-          tokutenKettei.classList.add("off");
-          tokutenKetteiK.classList.add("off");
-          me1.classList.remove(...saiclasses);
-          me2.classList.remove(...saiclasses);
-          kesuB();
-          riboM.classList.add("off");
-          riboU.classList.add("off");
-          riboH.classList.add("off");
-          riboS.classList.add("off");
-          rihon = 0;
-          honba = 0;
-          kyoku += 1;
-          nextH(migi);
-          nextH(ue);
-          nextH(sita);
-          nextH(hidari);
-          ryukyoku.classList.add("off");
-          ryukyokuG.classList.add("off");
-          ryukyokuK.classList.add("off");
+          if (oyaTop()) {
+            syukyoku();
+          } else {
+            centermu.classList.add("off");
+            centerms.classList.add("off");
+            saiarea.classList.remove("notclick");
+            saiarea.classList.remove("off");
+            sai1.classList.remove("off");
+            sai2.classList.remove("off");
+            saiareaB = 1;
+            tokutenKettei.classList.add("off");
+            tokutenKetteiK.classList.add("off");
+            me1.classList.remove(...saiclasses);
+            me2.classList.remove(...saiclasses);
+            kesuB();
+            riboM.classList.add("off");
+            riboU.classList.add("off");
+            riboH.classList.add("off");
+            riboS.classList.add("off");
+            rihon = 0;
+            honba = 0;
+            kyoku += 1;
+            nextH(migi);
+            nextH(ue);
+            nextH(sita);
+            nextH(hidari);
+            ryukyoku.classList.add("off");
+            ryukyokuG.classList.add("off");
+            ryukyokuK.classList.add("off");
+          }
         }
       });
       huturyu.addEventListener("click", () => {
