@@ -2645,6 +2645,9 @@
         rihon = 0;
         if (oya === 1) {
           honba += 1;
+          if ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) {
+            syukyoku();
+          }
         } else {
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
@@ -3091,7 +3094,7 @@
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten)) {
             syukyoku();
           } else {
-            if ((yonsan === kyoku && nansyu === 1) || (yonsan === kyoku / 2 && nansyu === 2)) {
+            if ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) {
               if (oyaTop()) {
                 syukyoku();
               } else {
