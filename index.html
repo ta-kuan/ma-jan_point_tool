@@ -2304,15 +2304,23 @@
         centerms.classList.remove("off");
         sai2.classList.add("off");
         ryukyoku.classList.remove("off");
-        riM.classList.remove("off");
+        if (tenM >= 1000) {
+          riM.classList.remove("off");
+        }
         hoM.classList.remove("off");
-        riH.classList.remove("off");
+        if (tenH >= 1000) {
+          riH.classList.remove("off");
+        }
         hoH.classList.remove("off");
-        riS.classList.remove("off");
+        if (tenS >= 1000) {
+          riS.classList.remove("off");
+        }
         hoS.classList.remove("off");
         kaisi = 1;
         if (yonsan === 4) {
-          riU.classList.remove("off");
+          if (tenU >= 1000) {
+            riU.classList.remove("off");
+          }
           hoU.classList.remove("off");
           if (kyoku < 5) {
             centermu.textContent = "東" + kyoku + "局";
