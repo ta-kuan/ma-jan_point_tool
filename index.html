@@ -2457,14 +2457,14 @@
                 } else {
                   naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
                 }
-                naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
+                naiyou2.textContent = "得点：" + map;
               } else if (oya === 0) {
                 naiyou1.textContent = "支払い：" + pay[1] + "・" + pay[0];
-                naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
+                naiyou2.textContent = "得点：" + map;
               }
             } else if (hora === 0) {
               naiyou1.textContent = "支払い：" + map;
-              naiyou2.textContent = "得点：" + (map + (rihon * 1000) + honbaten);
+              naiyou2.textContent = "得点：" + map;
             }
           }
         }
@@ -2491,7 +2491,7 @@
                 tenU -= pay[0];
                 break;
             }
-            tenM += map + (rihon + honba) * 1000;
+            tenM += map + (rihon * 1000) + honbaten;
           } else if (horaWho === 2) {
             switch (hozyuWho) {
               case 1:
@@ -2504,7 +2504,7 @@
                 tenH -= pay[0];
                 break;
             }
-            tenU += map + (rihon + honba) * 1000;
+            tenU += map + (rihon * 1000) + honbaten;
           } else if (horaWho === 3) {
             switch (hozyuWho) {
               case 1:
@@ -2517,7 +2517,7 @@
                 tenM -= pay[0];
                 break;
             }
-            tenS += map + (rihon + honba) * 1000;
+            tenS += map + (rihon * 1000) + honbaten;
           } else if (horaWho === 4) {
             switch (hozyuWho) {
               case 1:
@@ -2530,7 +2530,7 @@
                 tenS -= pay[0];
                 break;
             }
-            tenH += map + (rihon + honba) * 1000;
+            tenH += map + (rihon * 1000) + honbaten;
           }
         } else if (hora === 1) {
           if (oya === 1) {
@@ -2539,25 +2539,25 @@
               tenU -= pay[0];
               tenS -= pay[0];
               tenH -= pay[0];
-              tenM += map + (rihon + honba) * 1000;
+              tenM += map + (rihon * 1000) + honbaten;
               break;
             case 2:
               tenM -= pay[0];
               tenS -= pay[0];
               tenH -= pay[0];
-              tenU += map + (rihon + honba) * 1000;
+              tenU += map + (rihon * 1000) + honbaten;
               break;
             case 3:
               tenM -= pay[0];
               tenH -= pay[0];
               tenU -= pay[0];
-              tenS += map + (rihon + honba) * 1000;
+              tenS += map + (rihon * 1000) + honbaten;
               break;
             case 4:
               tenM -= pay[0];
               tenS -= pay[0];
               tenU -= pay[0];
-              tenH += map + (rihon + honba) * 1000;
+              tenH += map + (rihon * 1000) + honbaten;
               break;
             }
           } else if (oya === 0) {
@@ -2566,68 +2566,68 @@
                 tenU -= pay[0];
                 tenS -= pay[1];
                 tenH -= pay[1];
-                tenM += map + (rihon + honba) * 1000;
+                tenM += map + (rihon * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenU -= pay[1];
                 tenS -= pay[0];
                 tenH -= pay[1];
-                tenM += map + (rihon + honba) * 1000;
+                tenM += map + (rihon * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenU -= pay[1];
                 tenS -= pay[1];
                 tenH -= pay[0];
-                tenM += map + (rihon + honba) * 1000;
+                tenM += map + (rihon * 1000) + honbaten;
               }
             } else if (horaWho === 2) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0];
                 tenS -= pay[1];
                 tenH -= pay[1];
-                tenU += map + (rihon + honba) * 1000;
+                tenU += map + (rihon * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenS -= pay[0];
                 tenH -= pay[1];
-                tenU += map + (rihon + honba) * 1000;
+                tenU += map + (rihon * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenS -= pay[1];
                 tenH -= pay[0];
-                tenU += map + (rihon + honba) * 1000;
+                tenU += map + (rihon * 1000) + honbaten;
               }
             } else if (horaWho === 3) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0];
                 tenH -= pay[1];
                 tenU -= pay[1];
-                tenS += map + (rihon + honba) * 1000;
+                tenS += map + (rihon * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenH -= pay[0];
                 tenU -= pay[1];
-                tenS += map + (rihon + honba) * 1000;
+                tenS += map + (rihon * 1000) + honbaten;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenH -= pay[1];
                 tenU -= pay[0];
-                tenS += map + (rihon + honba) * 1000;
+                tenS += map + (rihon * 1000) + honbaten;
               }
             } else if (horaWho === 4) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0];
                 tenS -= pay[1];
                 tenU -= pay[1];
-                tenH += map + (rihon + honba) * 1000;
+                tenH += map + (rihon * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenS -= pay[0];
                 tenU -= pay[1];
-                tenH += map + (rihon + honba) * 1000;
+                tenH += map + (rihon * 1000) + honbaten;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1];
                 tenS -= pay[1];
                 tenU -= pay[0];
-                tenH += map + (rihon + honba) * 1000;
+                tenH += map + (rihon * 1000) + honbaten;
               }
             }
           }
@@ -3014,9 +3014,7 @@
             riboU.classList.add("off");
             riboH.classList.add("off");
             riboS.classList.add("off");
-            rihon = 0;
-            honba = 0;
-            kyoku += 1;
+            honba += 1;
             nextH(migi);
             nextH(ue);
             nextH(sita);
