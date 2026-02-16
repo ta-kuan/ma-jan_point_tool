@@ -3068,8 +3068,15 @@
         ];
         const tenpaiCount = tenpaiTargets.filter((target) => target.on).length;
         if (tenpaiCount > 0 && tenpaiCount < tenpaiTargets.length) {
-          const gain = Math.floor(3000 / tenpaiCount);
-          const loss = Math.floor(3000 / (tenpaiTargets.length - tenpaiCount));
+          let gain = 0;
+          let loss = 0;
+          if (tenpaiTargets.length === 3) {
+            gain = 1000 * (3 - tenpaiCount);
+            loss = 1000 * tenpaiCount;
+          } else {
+            gain = Math.floor(3000 / tenpaiCount);
+            loss = Math.floor(3000 / (tenpaiTargets.length - tenpaiCount));
+          }
           tenpaiTargets.forEach((target) => {
             if (target.on) {
               if (target.key === "M") {
