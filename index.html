@@ -3105,6 +3105,7 @@
               if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
                 syukyoku();
               } else {
+                honba = 0;
                 kyoku += 1;
                 nextH(migi);
                 nextH(ue);
@@ -3112,6 +3113,7 @@
                 nextH(hidari);
               }
             } else {
+              honba = 0;
               kyoku += 1;
               nextH(migi);
               nextH(ue);
