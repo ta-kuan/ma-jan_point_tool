@@ -1419,6 +1419,15 @@
         font-weight: bold;
         white-space: nowrap;
       }
+      .hensyu {
+        position: absolute;
+        width: 8vw;
+        height: 8vw;
+        border: solid 0.5vw;
+        border-color: rgb(50,50,50);
+        bottom: 4vw;
+        left: 16vw;
+      }
       .off {
         display: none;
       }
@@ -1872,9 +1881,9 @@
       let kityaS = 0;
       let kityaH = 0;
       let kityacheck = 0;
-      const hensyu = document.querSelector(".hensyu");
-      const hensyuG = document.querSelector(".hensyuG");
-      const hensyuK = document.querSelector(".hensyuK");
+      const hensyu = document.querySelector(".hensyu");
+      const hensyuG = document.querySelector(".hensyuG");
+      const hensyuK = document.querySelector(".hensyuK");
       
       number_player.classList.remove("off");
       center.classList.add("off");
