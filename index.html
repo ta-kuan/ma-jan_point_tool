@@ -1714,6 +1714,13 @@
         <div class="tenpaiHS"></div>
       </div>
     </div>
+    <button class="hensyu">
+      <img src="hensyu.png" alt=""></img>
+    </button>
+    <div class="hensyuG">
+    </div>
+    <div class="hensyuK">
+    </div>
     <script>
       const number_player = document.querySelector(".number_player")
       const yonmatonB = document.querySelector(".yonmaton");
@@ -1865,6 +1872,9 @@
       let kityaS = 0;
       let kityaH = 0;
       let kityacheck = 0;
+      const hensyu = document.querSelector(".hensyu");
+      const hensyuG = document.querSelector(".hensyuG");
+      const hensyuK = document.querSelector(".hensyuK");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -1914,6 +1924,8 @@
       tenpaiU.classList.add("off");
       tenpaiS.classList.add("off");
       tenpaiH.classList.add("off");
+      hensyuG.classList.add("off");
+      hensyuK.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
