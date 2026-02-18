@@ -828,25 +828,6 @@
         top: 50%;
         transform: translate(-50%,-50%);
       }
-      .kakutei {
-        position: absolute;
-        right: 3vw;
-        bottom: 3vw;
-        width: 17vw;
-        height: 10vw;
-        border-radius: 3vw;
-        border: none;
-        background-color: rgb(255,120,120);
-      }
-      .kakutei::after {
-        content: "確定";
-        color: rgb(0,0,0);
-        white-space: nowrap;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-      }
       .kakutei,
       .kakuteinagasi,
       .kakuteityonbo {
@@ -2867,14 +2848,17 @@
           kakutei.classList.add("off");
           kakuteinagasi.classList.remove("off");
           kakuteityonbo.classList.add("off");
+          hukusu.classList.remove("off");
         } else if (select1.value === 21) {
           kakutei.classList.add("off");
           kakuteinagasi.classList.add("off");
           kakuteityonbo.classList.remove("off");
+          hukusu.classList.add("off");
         } else {
           kakutei.classList.remove("off");
           kakuteinagasi.classList.add("off");
           kakuteityonbo.classList.add("off");
+          hukusu.classList.remove("off");
         }
       });
       function sentaku() {
