@@ -1464,6 +1464,27 @@
         right: 50%;
         transform: translate(-50%,-50%);
       }
+      .uehen,
+      .migihen,
+      .hidarihen,
+      .sitahen {
+        width: 35vw;
+        height: 3vw;
+        left: 50%;
+        top: 50%;
+      }
+      .uehen {
+        transform: translate(-50%,50%);
+      }
+      .migihen {
+        transform: translate(-150%,-50%);
+      }
+      .hidarihen {
+        transform: translate(50%,-50%);
+      }
+      .sitahen {
+        transform: translate(-50%,-150%);
+      }
       .off {
         display: none;
       }
@@ -1766,6 +1787,10 @@
     <div class="hensyuK">
     </div>
     <div class="hensyuG">
+      <input class="uehen" type="number" step="1000">
+      <input class="migihen" type="number" step="1000">
+      <input class="hidarihen" type="number" step="1000">
+      <input class="sitahen" type="number" step="1000">
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -1905,6 +1930,7 @@
       const totyuryu = document.querySelector(".totyuryu");
       const huturyu = document.querySelector(".huturyu");
       const huturyukettei = document.querySelector(".huturyukettei");
+      const nagasimankan = document.querySelector(".nagasimankan");
       const tenpaiM = document.querySelector(".tenpaiM");
       const tenpaiU = document.querySelector(".tenpaiU");
       const tenpaiS = document.querySelector(".tenpaiS");
@@ -1921,6 +1947,10 @@
       const hensyu = document.querySelector(".hensyu");
       const hensyuG = document.querySelector(".hensyuG");
       const hensyuK = document.querySelector(".hensyuK");
+      const uehen = document.querySelector(".uehen");
+      const migihen = document.querySelector(".migihen");
+      const hidarihen = document.querySelector(".hidarihen");
+      const sitahen = document.querySelector(".sitahen");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -3003,10 +3033,21 @@
       hensyu.addEventListener("click", function () {
         hensyuG.classList.remove("off");
         hensyuK.classList.remove("off");
+        uehen.value = tenU;
+        migihen.value = tenM;
+        hidarihen.value = tenH;
+        hidarihen.value = tenS;
       });
       hensyuK.addEventListener("click", function () {
         hensyuG.classList.add("off");
         hensyuK.classList.add("off");
+      });
+      hensyukettei.addEvenListener("click", function () {
+        tenU = uehen.value;
+        tenM = migihen.value;
+        tenH = hidarihen.value;
+        tenH = hidarihen.value;
+        updata();
       });
       ryukyoku.addEventListener("click", function () {
         ryukyokuG.classList.remove("off");
@@ -3211,6 +3252,9 @@
       tenpaiH.addEventListener("click", () => {
         tenpaiH.classList.toggle("on");
         tenpaiHS.classList.toggle("on");
+      });
+      nagasimankan.addEventListener("click", () => {
+        
       });
     </script>
   </body>
