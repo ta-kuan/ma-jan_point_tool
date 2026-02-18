@@ -988,6 +988,7 @@
         top: 50%;
         transform: translate(-50%,-50%);
         font-size: 5vw;
+        z-index: 2;
       }
       .setteiK,
       .hensyuK {
@@ -998,6 +999,7 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
+        z-index: 1;
       }
       .syokitenL {
         position: absolute;
@@ -1737,9 +1739,9 @@
     <button class="hensyu">
       <img src="hensyu.png" alt="" class="hensyuI"></img>
     </button>
-    <div class="hensyuG">
-    </div>
     <div class="hensyuK">
+    </div>
+    <div class="hensyuG">
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
