@@ -976,7 +976,8 @@
         top: 50%;
         transform: translate(-50%,-50%);
       }
-      .setteiG {
+      .setteiG,
+      .hensyuG {
         position: absolute;
         width: 100vw;
         height: 70vh;
@@ -988,7 +989,8 @@
         transform: translate(-50%,-50%);
         font-size: 5vw;
       }
-      .setteiK {
+      .setteiK,
+      .hensyuK {
         position: absolute;
         width: 100vw;
         height: 100vh;
@@ -1431,8 +1433,8 @@
       }
       .hensyuI {
         position: absolute;
-        width: 8vw;
-        height: 8vw;
+        width: 7vw;
+        height: 7vw;
         left: 50%;
         right: 50%;
         transform: translate(-50%,-50%);
@@ -2971,6 +2973,14 @@
       setteiK.addEventListener("click", function () {
         setteiG.classList.add("off");
         setteiK.classList.add("off");
+      });
+      hensyu.addEventListener("click", function () {
+        hensyuG.classList.remove("off");
+        hensyuK.classList.remove("off");
+      });
+      hensyuK.addEventListener("click", function () {
+        hensyuG.classList.add("off");
+        hensyuK.classList.add("off");
       });
       ryukyoku.addEventListener("click", function () {
         ryukyokuG.classList.remove("off");
