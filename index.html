@@ -1489,10 +1489,10 @@
       }
       .hensyukettei {
         position: absolute;
-        right: 4vw;
-        bottom: 4vw;
-        width: 17vw;
-        height: 10vw;
+        right: 5vw;
+        bottom: 5vw;
+        width: 20vw;
+        height: 13vw;
         border-radius: 3vw;
         border: none;
         background-color: rgb(255,120,120);
@@ -1505,6 +1505,7 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
+        font-size: 10vw;
       }
       .off {
         display: none;
@@ -3077,7 +3078,7 @@
         hensyuG.classList.add("off");
         hensyuK.classList.add("off");
       });
-      hensyukettei.addEvenListener("click", function () {
+      hensyukettei.addEventListener("click", function () {
         tenM = migihen.value;
         tenH = hidarihen.value;
         tenH = hidarihen.value;
