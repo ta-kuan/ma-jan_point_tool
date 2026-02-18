@@ -1487,6 +1487,25 @@
       .sitahen {
         transform: translate(-50%,-350%);
       }
+      .hensyukettei {
+        position: absolute;
+        right: 4vw;
+        bottom: 4vw;
+        width: 17vw;
+        height: 10vw;
+        border-radius: 3vw;
+        border: none;
+        background-color: rgb(255,120,120);
+      }
+      .hensyukettei::after {
+        content: "確定";
+        color: rgb(0,0,0);
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
       .off {
         display: none;
       }
@@ -1793,6 +1812,7 @@
       <input class="migihen" name="hensyut" type="number" step="1000">
       <input class="hidarihen" name="hensyut" type="number" step="1000">
       <input class="sitahen" name="hensyut" type="number" step="1000">
+      <button class="hensyukettei"></button>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -1949,6 +1969,7 @@
       const hensyu = document.querySelector(".hensyu");
       const hensyuG = document.querySelector(".hensyuG");
       const hensyuK = document.querySelector(".hensyuK");
+      const hensyukettei = document.querySelector(".hensyukettei");
       const uehen = document.querySelector(".uehen");
       const migihen = document.querySelector(".migihen");
       const hidarihen = document.querySelector(".hidarihen");
@@ -3039,10 +3060,16 @@
       hensyu.addEventListener("click", function () {
         hensyuG.classList.remove("off");
         hensyuK.classList.remove("off");
-        migihen.value = tenM;
-        hidarihen.value = tenH;
-        sitahen.value = tenS;
-        if (yonsan === 4) {
+        if (yonsan === 3) {
+          uehen.classList.add("off");
+          migihen.value = tenM;
+          hidarihen.value = tenH;
+          sitahen.value = tenS;
+        } else {
+          uehen.classList.remove("off");
+          migihen.value = tenM;
+          hidarihen.value = tenH;
+          sitahen.value = tenS;
           uehen.value = tenU;
         }
       });
@@ -3051,10 +3078,12 @@
         hensyuK.classList.add("off");
       });
       hensyukettei.addEvenListener("click", function () {
-        tenU = uehen.value;
         tenM = migihen.value;
         tenH = hidarihen.value;
         tenH = hidarihen.value;
+        if (yonsan === 4) {
+          tenU = uehen.value;
+        }
         updata();
       });
       ryukyoku.addEventListener("click", function () {
