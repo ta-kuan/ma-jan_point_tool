@@ -1747,7 +1747,8 @@
           <option value="符">符</option>
         </select>
       </div>
-      <div id="tensuH" class="tensuH">点数：</div>
+      <span for="tensuH">点数：</span>
+      <div id="tensuH" class="tensuH"></div>
       <button class="kettei"></button>
       <div class="tokutenKetteiK"></div>
       <div class="tokutenKettei">
@@ -2967,7 +2968,7 @@
           }
         }
         pay = pay.map(v => -v);
-        tensuH.textContent = "点数：" + map;
+        tensuH.textContent = map;
         huLk.textContent = "符：" + husu + "符";
       }
       select1.addEventListener("change", () => {
