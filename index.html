@@ -1681,7 +1681,6 @@
         <option value="16">四倍役満</option>
         <option value="17">五倍役満</option>
         <option value="18">六倍役満</option>
-        <option value="20">流し満貫</option>
         <option value="21">チョンボ</option>
       </select>
       <div class="keisan">
@@ -2026,6 +2025,7 @@
       const migihen = document.querySelector(".migihen");
       const hidarihen = document.querySelector(".hidarihen");
       const sitahen = document.querySelector(".sitahen");
+      const hukusu = document.querySelector(".hukusu");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2844,12 +2844,7 @@
           syukyoku();
         }
         oya = 0;
-        if (select1.value === 20) {
-          kakutei.classList.add("off");
-          kakuteinagasi.classList.remove("off");
-          kakuteityonbo.classList.add("off");
-          hukusu.classList.remove("off");
-        } else if (select1.value === 21) {
+        if (select1.value === 21) {
           kakutei.classList.add("off");
           kakuteinagasi.classList.add("off");
           kakuteityonbo.classList.remove("off");
@@ -3110,7 +3105,7 @@
           select1.innerHTML = "";
           let optionhs = [];
           if (hora === 1) {
-            optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満","流し満貫","チョンボ"];
+            optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満","チョンボ"];
           } else if (hora === 0) {
             optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満"];
           }
