@@ -1473,20 +1473,19 @@
         height: 5vw;
         left: 50%;
         top: 50%;
-        color: (0,0,0);
         font-size: 3.5vw;
       }
       .uehen {
-        transform: translate(-50%,50%);
+        transform: translate(-50%,350%);
       }
       .migihen {
-        transform: translate(50%,-50%);
+        transform: translate(20%,-50%);
       }
       .hidarihen {
-        transform: translate(-150%,-50%);
+        transform: translate(-120%,-50%);
       }
       .sitahen {
-        transform: translate(-50%,-150%);
+        transform: translate(-50%,-350%);
       }
       .off {
         display: none;
@@ -2003,6 +2002,7 @@
       tenpaiU.classList.add("off");
       tenpaiS.classList.add("off");
       tenpaiH.classList.add("off");
+      hnesyu.classList.add("off");
       hensyuG.classList.add("off");
       hensyuK.classList.add("off");
       loaddata();
@@ -2245,7 +2245,12 @@
         hidariten.textContent = tenH;
       }
       function kesuB() {
+        hensyu.classList.add("off");
+        hensyuG.classList.add("off");
+        hensyuK.classList.add("off");
         ryukyoku.classList.add("off");
+        ryukyokuG.classList.add("off");
+        ryukyokuK.classList.add("off");
         riM.classList.add("off");
         hoM.classList.add("off");
         riU.classList.add("off");
@@ -2365,9 +2370,6 @@
         sai2.classList.add("off");
         centermu.classList.add("off");
         centerms.classList.add("off");
-        ryukyoku.classList.add("off");
-        ryukyokuG.classList.add("off");
-        ryukyokuK.classList.add("off");
         tokuten.classList.add("off");
         tokutentop.classList.add("off");
         saiarea.classList.add("notclick");
@@ -2394,6 +2396,7 @@
         centermu.classList.remove("off");
         centerms.classList.remove("off");
         sai2.classList.add("off");
+        hensyu.classList.remove("off");
         ryukyoku.classList.remove("off");
         if (tenM >= 1000) {
           riM.classList.remove("off");
@@ -3036,10 +3039,12 @@
       hensyu.addEventListener("click", function () {
         hensyuG.classList.remove("off");
         hensyuK.classList.remove("off");
-        uehen.value = tenU;
         migihen.value = tenM;
         hidarihen.value = tenH;
         hidarihen.value = tenS;
+        if (yonsan === 4) {
+          uehen.value = tenU;
+        }
       });
       hensyuK.addEventListener("click", function () {
         hensyuG.classList.add("off");
@@ -3125,9 +3130,6 @@
             riboH.classList.add("off");
             riboS.classList.add("off");
             honba += 1;
-            ryukyoku.classList.add("off");
-            ryukyokuG.classList.add("off");
-            ryukyokuK.classList.add("off");
           }
         }
       });
@@ -3167,9 +3169,6 @@
         riboU.classList.add("off");
         riboH.classList.add("off");
         riboS.classList.add("off");
-        ryukyoku.classList.add("off");
-        ryukyokuG.classList.add("off");
-        ryukyokuK.classList.add("off");
         const tenpaiTargets = [
           { on: tenpaiM.classList.contains("on"), key: "M" },
           ...(yonsan === 4 ? [{ on: tenpaiU.classList.contains("on"), key: "U" }] : []),
