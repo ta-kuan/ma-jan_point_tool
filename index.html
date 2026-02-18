@@ -847,6 +847,29 @@
         top: 50%;
         transform: translate(-50%,-50%);
       }
+      .kakutei,
+      .kakuteinagasi,
+      .kakuteityonbo {
+        position: absolute;
+        right: 3vw;
+        bottom: 3vw;
+        width: 17vw;
+        height: 10vw;
+        border-radius: 3vw;
+        border: none;
+        background-color: rgb(255,120,120);
+      }
+      .kakutei::after,
+      .kakuteinagasi::after,
+      .kakuteityonbo::after {
+        content: "確定";
+        color: rgb(0,0,0);
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
       .m1 {
         position: absolute;
         left: 3vw;
@@ -1796,6 +1819,8 @@
         <button class="kyanseru"></button>
         <button class="hukusu"></button>
         <button class="kakutei"></button>
+        <button class="kakuteinagasi"></button>
+        <button class="kakuteityonbo"></button>
       </div>
     </div>
     <button class="settei">
@@ -1960,6 +1985,8 @@
       const tokutenKetteiK = document.querySelector(".tokutenKetteiK");
       const kyanseru = document.querySelector(".kyanseru");
       const kakutei = document.querySelector(".kakutei");
+      const kakuteinagasi = document.querySelector(".kakuteinagasi");
+      const kakuteityonbo = document.querySelector(".kakuteityonbo");
       const naiyou1 = document.querySelector(".naiyou1");
       const naiyou2 = document.querySelector(".naiyou2");
       const hozyu = document.querySelector(".hozyu");
@@ -2836,6 +2863,19 @@
           syukyoku();
         }
         oya = 0;
+        if (select1.value === 20) {
+          kakutei.classList.add("off");
+          kakuteinagasi.classList.remove("off");
+          kakuteityonbo.classList.add("off");
+        } else if (select1.value === 21) {
+          kakutei.classList.add("off");
+          kakuteinagasi.classList.add("off");
+          kakuteityonbo.classList.remove("off");
+        } else {
+          kakutei.classList.remove("off");
+          kakuteinagasi.classList.add("off");
+          kakuteityonbo.classList.add("off");
+        }
       });
       function sentaku() {
         select2.innerHTML = "";
