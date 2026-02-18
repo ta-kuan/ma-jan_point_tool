@@ -3019,19 +3019,6 @@
       }
       select1.addEventListener("change", () => {
         sentaku();
-        select1.innerHTML = "";
-        let optionhs = [];
-        if (hora === 1) {
-          optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満","流し満貫","チョンボ"];
-        } else if (hora === 0) {
-          optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満"];
-        }
-        optionhs.forEach(value => {
-          const optionh = document.createElement("option");
-          optionh.value = value;
-          optionh.textContent = value;
-          select1.appendChild(optionh);
-        });
         keisanT();
       });
       select2.addEventListener("change", () => {
@@ -3096,6 +3083,19 @@
           } else {
             huro.classList.add("off");
           }
+          select1.innerHTML = "";
+          let optionhs = [];
+          if (hora === 1) {
+            optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満","流し満貫","チョンボ"];
+          } else if (hora === 0) {
+            optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満"];
+          }
+          optionhs.forEach(value => {
+            const optionh = document.createElement("option");
+            optionh.value = value;
+            optionh.textContent = value;
+            select1.appendChild(optionh);
+          });
           sentaku();
           keisanT();
         });
