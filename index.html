@@ -2639,7 +2639,7 @@
             }
           }
         }
-        if (select1.value === 21) {
+        if (select1.value === "21") {
           kakutei.classList.add("off");
           kakuteinagasi.classList.add("off");
           kakuteityonbo.classList.remove("off");
@@ -2833,7 +2833,7 @@
         riboH.classList.add("off");
         riboS.classList.add("off");
         rihon = 0;
-        if (!select1.value === 21) {
+        if (select1.value !== "21") {
           if (oya === 1) {
             honba += 1;
           } else {
@@ -3163,11 +3163,11 @@
         hensyuK.classList.add("off");
       });
       hensyukettei.addEventListener("click", function () {
-        tenM = migihen.value;
-        tenH = hidarihen.value;
-        tenS = sitahen.value;
+        tenM = Number(migihen.value);
+        tenH = Number(hidarihen.value);
+        tenS = Number(sitahen.value);
         if (yonsan === 4) {
-          tenU = uehen.value;
+          Number(tenU = uehen.value);
         }
         update();
         hensyuG.classList.add("off");
