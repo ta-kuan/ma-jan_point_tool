@@ -828,9 +828,7 @@
         top: 50%;
         transform: translate(-50%,-50%);
       }
-      .kakutei,
-      .kakuteinagasi,
-      .kakuteityonbo {
+      .kakutei {
         position: absolute;
         right: 3vw;
         bottom: 3vw;
@@ -840,9 +838,7 @@
         border: none;
         background-color: rgb(255,120,120);
       }
-      .kakutei::after,
-      .kakuteinagasi::after,
-      .kakuteityonbo::after {
+      .kakutei::after {
         content: "確定";
         color: rgb(0,0,0);
         white-space: nowrap;
@@ -1799,8 +1795,6 @@
         <button class="kyanseru"></button>
         <button class="hukusu"></button>
         <button class="kakutei"></button>
-        <button class="kakuteinagasi"></button>
-        <button class="kakuteityonbo"></button>
       </div>
     </div>
     <button class="settei">
@@ -1966,8 +1960,6 @@
       const tokutenKetteiK = document.querySelector(".tokutenKetteiK");
       const kyanseru = document.querySelector(".kyanseru");
       const kakutei = document.querySelector(".kakutei");
-      const kakuteinagasi = document.querySelector(".kakuteinagasi");
-      const kakuteityonbo = document.querySelector(".kakuteityonbo");
       const naiyou1 = document.querySelector(".naiyou1");
       const naiyou2 = document.querySelector(".naiyou2");
       const hozyu = document.querySelector(".hozyu");
@@ -2640,15 +2632,10 @@
             }
           }
         }
+        kakutei.classList.remove("off");
         if (select1.value === "21") {
-          kakutei.classList.add("off");
-          kakuteinagasi.classList.add("off");
-          kakuteityonbo.classList.remove("off");
           hukusu.classList.add("off");
         } else {
-          kakutei.classList.remove("off");
-          kakuteinagasi.classList.add("off");
-          kakuteityonbo.classList.add("off");
           hukusu.classList.remove("off");
         }
       });
