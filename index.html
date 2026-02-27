@@ -2822,6 +2822,7 @@
         riboH.classList.add("off");
         riboS.classList.add("off");
         rihon = 0;
+        rikyo = 0;
         if (select1.value !== "21") {
           if (oya === 1) {
             honba += 1;
@@ -3235,7 +3236,7 @@
             riboH.classList.add("off");
             riboS.classList.add("off");
             honba += 1;
-            rikyo = rihon;
+            rikyo += rihon;
             rihon = 0;
           }
         }
@@ -3320,7 +3321,7 @@
         }
         if ((migi.classList.contains("ton") && tenpaiM.classList.contains("on")) || (ue.classList.contains("ton") && tenpaiU.classList.contains("on")) || (hidari.classList.contains("ton") && tenpaiH.classList.contains("on")) || (sita.classList.contains("ton") && tenpaiS.classList.contains("on"))) {
           honba += 1;
-          rikyo = rihon;
+          rikyo += rihon;
           rihon = 0;
         } else {
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
@@ -3332,7 +3333,7 @@
               } else {
                 honba = 0;
                 kyoku += 1;
-                rikyo = rihon;
+                rikyo += rihon;
                 rihon = 0;
                 nextH(migi);
                 nextH(ue);
@@ -3342,7 +3343,7 @@
             } else {
               honba = 0;
               kyoku += 1;
-              rikyo = rihon;
+              rikyo += rihon;
               rihon = 0;
               nextH(migi);
               nextH(ue);
