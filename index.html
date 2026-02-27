@@ -1953,6 +1953,7 @@
       let kyoku = 1;
       let nansyu = 0;
       let rihon = 0;
+      let rikyo = 0;
       let honba = 0;
       let honbaten = 0;
       const kettei = document.querySelector(".kettei");
@@ -2661,7 +2662,7 @@
                 tenU -= pay[0] + honbaten;
                 break;
             }
-            tenM += map + (rihon * 1000) + honbaten;
+            tenM += map + ((rihon + rikyo) * 1000) + honbaten;
           } else if (horaWho === 2) {
             switch (hozyuWho) {
               case 1:
@@ -2674,7 +2675,7 @@
                 tenH -= pay[0] + honbaten;
                 break;
             }
-            tenU += map + (rihon * 1000) + honbaten;
+            tenU += map + ((rihon + rikyo) * 1000) + honbaten;
           } else if (horaWho === 3) {
             switch (hozyuWho) {
               case 1:
@@ -2687,7 +2688,7 @@
                 tenM -= pay[0] + honbaten;
                 break;
             }
-            tenS += map + (rihon * 1000) + honbaten;
+            tenS += map + ((rihon + rikyo) * 1000) + honbaten;
           } else if (horaWho === 4) {
             switch (hozyuWho) {
               case 1:
@@ -2700,7 +2701,7 @@
                 tenS -= pay[0] + honbaten;
                 break;
             }
-            tenH += map + (rihon * 1000) + honbaten;
+            tenH += map + ((rihon + rikyo) * 1000) + honbaten;
           }
         } else if (hora === 1) {
           if (oya === 1) {
@@ -2709,25 +2710,25 @@
               tenU -= pay[0] + (honbaten / (yonsan - 1));
               tenS -= pay[0] + (honbaten / (yonsan - 1));
               tenH -= pay[0] + (honbaten / (yonsan - 1));
-              tenM += map + (rihon * 1000) + honbaten;
+              tenM += map + ((rihon + rikyo) * 1000) + honbaten;
               break;
             case 2:
               tenM -= pay[0] + (honbaten / (yonsan - 1));
               tenS -= pay[0] + (honbaten / (yonsan - 1));
               tenH -= pay[0] + (honbaten / (yonsan - 1));
-              tenU += map + (rihon * 1000) + honbaten;
+              tenU += map + ((rihon + rikyo) * 1000) + honbaten;
               break;
             case 3:
               tenM -= pay[0] + (honbaten / (yonsan - 1));
               tenH -= pay[0] + (honbaten / (yonsan - 1));
               tenU -= pay[0] + (honbaten / (yonsan - 1));
-              tenS += map + (rihon * 1000) + honbaten;
+              tenS += map + ((rihon + rikyo) * 1000) + honbaten;
               break;
             case 4:
               tenM -= pay[0] + (honbaten / (yonsan - 1));
               tenS -= pay[0] + (honbaten / (yonsan - 1));
               tenU -= pay[0] + (honbaten / (yonsan - 1));
-              tenH += map + (rihon * 1000) + honbaten;
+              tenH += map + ((rihon + rikyo) * 1000) + honbaten;
               break;
             }
           } else if (oya === 0) {
@@ -2736,68 +2737,68 @@
                 tenU -= pay[0] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
-                tenM += map + (rihon * 1000) + honbaten;
+                tenM += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[0] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
-                tenM += map + (rihon * 1000) + honbaten;
+                tenM += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[0] + (honbaten / (yonsan - 1));
-                tenM += map + (rihon * 1000) + honbaten;
+                tenM += map + ((rihon + rikyo) * 1000) + honbaten;
               }
             } else if (horaWho === 2) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
-                tenU += map + (rihon * 1000) + honbaten;
+                tenU += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[0] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
-                tenU += map + (rihon * 1000) + honbaten;
+                tenU += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[0] + (honbaten / (yonsan - 1));
-                tenU += map + (rihon * 1000) + honbaten;
+                tenU += map + ((rihon + rikyo) * 1000) + honbaten;
               }
             } else if (horaWho === 3) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
-                tenS += map + (rihon * 1000) + honbaten;
+                tenS += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[0] + (honbaten / (yonsan - 1));
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
-                tenS += map + (rihon * 1000) + honbaten;
+                tenS += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenH -= pay[1] + (honbaten / (yonsan - 1));
                 tenU -= pay[0] + (honbaten / (yonsan - 1));
-                tenS += map + (rihon * 1000) + honbaten;
+                tenS += map + ((rihon + rikyo) * 1000) + honbaten;
               }
             } else if (horaWho === 4) {
               if (migi.classList.contains("ton")) {
                 tenM -= pay[0] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
-                tenH += map + (rihon * 1000) + honbaten;
+                tenH += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[0] + (honbaten / (yonsan - 1));
                 tenU -= pay[1] + (honbaten / (yonsan - 1));
-                tenH += map + (rihon * 1000) + honbaten;
+                tenH += map + ((rihon + rikyo) * 1000) + honbaten;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
                 tenS -= pay[1] + (honbaten / (yonsan - 1));
                 tenU -= pay[0] + (honbaten / (yonsan - 1));
-                tenH += map + (rihon * 1000) + honbaten;
+                tenH += map + ((rihon + rikyo) * 1000) + honbaten;
               }
             }
           }
@@ -3234,6 +3235,8 @@
             riboH.classList.add("off");
             riboS.classList.add("off");
             honba += 1;
+            rikyo = rihon;
+            rihon = 0;
           }
         }
       });
@@ -3317,6 +3320,8 @@
         }
         if ((migi.classList.contains("ton") && tenpaiM.classList.contains("on")) || (ue.classList.contains("ton") && tenpaiU.classList.contains("on")) || (hidari.classList.contains("ton") && tenpaiH.classList.contains("on")) || (sita.classList.contains("ton") && tenpaiS.classList.contains("on"))) {
           honba += 1;
+          rikyo = rihon;
+          rihon = 0;
         } else {
           if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
             syukyoku();
@@ -3327,6 +3332,8 @@
               } else {
                 honba = 0;
                 kyoku += 1;
+                rikyo = rihon;
+                rihon = 0;
                 nextH(migi);
                 nextH(ue);
                 nextH(sita);
@@ -3335,6 +3342,8 @@
             } else {
               honba = 0;
               kyoku += 1;
+              rikyo = rihon;
+              rihon = 0;
               nextH(migi);
               nextH(ue);
               nextH(sita);
