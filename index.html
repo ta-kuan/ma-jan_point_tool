@@ -2610,7 +2610,7 @@
         }
       });
       kettei.addEventListener("click", function () {
-        if (!Number.isNaN(map)) {
+        if (!Number.isNaN(map) && han !== 0 && ((tokutentopH.classList.contains("toggleT") && han < 5) ? (tokusyu.value !== "なし" && select19.value !== 0 && select20.value !== 0) : select2.value !== "符")) {
           honbaten = honba * ((yonsan - 1) * 100);
           if (hora === 1 || !(hozyuWho === 0)) {
             tokutenKettei.classList.remove("off");
@@ -2879,7 +2879,7 @@
         }
         const defaultOption = document.createElement("option");
         defaultOption.textContent = "符";
-        defaultOption.value = "";
+        defaultOption.value = "符";
         select2.appendChild(defaultOption);
         options.forEach(value => {
           const option = document.createElement("option");
