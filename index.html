@@ -2069,8 +2069,8 @@
       const kyotakuRhen = document.getElementById("kyotakuRhen");
       const hukusu = document.querySelector(".hukusu");
       const winds = ["東", "南", "西", "北"];
-      const windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
-      const kyokuInWind = ((kyoku - 1) % yonsan) + 1;
+      let windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
+      let kyokuInWind = ((kyoku - 1) % yonsan) + 1;
       
       number_player.classList.remove("off");
       center.classList.add("off");
