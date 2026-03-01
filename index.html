@@ -3171,10 +3171,8 @@
       }
       select1.addEventListener("change", () => {
         sentaku();
-        if (select10.value === "なし") {
+        if (han < 5) {
           notkotei.classList.remove("off");
-        } else {
-          notkotei.classList.add("off");
         }
         keisanT();
       });
