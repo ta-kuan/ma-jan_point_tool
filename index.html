@@ -1605,6 +1605,37 @@
         font-size: 6vw;
         font-family: sans-serif;
       }
+      .kyotakuH {
+        position: absolute;
+        width: 2.5vw;
+        height: 10vw;
+        border-radius: 1vw;
+        background-color: rgb(255,255,255);
+      }
+      .kyotakuH::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 0.5vw;
+        height: 0.5vw;
+        border-radius: 50%;
+        background-color: rgb(0,0,0);
+        box-shadow:
+          0.3vw 0vw rgb(0,0,0),
+          0.3vw 0.5vw rgb(0,0,0),
+          0.3vw 1vw rgb(0,0,0),
+          0 0.5vw rgb(0,0,0),
+          0 1vw rgb(0,0,0);
+      }
+      .kyotakuHm {
+        position: absolute;
+        left: 4vw;
+        top: 0.5vw;
+        font-size: 6vw;
+        font-family: sans-serif;
+      }
       .off {
         display: none;
       }
@@ -2103,6 +2134,7 @@
       let kyokuInWind = ((kyoku - 1) % yonsan) + 1;
       const kyotaku = document.querySelector(".kyotaku");
       const kyotakuRm = document.querySelector(".kyotakuRm");
+      const kyotakuHm = document.querySelector(".kyotakuHm");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2574,6 +2606,7 @@
         kyokuInWind = ((kyoku - 1) % yonsan) + 1;
         centermu.textContent = winds[windIndex] + kyokuInWind + "局";
         centerms.textContent = honba + "本場";
+        kyotakuHm.textContent = "×" + honba;
       });
       riM.addEventListener("click", function () {
         riM.classList.add("off");
@@ -2898,6 +2931,7 @@
         if (select1.value !== "21") {
           if (oya === 1) {
             honba += 1;
+            kyotakuHm.textContent = "×" + honba;
           } else {
             if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
               syukyoku();
@@ -2906,6 +2940,7 @@
                 syukyoku();
               } else {
                 honba = 0;
+                kyotakuHm.textContent = "×" + honba;
                 kyoku += 1;
                 nextH(migi);
                 nextH(ue);
@@ -3234,6 +3269,7 @@
         centermu.textContent = winds[windIndex] + kyokuInWind + "局";
         honba = Number(honbahen.value);
         centerms.textContent = honba + "本場";
+        kyotakuHm.textContent = "×" + honba;
         rikyo = Number(kyotakuRhen.value);
         kyotakuRm.textContent = "×" + rikyo;
         if (yonsan === 4) {
@@ -3316,6 +3352,7 @@
             riboH.classList.add("off");
             riboS.classList.add("off");
             honba += 1;
+            kyotakuHm.textContent = "×" + honba;
             rikyo += rihon;
             kyotakuRm.textContent = "×" + rikyo;
             rihon = 0;
@@ -3402,6 +3439,7 @@
         }
         if ((migi.classList.contains("ton") && tenpaiM.classList.contains("on")) || (ue.classList.contains("ton") && tenpaiU.classList.contains("on")) || (hidari.classList.contains("ton") && tenpaiH.classList.contains("on")) || (sita.classList.contains("ton") && tenpaiS.classList.contains("on"))) {
           honba += 1;
+          kyotakuHm.textContent = "×" + honba;
           rikyo += rihon;
           kyotakuRm.textContent = "×" + rikyo;
           rihon = 0;
@@ -3414,6 +3452,7 @@
                 syukyoku();
               } else {
                 honba = 0;
+                kyotakuHm.textContent = "×" + honba;
                 kyoku += 1;
                 rikyo += rihon;
                 kyotakuRm.textContent = "×" + rikyo;
@@ -3425,6 +3464,7 @@
               }
             } else {
               honba = 0;
+              kyotakuHm.textContent = "×" + honba;
               kyoku += 1;
               rikyo += rihon;
               kyotakuRm.textContent = "×" + rikyo;
