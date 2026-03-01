@@ -895,7 +895,7 @@
       }
       .tokutentopH {
       　position: absolute;
-        width: 50vw;
+        width: calc(100vw/3);
         height: 10vw;
         border-radius: 5vw 5vw 0 0;
         background-color: rgb(200,200,200);
@@ -914,7 +914,7 @@
       }
       .tokutentopM {
       　position: absolute;
-        width: 50vw;
+        width: calc(100vw/3);
         height: 10vw;
         border-radius: 5vw 5vw 0 0;
         background-color: rgb(200,200,200);
@@ -923,6 +923,25 @@
         transform: translate(calc(-50% + 50vw),calc(-50% + -50vw));
       }
       .tokutentopM::after {
+        content: "簡易計算";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(90,90,90);
+        font-size: 7vw;
+      }
+      .tokutentopC {
+      　position: absolute;
+        width: calc(100vw/3);
+        height: 10vw;
+        border-radius: 5vw 5vw 0 0;
+        background-color: rgb(200,200,200);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,calc(-50% + -40vw));
+      }
+      .tokutentopC::after {
         content: "入力";
         position: absolute;
         left: 50%;
@@ -1717,6 +1736,7 @@
       <div class="kakusi"></div>
       <div class="tokutentopH"></div>
       <div class="tokutentopM"></div>
+      <div class="tokutentopC"></div>
     </div>
     <div class="tokuten">
       <form class="tumoron">
@@ -2016,6 +2036,7 @@
       let tokutenclasses = ["sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
       const tokutentopM = document.querySelector(".tokutentopM");
+      const tokutentopC = document.querySelector(".tokutentopC");
       const keisan = document.querySelector(".keisan");
       const hanhu = document.querySelector(".hanhu");
       const settei = document.querySelector(".settei");
@@ -2167,6 +2188,7 @@
       tokutentop.classList.add("off");
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
+      tokutentopC.classList.remove("toggleT");
       keisan.classList.remove("toggleB");
       hanhu.classList.add("toggleB");
       setteiG.classList.add("off");
@@ -2684,9 +2706,10 @@
         keisanT();
       });
       tokutentopH.addEventListener("click", function () {
-        if (tokutentopM.classList.contains("toggleT")) {
+        if (tokutentopM.classList.contains("toggleT") || tokutentopC.classList.contains("toggleT")) {
           tokutentopH.classList.toggle("toggleT");
           tokutentopM.classList.toggle("toggleT");
+          tokutentopC.classList.toggle("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
           if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
@@ -2698,9 +2721,25 @@
         }
       });
       tokutentopM.addEventListener("click", function () {
-        if (tokutentopH.classList.contains("toggleT")) {
+        if (tokutentopH.classList.contains("toggleT") || tokutentopC.classList.contains("toggleT")) {
           tokutentopH.classList.toggle("toggleT");
           tokutentopM.classList.toggle("toggleT");
+          tokutentopC.classList.toggle("toggleT");
+          keisan.classList.toggle("toggleB");
+          hanhu.classList.toggle("toggleB");
+          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
+            huro.classList.remove("off");
+          } else {
+            huro.classList.add("off");
+          }
+          keisanT();
+        }
+      });
+      tokutentopC.addEventListener("click", function () {
+        if (tokutentopH.classList.contains("toggleT") || tokutentopM.classList.contains("toggleT");) {
+          tokutentopH.classList.toggle("toggleT");
+          tokutentopM.classList.toggle("toggleT");
+          tokutentopC.classList.toggle("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
           if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
