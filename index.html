@@ -1589,10 +1589,12 @@
       }
       .kyotakuR::after {
         content: "";
-        display: grid;
-        place-items: center;
-        width: 1vw;
-        height: 1vw;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: tarnslate(-50%,-50%);
+        width: 1.5vw;
+        height: 1.5vw;
         border-radius: 50%;
         background-color: rgb(255,0,0);
       }
@@ -2144,6 +2146,7 @@
       hensyu.classList.add("off");
       hensyuG.classList.add("off");
       hensyuK.classList.add("off");
+      kyotaku.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
@@ -2398,6 +2401,7 @@
         hoH.classList.add("off");
         riS.classList.add("off");
         hoS.classList.add("off");
+        kyotaku.classList.add("off");
       }
       function nextH(el) {
         if (yonsan === 4) {
@@ -2537,6 +2541,7 @@
         sai2.classList.add("off");
         hensyu.classList.remove("off");
         ryukyoku.classList.remove("off");
+        kyotaku.classList.remove("off");
         if (tenM >= 1000) {
           riM.classList.remove("off");
         }
