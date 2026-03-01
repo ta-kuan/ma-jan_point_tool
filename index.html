@@ -3171,6 +3171,11 @@
       }
       select1.addEventListener("change", () => {
         sentaku();
+        if (select10.value === "なし") {
+          notkotei.classList.remove("off");
+        } else {
+          notkotei.classList.add("off");
+        }
         keisanT();
       });
       select2.addEventListener("change", () => {
