@@ -948,9 +948,6 @@
       .toggleT::after {
         color: rgb(0,0,0);
       }
-      .sitaT {
-        transform: translate(-50%,-50%); 
-      }
       .settei {
         position: absolute;
         background-color: rgb(210,210,210);
@@ -2026,7 +2023,6 @@
       const sitazyun = document.querySelector(".sitazyun");
       let zyunclasses = ["itii","nii","sani","yoni"];
       const tokutentop = document.querySelector(".tokutentop");
-      let tokutenclasses = ["sitaT","off"];
       const tokutentopH = document.querySelector(".tokutentopH");
       const tokutentopM = document.querySelector(".tokutentopM");
       const tokutentopC = document.querySelector(".tokutentopC");
@@ -2656,10 +2652,8 @@
       });
       hoM.addEventListener("click", function () {
         kesuB();
-        tokuten.classList.remove(...tokutenclasses);
+        tokuten.classList.remove("off");
         tokutentop.classList.remove("off");
-        tokuten.classList.add("sitaT");
-        tokutentop.classList.add("sitaT");
         if (migi.classList.contains("ton")) {
           oya = 1;
         }
@@ -2668,10 +2662,8 @@
       });
       hoU.addEventListener("click", function () {
         kesuB();
-        tokuten.classList.remove(...tokutenclasses);
+        tokuten.classList.remove("off");
         tokutentop.classList.remove("off");
-        tokuten.classList.add("sitaT");
-        tokutentop.classList.add("sitaT");
         if (ue.classList.contains("ton")) {
           oya = 1;
         }
@@ -2680,10 +2672,8 @@
       });
       hoS.addEventListener("click", function () {
         kesuB();
-        tokuten.classList.remove(...tokutenclasses);
+        tokuten.classList.remove("off");
         tokutentop.classList.remove("off");
-        tokuten.classList.add("sitaT");
-        tokutentop.classList.add("sitaT");
         if (sita.classList.contains("ton")) {
           oya = 1;
         }
@@ -2692,10 +2682,8 @@
       });
       hoH.addEventListener("click", function () {
         kesuB();
-        tokuten.classList.remove(...tokutenclasses);
+        tokuten.classList.remove("off");
         tokutentop.classList.remove("off");
-        tokuten.classList.add("sitaT");
-        tokutentop.classList.add("sitaT");
         if (hidari.classList.contains("ton")) {
           oya = 1;
         }
