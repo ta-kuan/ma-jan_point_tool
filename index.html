@@ -2696,9 +2696,9 @@
           tokutentopH.classList.add("toggleT");
           tokutentopM.classList.remove("toggleT");
           tokutentopC.classList.remove("toggleT");
-          keisan.classList.add("toggleB");
-          hanhu.classList.remove("toggleB");
-          nyuryoku.classList.remove("toggleB");
+          keisan.classList.remove("toggleB");
+          hanhu.classList.add("toggleB");
+          nyuryoku.classList.add("toggleB");
           tensu.classList.remove("off");
           if (hora === 0) {
             huro.classList.remove("off");
@@ -2713,9 +2713,9 @@
           tokutentopH.classList.remove("toggleT");
           tokutentopM.classList.add("toggleT");
           tokutentopC.classList.remove("toggleT");
-          keisan.classList.remove("toggleB");
-          hanhu.classList.add("toggleB");
-          nyuryoku.classList.remove("toggleB");
+          keisan.classList.add("toggleB");
+          hanhu.classList.remove("toggleB");
+          nyuryoku.classList.add("toggleB");
           tensu.classList.remove("off");
           huro.classList.add("off");
           keisanT();
@@ -2726,17 +2726,17 @@
           tokutentopH.classList.remove("toggleT");
           tokutentopM.classList.remove("toggleT");
           tokutentopC.classList.add("toggleT");
-          keisan.classList.remove("toggleB");
-          hanhu.classList.remove("toggleB");
-          nyuryoku.classList.add("toggleB");
+          keisan.classList.add("toggleB");
+          hanhu.classList.add("toggleB");
+          nyuryoku.classList.remove("toggleB");
           tensu.classList.add("off");
           huro.classList.add("off");
-          keisanT();
+          map = 0;
         }
       });
       kettei.addEventListener("click", function () {
         han = Number(select1.value);
-        if (!Number.isNaN(map) && han !== 0 && (hora === 1 || hozyuWho !== 0) && (han >= 5 || ((tokutentopH.classList.contains("toggleT") && han < 5) ? (tokusyu.value !== "なし" || (select19.value !== "0" && select20.value !== "0")) : select2.value !== "符"))) {
+        if (!Number.isNaN(map) && han !== 0 && map !== 0 && (hora === 1 || hozyuWho !== 0) && (han >= 5 || ((tokutentopH.classList.contains("toggleT") && han < 5) ? (tokusyu.value !== "なし" || (select19.value !== "0" && select20.value !== "0")) : select2.value !== "符"))) {
           honbaten = honba * ((yonsan - 1) * 100);
           if (hora === 1 || !(hozyuWho === 0)) {
             tokutenKettei.classList.remove("off");
