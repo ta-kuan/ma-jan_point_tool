@@ -2068,6 +2068,9 @@
       const honbahen = document.getElementById("honbahen");
       const kyotakuRhen = document.getElementById("kyotakuRhen");
       const hukusu = document.querySelector(".hukusu");
+      const winds = ["東", "南", "西", "北"];
+      const windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
+      const kyokuInWind = ((kyoku - 1) % yonsan) + 1;
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2531,27 +2534,10 @@
             riU.classList.remove("off");
           }
           hoU.classList.remove("off");
-          if (kyoku < 5) {
-            centermu.textContent = "東" + kyoku + "局";
-          } else if  (kyoku < 9) {
-            centermu.textContent = "南" + (kyoku - 4)+ "局";
-          } else if  (kyoku < 13) {
-            centermu.textContent = "西" + (kyoku - 8) + "局";
-          } else if (kyoku < 17) {
-            centermu.textContent = "北" + (kyoku - 12) + "局";
-          }
-        } else if (yonsan === 3) {
-          if (kyoku < 4) {
-            centermu.textContent = "東" + kyoku + "局";
-          } else if  (kyoku < 7) {
-            centermu.textContent = "南" + (kyoku - 3)+ "局";
-          } else if  (kyoku < 10) {
-            centermu.textContent = "西" + (kyoku - 6) + "局";
-          } else if (kyoku < 13) {
-            centermu.textContent = "北" + (kyoku - 9) + "局";
-          }
         }
-        centerms.textContent = honba + "本場";
+        windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
+        kyokuInWind = ((kyoku - 1) % yonsan) + 1;
+        centermu.textContent = winds[windIndex] + kyokuInWind + "局";
       });
       riM.addEventListener("click", function () {
         riM.classList.add("off");
@@ -3206,7 +3192,11 @@
         tenH = Number(hidarihen.value);
         tenS = Number(sitahen.value);
         kyoku = Number(kyokuhen.value);
+        windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
+        kyokuInWind = ((kyoku - 1) % yonsan) + 1;
+        centermu.textContent = winds[windIndex] + kyokuInWind + "局";
         honba = Number(honbahen.value);
+        centerms.textContent = honba + "本場";
         rikyo = Number(kyotakuRhen.value);
         if (yonsan === 4) {
           Number(tenU = uehen.value);
