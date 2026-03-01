@@ -1592,7 +1592,7 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: tarnslate(-50%,-50%);
+        transform: translate(-50%,-50%);
         width: 1.5vw;
         height: 1.5vw;
         border-radius: 50%;
@@ -2094,6 +2094,7 @@
       const winds = ["東", "南", "西", "北"];
       let windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
       let kyokuInWind = ((kyoku - 1) % yonsan) + 1;
+      const kyotaku = document.querySelector(".kyotaku");
       
       number_player.classList.remove("off");
       center.classList.add("off");
