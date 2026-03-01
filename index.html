@@ -2180,7 +2180,7 @@
       tokutentop.classList.add("off");
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
-      tokutentopC.classList.add("toggleT");
+      tokutentopC.classList.remove("toggleT");
       keisan.classList.remove("toggleB");
       hanhu.classList.add("toggleB");
       nyuryoku.classList.add("toggleB");
@@ -2693,14 +2693,14 @@
       });
       tokutentopH.addEventListener("click", function () {
         if (tokutentopM.classList.contains("toggleT") || tokutentopC.classList.contains("toggleT")) {
-          tokutentopH.classList.toggle("toggleT");
-          tokutentopM.classList.toggle("toggleT");
-          tokutentopC.classList.toggle("toggleT");
+          tokutentopH.classList.add("toggleT");
+          tokutentopM.classList.remove("toggleT");
+          tokutentopC.classList.remove("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
           nyuryoku.classList.toggle("toggleB");
           tensu.classList.remove("off");
-          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
+          if (hora === 0) {
             huro.classList.remove("off");
           } else {
             huro.classList.add("off");
@@ -2710,35 +2710,27 @@
       });
       tokutentopM.addEventListener("click", function () {
         if (tokutentopH.classList.contains("toggleT") || tokutentopC.classList.contains("toggleT")) {
-          tokutentopH.classList.toggle("toggleT");
-          tokutentopM.classList.toggle("toggleT");
-          tokutentopC.classList.toggle("toggleT");
+          tokutentopH.classList.remove("toggleT");
+          tokutentopM.classList.add("toggleT");
+          tokutentopC.classList.remove("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
           nyuryoku.classList.toggle("toggleB");
           tensu.classList.remove("off");
-          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
-            huro.classList.remove("off");
-          } else {
-            huro.classList.add("off");
-          }
+          huro.classList.add("off");
           keisanT();
         }
       });
       tokutentopC.addEventListener("click", function () {
         if (tokutentopH.classList.contains("toggleT") || tokutentopM.classList.contains("toggleT")) {
-          tokutentopH.classList.toggle("toggleT");
-          tokutentopM.classList.toggle("toggleT");
-          tokutentopC.classList.toggle("toggleT");
+          tokutentopH.classList.remove("toggleT");
+          tokutentopM.classList.remove("toggleT");
+          tokutentopC.classList.add("toggleT");
           keisan.classList.toggle("toggleB");
           hanhu.classList.toggle("toggleB");
           nyuryoku.classList.toggle("toggleB");
           tensu.classList.add("off");
-          if (hora === 0 && tokutentopH.classList.contains("toggleT")) {
-            huro.classList.remove("off");
-          } else {
-            huro.classList.add("off");
-          }
+          huro.classList.add("off");
           keisanT();
         }
       });
