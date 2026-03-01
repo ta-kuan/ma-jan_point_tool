@@ -2538,6 +2538,7 @@
         windIndex = Math.floor((kyoku - 1) / yonsan) % winds.length;
         kyokuInWind = ((kyoku - 1) % yonsan) + 1;
         centermu.textContent = winds[windIndex] + kyokuInWind + "局";
+        centerms.textContent = honba + "本場";
       });
       riM.addEventListener("click", function () {
         riM.classList.add("off");
