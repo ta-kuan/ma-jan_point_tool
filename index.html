@@ -943,9 +943,6 @@
       .toggleT {
         background-color: rgb(240,240,240);
       }
-      .toggleB {
-        display: none;
-      }
       .toggleT::after {
         color: rgb(0,0,0);
       }
@@ -2058,6 +2055,7 @@
       let hora = 1;
       const tensuH = document.getElementById("tensuH");
       const hansu = document.querySelector(".hansu");
+      const hansuL = document.querySelector(".hansuL");
       const hu = document.querySelector(".hu");
       const tumoron = document.querySelector(".tumoron");
       let base = 0;
@@ -2182,9 +2180,9 @@
       tokutentopH.classList.add("toggleT");
       tokutentopM.classList.remove("toggleT");
       tokutentopC.classList.remove("toggleT");
-      keisan.classList.remove("toggleB");
-      hanhu.classList.add("toggleB");
-      nyuryoku.classList.add("toggleB");
+      keisan.classList.remove("off");
+      hanhu.classList.add("off");
+      nyuryoku.classList.add("off");
       tensu.classList.remove("off");
       setteiG.classList.add("off");
       setteiK.classList.add("off");
@@ -2697,10 +2695,12 @@
           tokutentopH.classList.add("toggleT");
           tokutentopM.classList.remove("toggleT");
           tokutentopC.classList.remove("toggleT");
-          keisan.classList.remove("toggleB");
-          hanhu.classList.add("toggleB");
-          nyuryoku.classList.add("toggleB");
+          keisan.classList.remove("off");
+          hanhu.classList.add("off");
+          nyuryoku.classList.add("off");
           tensu.classList.remove("off");
+          hansu.classList.remove("off");
+          hansuL.classList.remove("off");
           if (hora === 0) {
             huro.classList.remove("off");
           } else {
@@ -2714,10 +2714,12 @@
           tokutentopH.classList.remove("toggleT");
           tokutentopM.classList.add("toggleT");
           tokutentopC.classList.remove("toggleT");
-          keisan.classList.add("toggleB");
-          hanhu.classList.remove("toggleB");
-          nyuryoku.classList.add("toggleB");
+          keisan.classList.add("off");
+          hanhu.classList.remove("off");
+          nyuryoku.classList.add("off");
           tensu.classList.remove("off");
+          hansu.classList.remove("off");
+          hansuL.classList.remove("off");
           huro.classList.add("off");
           keisanT();
         }
@@ -2727,10 +2729,12 @@
           tokutentopH.classList.remove("toggleT");
           tokutentopM.classList.remove("toggleT");
           tokutentopC.classList.add("toggleT");
-          keisan.classList.add("toggleB");
-          hanhu.classList.add("toggleB");
-          nyuryoku.classList.remove("toggleB");
+          keisan.classList.add("off");
+          hanhu.classList.add("off");
+          nyuryoku.classList.remove("off");
           tensu.classList.add("off");
+          hansu.classList.add("off");
+          hansuL.classList.add("off");
           huro.classList.add("off");
           map = 0;
           tensun.value = "0";
