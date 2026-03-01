@@ -2749,7 +2749,7 @@
       });
       kettei.addEventListener("click", function () {
         han = Number(select1.value);
-        if (!Number.isNaN(map) && han !== 0 && map !== 0 && (hora === 1 || hozyuWho !== 0) && (han >= 5 || ((tokutentopH.classList.contains("toggleT") && han < 5) ? (tokusyu.value !== "なし" || (select19.value !== "0" && select20.value !== "0")) : select2.value !== "符"))) {
+        if (!Number.isNan(map) && map > 0 && ((tokutentopH.classList.contains("toggleT") && (han >= 5 || (han < 5 && ((tokusyu.value !== "なし") || (tokusyu.value === "なし" && select19.value !== "0" && select20.value !== "0"))))) || (tokutentopM.classList.contains("toggleT") && han > 0 && select2.value !== "符") || (tokutentopC.classList.contains("toggleT")))) {
           honbaten = honba * ((yonsan - 1) * 100);
           if (hora === 1 || !(hozyuWho === 0)) {
             tokutenKettei.classList.remove("off");
