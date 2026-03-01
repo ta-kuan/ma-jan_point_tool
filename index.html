@@ -1502,7 +1502,10 @@
       .uehen,
       .migihen,
       .hidarihen,
-      .sitahen {
+      .sitahen,
+      #kyokuhen,
+      #honbahen,
+      #kyotakuRhen {
         position: absolute;
         width: 35vw;
         height: 5vw;
@@ -1541,6 +1544,15 @@
         top: 50%;
         transform: translate(-50%,-50%);
         font-size: 7vw;
+      }
+      #honbahen {
+        transform: translate(-50%,-50%);
+      }
+      #kyokuhen {
+        transform: translate(-50%,-50%);
+      }
+      #kyotakuRhen {
+        transform: translate(-50%,-50%);
       }
       .off {
         display: none;
@@ -1855,6 +1867,18 @@
       <input class="hidarihen" name="hensyut" type="number" step="1000">
       <input class="sitahen" name="hensyut" type="number" step="1000">
       <button class="hensyukettei"></button>
+      <input id="kyokuhen" name="hensyut" type="number" step="1">
+      <label for="kyokuhen">局数</label>
+      <input id="honbahen" name="hensyut" type="number" step="1">
+      <label for="honbahen">積み棒</label>
+      <input id="kyotakuRhen" name="hensyut" type="number" step="1">
+      <label for="kyotakuRhen">供託</label>
+    </div>
+    <div class="kyotaku">
+      <div class="kyotakuR"></div>
+      <span class="kyotakuRm"></span>
+      <div class="kyotakuH"></div>
+      <span class="kyotakuHm"></span>
     </div>
     <script>
       const number_player = document.querySelector(".number_player")
@@ -2019,6 +2043,9 @@
       const migihen = document.querySelector(".migihen");
       const hidarihen = document.querySelector(".hidarihen");
       const sitahen = document.querySelector(".sitahen");
+      const kyokuhen = document.getElementedById("kyokuhen");
+      const honbahen = document.getElementedById("honbahen");
+      const kyotakuRhen = document.getElementedById("kyotakuRhen");
       const hukusu = document.querySelector(".hukusu");
       
       number_player.classList.remove("off");
@@ -3138,16 +3165,16 @@
         hensyuK.classList.remove("off");
         if (yonsan === 3) {
           uehen.classList.add("off");
-          migihen.value = tenM;
-          hidarihen.value = tenH;
-          sitahen.value = tenS;
         } else {
           uehen.classList.remove("off");
-          migihen.value = tenM;
-          hidarihen.value = tenH;
-          sitahen.value = tenS;
           uehen.value = tenU;
         }
+        migihen.value = tenM;
+        hidarihen.value = tenH;
+        sitahen.value = tenS;
+        kyokuhen.value = kyoku;
+        honbahen.value = honba;
+        kyotakuRhen.value = rikyo;
       });
       hensyuK.addEventListener("click", function () {
         hensyuG.classList.add("off");
@@ -3157,6 +3184,9 @@
         tenM = Number(migihen.value);
         tenH = Number(hidarihen.value);
         tenS = Number(sitahen.value);
+        kyoku = Number(kyokuhen.value);
+        honba = Number(honbahen.value);
+        rikyo = Number(kyotakuRhen.value);
         if (yonsan === 4) {
           Number(tenU = uehen.value);
         }
