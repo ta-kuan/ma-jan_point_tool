@@ -2147,6 +2147,7 @@
       const kyotaku = document.querySelector(".kyotaku");
       const kyotakuRm = document.querySelector(".kyotakuRm");
       const kyotakuHm = document.querySelector(".kyotakuHm");
+      const tensun = document.querySelector(".tensun");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2732,7 +2733,12 @@
           tensu.classList.add("off");
           huro.classList.add("off");
           map = 0;
+          tensun.value = "0";
         }
+      });
+      tensun.addEventListener("change", function () {
+        map = tensun.value;
+        pay = [(Math.ceil(map / yonsan * 2 / 100) * 100),(Math.ceil(map / yonsan / 100) * 100)];
       });
       kettei.addEventListener("click", function () {
         han = Number(select1.value);
