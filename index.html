@@ -3472,15 +3472,18 @@
           }
           select1.innerHTML = "";
           let optionhs = [];
+          let optionhsV = [];
           if (hora === 1) {
             optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満","チョンボ"];
+            optionhsV = ["1","2","3","4","5","6","8","11","13","14","15","16","17","18","21"];
           } else if (hora === 0) {
             optionhs = ["1","2","3","4","5","6,7","8,9,10","11,12","役満","二倍役満","三倍役満","四倍役満","五倍役満","六倍役満"];
+            optionhsV = ["1","2","3","4","5","6","8","11","13","14","15","16","17","18"];
           }
-          optionhs.forEach(value => {
+          optionhs.forEach((text, index) => {
             const optionh = document.createElement("option");
-            optionh.value = value;
-            optionh.textContent = value;
+            optionh.value = optionhsV[index];
+            optionh.textContent = text;
             select1.appendChild(optionh);
           });
           sentaku();
