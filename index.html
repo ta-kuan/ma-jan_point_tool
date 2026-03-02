@@ -1670,6 +1670,12 @@
       .sitamai {
         transform: translate(-50%,250%);
       }
+      .maik {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        background: #00AA21;
+      }
       .red {
         background-color: rgb(255,190,190);
         border-color: rgb(255,140,140);
@@ -1719,28 +1725,28 @@
       <div class="hoM"></div>
       <div class="riboM"></div>
     </div>
-    <div class="migimai red">+1000</div>
+    <div class="migimai">+1000</div>
     <div class="migizyun"></div>
     <div class="ueB">
       <div class="riU"></div>
       <div class="hoU"></div>
       <div class="riboU"></div>
     </div>
-    <div class="uemai blue">-1000</div>
+    <div class="uemai">-1000</div>
     <div class="uezyun"></div>
     <div class="hidariB">
       <div class="riH"></div>
       <div class="hoH"></div>
       <div class="riboH"></div>
     </div>
-    <div class="hidarimai red">+30000</div>
+    <div class="hidarimai">+30000</div>
     <div class="hidarizyun"></div>
     <div class="sitaB">
       <div class="riS"></div>
       <div class="hoS"></div>
       <div class="riboS"></div>
     </div>
-    <div class="sitamai blue">-40000</div>
+    <div class="sitamai">-40000</div>
     <div class="sitazyun"></div>
     <div class="tokutentop">
       <div class="kakusi"></div>
@@ -1748,6 +1754,7 @@
       <div class="tokutentopM"></div>
       <div class="tokutentopC"></div>
     </div>
+    <div class="maik"></div>
     <div class="tokuten">
       <form class="tumoron">
         <label>
@@ -2172,6 +2179,11 @@
       const kyotakuRm = document.querySelector(".kyotakuRm");
       const kyotakuHm = document.querySelector(".kyotakuHm");
       const tensun = document.querySelector(".tensun");
+      const migimai = document.query.Selector(".migimai");
+      const hidarimai = document.query.Selector(".hidarimai");
+      const uemai = document.query.Selector(".uemai");
+      const sitamai = document.query.Selector(".sitamai");
+      const maik = document.query.Selector(".maik");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2228,6 +2240,11 @@
       hensyuG.classList.add("off");
       hensyuK.classList.add("off");
       kyotaku.classList.add("off");
+      migimai.classList.add("off");
+      hidarimai.classList.add("off");
+      uemai.classList.add("off");
+      sitamai.classList.add("off");
+      maik.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
