@@ -3060,6 +3060,11 @@
             }
           }
         }
+        tokuten.classList.add("off");
+        tokutentop.classList.add("off");
+        saiarea.classList.remove("off");
+        tokutenKettei.classList.add("off");
+        tokutenKetteiK.classList.add("off");
         setTimeout(() => {
           migimai.classList.remove("red");
           migimai.classList.remove("blue");
@@ -3076,15 +3081,10 @@
           update();
           centermu.classList.add("off");
           centerms.classList.add("off");
-          tokuten.classList.add("off");
-          tokutentop.classList.add("off");
           saiarea.classList.remove("notclick");
-          saiarea.classList.remove("off");
           sai1.classList.remove("off");
           sai2.classList.remove("off");
           saiareaB = 1;
-          tokutenKettei.classList.add("off");
-          tokutenKetteiK.classList.add("off");
           me1.classList.remove(...saiclasses);
           me2.classList.remove(...saiclasses);
           riboM.classList.add("off");
