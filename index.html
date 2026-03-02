@@ -1670,12 +1670,6 @@
       .sitamai {
         transform: translate(-50%,250%);
       }
-      .maik {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        z-index: 1;
-      }
       .red {
         background-color: rgb(255,190,190);
         border-color: rgb(255,140,140);
@@ -1754,7 +1748,6 @@
       <div class="tokutentopM"></div>
       <div class="tokutentopC"></div>
     </div>
-    <div class="maik"></div>
     <div class="tokuten">
       <form class="tumoron">
         <label>
@@ -2183,7 +2176,6 @@
       const hidarimai = document.querySelector(".hidarimai");
       const uemai = document.querySelector(".uemai");
       const sitamai = document.querySelector(".sitamai");
-      const maik = document.querySelector(".maik");
       
       number_player.classList.remove("off");
       center.classList.add("off");
@@ -2244,7 +2236,6 @@
       hidarimai.classList.add("off");
       uemai.classList.add("off");
       sitamai.classList.add("off");
-      maik.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
@@ -2833,86 +2824,170 @@
       kakutei.addEventListener("click", function () {
         if (hora === 0) {
           if (horaWho === 1) {
-            switch (hozyuWho) {
-              case 1:
-                tenS -= pay[0] + honbaten;
-                break;
-              case 2:
-                tenH -= pay[0] + honbaten;
-                break;
-              case 3:
-                tenU -= pay[0] + honbaten;
-                break;
-            }
             tenM += map + ((rihon + rikyo) * 1000) + honbaten;
+            migimai.classList.remove("off");
+            migimai.classList.add("red");
+            migimai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+            switch (hozyuWho) {
+              case 1:
+                tenS -= pay[0] + honbaten;
+                sitamai.classList.add("blue");
+                sitamai.textContent = "-" + (pay[0] + honbaten);
+                sitamai.classList.remove("off");
+                break;
+              case 2:
+                tenH -= pay[0] + honbaten;
+                hidarimai.classList.add("blue");
+                hidarimai.textContent = "-" + (pay[0] + honbaten);
+                hidarimai.classList.remove("off");
+                break;
+              case 3:
+                tenU -= pay[0] + honbaten;
+                uemai.classList.add("blue");
+                uemai.textContent = "-" + (pay[0] + honbaten);
+                uemai.classList.remove("off");
+                break;
+            }
           } else if (horaWho === 2) {
-            switch (hozyuWho) {
-              case 1:
-                tenM -= pay[0] + honbaten;
-                break;
-              case 2:
-                tenS -= pay[0] + honbaten;
-                break;
-              case 3:
-                tenH -= pay[0] + honbaten;
-                break;
-            }
             tenU += map + ((rihon + rikyo) * 1000) + honbaten;
+            uemai.classList.remove("off");
+            uemai.classList.add("red");
+            uemai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+            switch (hozyuWho) {
+              case 1:
+                tenM -= pay[0] + honbaten;
+                migimai.classList.add("blue");
+                migimai.textContent = "-" + (pay[0] + honbaten);
+                migimai.classList.remove("off");
+                break;
+              case 2:
+                tenS -= pay[0] + honbaten;
+                sitamai.classList.add("blue");
+                sitamai.textContent = "-" + (pay[0] + honbaten);
+                sitamai.classList.remove("off");
+                break;
+              case 3:
+                tenH -= pay[0] + honbaten;
+                hidarimai.classList.add("blue");
+                hidarimai.textContent = "-" + (pay[0] + honbaten);
+                hidarimai.classList.remove("off");
+                break;
+            }
           } else if (horaWho === 3) {
+            tenS += map + ((rihon + rikyo) * 1000) + honbaten;
+            sitamai.classList.remove("off");
+            sitamai.classList.add("red");
+            sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
             switch (hozyuWho) {
               case 1:
                 tenH -= pay[0] + honbaten;
+                hidarimai.classList.add("blue");
+                hidarimai.textContent = "-" + (pay[0] + honbaten);
+                hidarimai.classList.remove("off");
                 break;
               case 2:
                 tenU -= pay[0] + honbaten;
+                uemai.classList.add("blue");
+                uemai.textContent = "-" + (pay[0] + honbaten);
+                uemai.classList.remove("off");
                 break;
               case 3:
                 tenM -= pay[0] + honbaten;
+                migimai.classList.add("blue");
+                migimai.textContent = "-" + (pay[0] + honbaten);
+                migimai.classList.remove("off");
                 break;
             }
-            tenS += map + ((rihon + rikyo) * 1000) + honbaten;
           } else if (horaWho === 4) {
+            tenH += map + ((rihon + rikyo) * 1000) + honbaten;
+            hidarimai.classList.remove("off");
+            hidarimai.classList.add("red");
+            hidarimai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
             switch (hozyuWho) {
               case 1:
                 tenU -= pay[0] + honbaten;
+                uemai.classList.add("blue");
+                uemai.textContent = "-" + (pay[0] + honbaten);
+                uemai.classList.remove("off");
                 break;
               case 2:
                 tenM -= pay[0] + honbaten;
+                migimai.classList.add("blue");
+                migimai.textContent = "-" + (pay[0] + honbaten);
+                migimai.classList.remove("off");
                 break;
               case 3:
                 tenS -= pay[0] + honbaten;
+                sitamai.classList.add("blue");
+                sitamai.textContent = "-" + (pay[0] + honbaten);
+                sitamai.classList.remove("off");
                 break;
             }
-            tenH += map + ((rihon + rikyo) * 1000) + honbaten;
           }
         } else if (hora === 1) {
           if (oya === 1) {
             switch (horaWho) {
-            case 1:
-              tenU -= pay[0] + (honbaten / (yonsan - 1));
-              tenS -= pay[0] + (honbaten / (yonsan - 1));
-              tenH -= pay[0] + (honbaten / (yonsan - 1));
-              tenM += map + ((rihon + rikyo) * 1000) + honbaten;
-              break;
-            case 2:
-              tenM -= pay[0] + (honbaten / (yonsan - 1));
-              tenS -= pay[0] + (honbaten / (yonsan - 1));
-              tenH -= pay[0] + (honbaten / (yonsan - 1));
-              tenU += map + ((rihon + rikyo) * 1000) + honbaten;
-              break;
-            case 3:
-              tenM -= pay[0] + (honbaten / (yonsan - 1));
-              tenH -= pay[0] + (honbaten / (yonsan - 1));
-              tenU -= pay[0] + (honbaten / (yonsan - 1));
-              tenS += map + ((rihon + rikyo) * 1000) + honbaten;
-              break;
-            case 4:
-              tenM -= pay[0] + (honbaten / (yonsan - 1));
-              tenS -= pay[0] + (honbaten / (yonsan - 1));
-              tenU -= pay[0] + (honbaten / (yonsan - 1));
-              tenH += map + ((rihon + rikyo) * 1000) + honbaten;
-              break;
+              case 1:
+                tenU -= pay[0] + (honbaten / (yonsan - 1));
+                tenS -= pay[0] + (honbaten / (yonsan - 1));
+                tenH -= pay[0] + (honbaten / (yonsan - 1));
+                tenM += map + ((rihon + rikyo) * 1000) + honbaten;
+                uemai.classList.add("blue");
+                sitamai.classList.add("blue");
+                hidarimai.classList.add("blue");
+                migimai.classList.add("red");
+                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                sitamai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                migimai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                break;
+              case 2:
+                tenM -= pay[0] + (honbaten / (yonsan - 1));
+                tenS -= pay[0] + (honbaten / (yonsan - 1));
+                tenH -= pay[0] + (honbaten / (yonsan - 1));
+                tenU += map + ((rihon + rikyo) * 1000) + honbaten;
+                migimai.classList.add("blue");
+                sitamai.classList.add("blue");
+                hidarimai.classList.add("blue");
+                uemai.classList.add("red");
+                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                sitamai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                break;
+              case 3:
+                tenM -= pay[0] + (honbaten / (yonsan - 1));
+                tenH -= pay[0] + (honbaten / (yonsan - 1));
+                tenU -= pay[0] + (honbaten / (yonsan - 1));
+                tenS += map + ((rihon + rikyo) * 1000) + honbaten;
+                migimai.classList.add("blue");
+                uemai.classList.add("blue");
+                hidarimai.classList.add("blue");
+                sitamai.classList.add("red");
+                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                break;
+              case 4:
+                tenM -= pay[0] + (honbaten / (yonsan - 1));
+                tenS -= pay[0] + (honbaten / (yonsan - 1));
+                tenU -= pay[0] + (honbaten / (yonsan - 1));
+                tenH += map + ((rihon + rikyo) * 1000) + honbaten;
+                migimai.classList.add("blue");
+                sitamai.classList.add("blue");
+                uemai.classList.add("blue");
+                hidarimai.classList.add("red");
+                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                sitamai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                break;
             }
+            migimai.classList.remove("off");
+            hidarimai.classList.remove("off");
+            uemai.classList.remove("off");
+            sitamai.classList.remove("off");
           } else if (oya === 0) {
             if (horaWho === 1) {
               if (ue.classList.contains("ton")) {
@@ -2985,53 +3060,67 @@
             }
           }
         }
-        update();
-        centermu.classList.add("off");
-        centerms.classList.add("off");
-        tokuten.classList.add("off");
-        tokutentop.classList.add("off");
-        saiarea.classList.remove("notclick");
-        saiarea.classList.remove("off");
-        sai1.classList.remove("off");
-        sai2.classList.remove("off");
-        saiareaB = 1;
-        tokutenKettei.classList.add("off");
-        tokutenKetteiK.classList.add("off");
-        me1.classList.remove(...saiclasses);
-        me2.classList.remove(...saiclasses);
-        riboM.classList.add("off");
-        riboU.classList.add("off");
-        riboH.classList.add("off");
-        riboS.classList.add("off");
-        rihon = 0;
-        rikyo = 0;
-        kyotakuRm.textContent = "×" + rikyo;
-        if (select1.value !== "21") {
-          if (oya === 1) {
-            honba += 1;
-            kyotakuHm.textContent = "×" + honba;
-          } else {
-            if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
-              syukyoku();
+        setTimeout(() => {
+          migimai.classList.remove("red");
+          migimai.classList.remove("blue");
+          migimai.classList.add("off");
+          hidarimai.classList.remove("red");
+          hidarimai.classList.remove("blue");
+          hidarimai.classList.add("off");
+          uemai.classList.remove("red");
+          uemai.classList.remove("blue");
+          uemai.classList.add("off");
+          sitamai.classList.remove("red");
+          sitamai.classList.remove("blue");
+          sitamai.classList.add("off");
+          update();
+          centermu.classList.add("off");
+          centerms.classList.add("off");
+          tokuten.classList.add("off");
+          tokutentop.classList.add("off");
+          saiarea.classList.remove("notclick");
+          saiarea.classList.remove("off");
+          sai1.classList.remove("off");
+          sai2.classList.remove("off");
+          saiareaB = 1;
+          tokutenKettei.classList.add("off");
+          tokutenKetteiK.classList.add("off");
+          me1.classList.remove(...saiclasses);
+          me2.classList.remove(...saiclasses);
+          riboM.classList.add("off");
+          riboU.classList.add("off");
+          riboH.classList.add("off");
+          riboS.classList.add("off");
+          rihon = 0;
+          rikyo = 0;
+          kyotakuRm.textContent = "×" + rikyo;
+          if (select1.value !== "21") {
+            if (oya === 1) {
+              honba += 1;
+              kyotakuHm.textContent = "×" + honba;
             } else {
-              if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
+              if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
                 syukyoku();
               } else {
-                honba = 0;
-                kyotakuHm.textContent = "×" + honba;
-                kyoku += 1;
-                nextH(migi);
-                nextH(ue);
-                nextH(sita);
-                nextH(hidari);
+                if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
+                  syukyoku();
+                } else {
+                  honba = 0;
+                  kyotakuHm.textContent = "×" + honba;
+                  kyoku += 1;
+                  nextH(migi);
+                  nextH(ue);
+                  nextH(sita);
+                  nextH(hidari);
+                }
               }
             }
           }
-        }
-        if ((yonsan === 4 ? (tenM < 0 || tenU < 0 || tenH < 0 || tenS < 0) : (tenM < 0 || tenH < 0 || tenS < 0)) && sw3.classList.contains("on")) {
-          syukyoku();
-        }
-        oya = 0;
+          if ((yonsan === 4 ? (tenM < 0 || tenU < 0 || tenH < 0 || tenS < 0) : (tenM < 0 || tenH < 0 || tenS < 0)) && sw3.classList.contains("on")) {
+            syukyoku();
+          }
+          oya = 0;
+        }, 3000);
       });
       function sentaku() {
         select2.innerHTML = "";
