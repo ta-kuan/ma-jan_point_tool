@@ -2784,10 +2784,11 @@
       kettei.addEventListener("click", function () {
         han = Number(select1.value);
         if (!Number.isNaN(map) && ((tokutentopH.classList.contains("toggleT") && (han >= 5 || (0 < han && han < 5 && ((tokusyu.value !== "なし") || (tokusyu.value === "なし" && select19.value !== "0" && select20.value !== "0"))))) || (tokutentopM.classList.contains("toggleT") && han > 0 && ((0 < han && han < 5 && select2.value !== "符") || (han >= 5))) || (tokutentopC.classList.contains("toggleT")))) {
-          honbaten = honba * ((yonsan - 1) * 100);
-          if (hora === 1 || !(hozyuWho === 0)) {
+          if (hora === 1 || hozyuWho !== 0) {
             tokutenKettei.classList.remove("off");
             tokutenKetteiK.classList.remove("off");
+            honbaten = honba * ((yonsan - 1) * 100);
+            kakutei.classList.remove("off");
             if (hora === 1) {
               if (oya === 1) {
                 if (pay[0] === pay[1]) {
@@ -2806,7 +2807,6 @@
             }
           }
         }
-        kakutei.classList.remove("off");
         if (select1.value === "21") {
           hukusu.classList.add("off");
         } else {
