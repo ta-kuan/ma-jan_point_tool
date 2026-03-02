@@ -2986,8 +2986,10 @@
             }
             migimai.classList.remove("off");
             hidarimai.classList.remove("off");
-            uemai.classList.remove("off");
             sitamai.classList.remove("off");
+            if (yonsan === 4) {
+              uemai.classList.remove("off");
+            }
           } else if (oya === 0) {
             if (horaWho === 1) {
               if (ue.classList.contains("ton")) {
@@ -3082,8 +3084,8 @@
                 hidarimai.classList.add("blue");
                 sitamai.classList.add("red");
                 migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
                 hidarimai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
                 sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
@@ -3095,8 +3097,8 @@
                 hidarimai.classList.add("blue");
                 sitamai.classList.add("red");
                 migimai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                hidarimai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
                 sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1] + (honbaten / (yonsan - 1));
@@ -3108,8 +3110,8 @@
                 hidarimai.classList.add("blue");
                 sitamai.classList.add("red");
                 migimai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
-                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
+                hidarimai.textContent = "-" + (pay[1] + (honbaten / (yonsan - 1)));
+                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
                 sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
               }
             } else if (horaWho === 4) {
@@ -3156,8 +3158,10 @@
             }
             migimai.classList.remove("off");
             hidarimai.classList.remove("off");
-            uemai.classList.remove("off");
             sitamai.classList.remove("off");
+            if (yonsan === 4) {
+              uemai.classList.remove("off");
+            }
           }
         }
         tokuten.classList.add("off");
