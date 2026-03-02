@@ -1644,13 +1644,35 @@
       .notclick {
         pointer-events: none;
       }
+      .sitamai,
+      .uemai,
+      .hidarimai,
+      .migimai {
+        width: 30vw;
+        height: 10vw;
+        border: solid 3vw;
+        left: 50%;
+        top: 50%;
+      }
+      .hidarimai {
+        transform: translate(-150%,-50%) rotate(-90deg);
+      }
+      .migimai {
+        transform: translate(50%,-50%) rotate(90deg);
+      }
+      .uemai {
+        transform: translate(-50%,-150%) rotate(180deg);
+      }
+      .sitamai {
+        transform: translate(-50%,50%);
+      }
       .red {
-        background-color: rgb();
-        border-color: rgb();
+        background-color: rgb(255,190,190);
+        border-color: rgb(255,230,230);
       }
       .blue {
-        background-color: rgb();
-        border-color: rgb();
+        background-color: rgb(190,190,255);
+        border-color: rgb(230,230,255);
       }
     </style>
     <meta charset="UTF-8">
@@ -1693,28 +1715,28 @@
       <div class="hoM"></div>
       <div class="riboM"></div>
     </div>
-    <div class="migimai"></div>
+    <div class="migimai">+1000</div>
     <div class="migizyun"></div>
     <div class="ueB">
       <div class="riU"></div>
       <div class="hoU"></div>
       <div class="riboU"></div>
     </div>
-    <div class="uemai"></div>
+    <div class="uemai">-1000</div>
     <div class="uezyun"></div>
     <div class="hidariB">
       <div class="riH"></div>
       <div class="hoH"></div>
       <div class="riboH"></div>
     </div>
-    <div class="hidarimai"></div>
+    <div class="hidarimai">+30000</div>
     <div class="hidarizyun"></div>
     <div class="sitaB">
       <div class="riS"></div>
       <div class="hoS"></div>
       <div class="riboS"></div>
     </div>
-    <div class="sitamai"></div>
+    <div class="sitamai">-40000</div>
     <div class="sitazyun"></div>
     <div class="tokutentop">
       <div class="kakusi"></div>
