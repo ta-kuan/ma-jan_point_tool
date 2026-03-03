@@ -1678,6 +1678,10 @@
         background-color: rgb(190,190,255);
         border-color: rgb(140,140,255);
       }
+      .yama {
+        background-color: rgb(255,200,70);
+        color: rgb(70,70,70);
+      }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2631,22 +2635,6 @@
         tokutentop.classList.add("off");
         saiarea.classList.add("notclick");
       }
-      function oyaTop() {
-        let oyaTen = -Infinity;
-        if (migi.classList.contains("ton")) {
-          oyaTen = tenM;
-        } else if (ue.classList.contains("ton")) {
-          oyaTen = tenU;
-        } else if (hidari.classList.contains("ton")) {
-          oyaTen = tenH;
-        } else if (sita.classList.contains("ton")) {
-          oyaTen = tenS;
-        }
-        if (yonsan === 4) {
-          return oyaTen >= tenM && oyaTen >= tenU && oyaTen >= tenH && oyaTen >= tenS;
-        }
-        return oyaTen >= tenM && oyaTen >= tenH && oyaTen >= tenS;
-      }
       startB.addEventListener("click", function () {
         migiten.classList.remove("yama");
         ueten.classList.remove("yama");
@@ -3471,21 +3459,20 @@
             if (oya === 1) {
               honba += 1;
               kyotakuHm.textContent = "×" + honba;
+              if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
+                syukyoku();
+              }
             } else {
               if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
                 syukyoku();
               } else {
-                if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
-                  syukyoku();
-                } else {
-                  honba = 0;
-                  kyotakuHm.textContent = "×" + honba;
-                  kyoku += 1;
-                  nextH(migi);
-                  nextH(ue);
-                  nextH(sita);
-                  nextH(hidari);
-                }
+                honba = 0;
+                kyotakuHm.textContent = "×" + honba;
+                kyoku += 1;
+                nextH(migi);
+                nextH(ue);
+                nextH(sita);
+                nextH(hidari);
               }
             }
           }
@@ -3878,31 +3865,27 @@
         if (((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) && (yonsan === 4 ? (tenM >= agariten || tenU >= agariten || tenS >= agariten || tenH >= agariten) : (tenM >= agariten || tenS >= agariten || tenH >= agariten))) {
           syukyoku();
         } else {
-          if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
-            syukyoku();
-          } else {
-            centermu.classList.add("off");
-            centerms.classList.add("off");
-            saiarea.classList.remove("notclick");
-            saiarea.classList.remove("off");
-            sai1.classList.remove("off");
-            sai2.classList.remove("off");
-            saiareaB = 1;
-            tokutenKettei.classList.add("off");
-            tokutenKetteiK.classList.add("off");
-            me1.classList.remove(...saiclasses);
-            me2.classList.remove(...saiclasses);
-            kesuB();
-            riboM.classList.add("off");
-            riboU.classList.add("off");
-            riboH.classList.add("off");
-            riboS.classList.add("off");
-            honba += 1;
-            kyotakuHm.textContent = "×" + honba;
-            rikyo += rihon;
-            kyotakuRm.textContent = "×" + rikyo;
-            rihon = 0;
-          }
+          centermu.classList.add("off");
+          centerms.classList.add("off");
+          saiarea.classList.remove("notclick");
+          saiarea.classList.remove("off");
+          sai1.classList.remove("off");
+          sai2.classList.remove("off");
+          saiareaB = 1;
+          tokutenKettei.classList.add("off");
+          tokutenKetteiK.classList.add("off");
+          me1.classList.remove(...saiclasses);
+          me2.classList.remove(...saiclasses);
+          kesuB();
+          riboM.classList.add("off");
+          riboU.classList.add("off");
+          riboH.classList.add("off");
+          riboS.classList.add("off");
+          honba += 1;
+          kyotakuHm.textContent = "×" + honba;
+          rikyo += rihon;
+          kyotakuRm.textContent = "×" + rikyo;
+          rihon = 0;
         }
       });
       huturyu.addEventListener("click", () => {
@@ -3994,20 +3977,16 @@
             syukyoku();
           } else {
             if ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2)) {
-              if (oyaTop() && ((yonsan <= kyoku && nansyu === 1) || (yonsan <= kyoku / 2 && nansyu === 2))) {
-                syukyoku();
-              } else {
-                honba = 0;
-                kyotakuHm.textContent = "×" + honba;
-                kyoku += 1;
-                rikyo += rihon;
-                kyotakuRm.textContent = "×" + rikyo;
-                rihon = 0;
-                nextH(migi);
-                nextH(ue);
-                nextH(sita);
-                nextH(hidari);
-              }
+              honba = 0;
+              kyotakuHm.textContent = "×" + honba;
+              kyoku += 1;
+              rikyo += rihon;
+              kyotakuRm.textContent = "×" + rikyo;
+              rihon = 0;
+              nextH(migi);
+              nextH(ue);
+              nextH(sita);
+              nextH(hidari);
             } else {
               honba = 0;
               kyotakuHm.textContent = "×" + honba;
