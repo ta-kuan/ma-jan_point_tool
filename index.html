@@ -2558,29 +2558,33 @@
                 startB.classList.add("sitaS")
                 break;
             }
-            switch (saisum) {
+            switch (saisum + start) {
               case 2:
               case 6:
               case 10:
-                ten.classList.add("yama");
-                ten.textContent = saisum;
+              case 14:
+                migiten.classList.add("yama");
+                migiten.textContent = saisum;
                 break;
               case 3:
               case 7:
               case 11:
-                ten.classList.add("yama");
-                ten.textContent = saisum;
+              case 15:
+                ueten.classList.add("yama");
+                ueten.textContent = saisum;
                 break;
               case 4:
               case 8:
               case 12:
-                ten.classList.add("yama");
-                ten.textContent = saisum;
+              case 16:
+                hidariten.classList.add("yama");
+                hidariten.textContent = saisum;
                 break;
               case 5:
               case 9:
-                ten.classList.add("yama");
-                ten.textContent = saisum;
+              case 13:
+                sitaten.classList.add("yama");
+                sitaten.textContent = saisum;
                 break;
             }
           } else if (yonsan === 3) {
@@ -2593,6 +2597,32 @@
                 break;
               case 3:
                 startB.classList.add("sitaS")
+                break;
+            }
+            switch (saisum + start) {
+              case 2:
+              case 5:
+              case 8:
+              case 11:
+              case 14:
+                migiten.classList.add("yama");
+                migiten.textContent = saisum;
+                break;
+              case 3:
+              case 6:
+              case 9:
+              case 12:
+              case 15:
+                ueten.classList.add("yama");
+                ueten.textContent = saisum;
+                break;
+              case 4:
+              case 7:
+              case 10:
+              case 13:
+              case 16:
+                hidariten.classList.add("yama");
+                hidariten.textContent = saisum;
                 break;
             }
           }
