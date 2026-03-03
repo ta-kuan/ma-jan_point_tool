@@ -3175,9 +3175,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 migimai.classList.add("blue");
-                uemai.textContent = "+" + pay[0];
-                sitamai.textContent = "+" + pay[0];
-                hidarimai.textContent = "+" + pay[0];
+                uemai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
                 migimai.textContent = map;
                 break;
               case 2:
@@ -3189,38 +3189,38 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("blue");
                 uemai.classList.add("red");
-                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                sitamai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                migimai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
+                uemai.textContent = map;
                 break;
               case 3:
-                tenM -= pay[0] + (honbaten / (yonsan - 1));
-                tenH -= pay[0] + (honbaten / (yonsan - 1));
-                tenU -= pay[0] + (honbaten / (yonsan - 1));
-                tenS += map + ((rihon + rikyo) * 1000) + honbaten;
+                tenM -= pay[0];
+                tenH -= pay[0];
+                tenU -= pay[0];
+                tenS += map;
                 migimai.classList.add("blue");
                 uemai.classList.add("blue");
                 hidarimai.classList.add("blue");
                 sitamai.classList.add("red");
-                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                hidarimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                sitamai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                migimai.textContent = "+" + (pay[0] * -1);
+                uemai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = map;
                 break;
               case 4:
-                tenM -= pay[0] + (honbaten / (yonsan - 1));
-                tenS -= pay[0] + (honbaten / (yonsan - 1));
-                tenU -= pay[0] + (honbaten / (yonsan - 1));
-                tenH += map + ((rihon + rikyo) * 1000) + honbaten;
+                tenM -= pay[0];
+                tenS -= pay[0];
+                tenU -= pay[0];
+                tenH += map;
                 migimai.classList.add("blue");
                 sitamai.classList.add("blue");
                 uemai.classList.add("blue");
                 hidarimai.classList.add("red");
-                migimai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                sitamai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                uemai.textContent = "-" + (pay[0] + (honbaten / (yonsan - 1)));
-                hidarimai.textContent = "+" + (map + ((rihon + rikyo) * 1000) + honbaten);
+                migimai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                uemai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = map;
                 break;
             }
             migimai.classList.remove("off");
@@ -3240,9 +3240,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 migimai.classList.add("blue");
-                uemai.textContent = "+" + pay[0];
-                sitamai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[1];
+                uemai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
                 migimai.textContent = map;
               } else if (sita.classList.contains("ton")) {
                 tenU -= pay[1];
@@ -3253,9 +3253,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 migimai.classList.add("blue");
-                uemai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[0];
-                hidarimai.textContent = "+" + pay[1];
+                uemai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
                 migimai.textContent = map;
               } else if (hidari.classList.contains("ton")) {
                 tenU -= pay[1];
@@ -3266,9 +3266,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 migimai.classList.add("blue");
-                uemai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[0];
+                uemai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
                 migimai.textContent = map;
               }
             } else if (horaWho === 2) {
@@ -3281,9 +3281,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 uemai.classList.add("blue");
-                migimai.textContent = "+" + pay[0];
-                sitamai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
                 uemai.textContent = map;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3294,9 +3294,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 uemai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[0];
-                hidarimai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
                 uemai.textContent = map;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3307,9 +3307,9 @@
                 sitamai.classList.add("red");
                 hidarimai.classList.add("red");
                 uemai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[0];
+                migimai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
                 uemai.textContent = map;
               }
             } else if (horaWho === 3) {
@@ -3322,9 +3322,9 @@
                 uemai.classList.add("red");
                 hidarimai.classList.add("red");
                 sitamai.classList.add("blue");
-                migimai.textContent = "+" + pay[0];
-                hidarimai.textContent = "+" + pay[1];
-                uemai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[0] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
+                uemai.textContent = "+" + (pay[1] * -1);
                 sitamai.textContent = map;
               } else if (hidari.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3335,9 +3335,9 @@
                 uemai.classList.add("red");
                 hidarimai.classList.add("red");
                 sitamai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[0];
-                uemai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[0] * -1);
+                uemai.textContent = "+" + (pay[1] * -1);
                 sitamai.textContent = map;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3348,9 +3348,9 @@
                 uemai.classList.add("red");
                 hidarimai.classList.add("red");
                 sitamai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                hidarimai.textContent = "+" + pay[1];
-                uemai.textContent = "+" + pay[0];
+                migimai.textContent = "+" + (pay[1] * -1);
+                hidarimai.textContent = "+" + (pay[1] * -1);
+                uemai.textContent = "+" + (pay[0] * -1);
                 sitamai.textContent = map;
               }
             } else if (horaWho === 4) {
@@ -3363,9 +3363,9 @@
                 sitamai.classList.add("red");
                 uemai.classList.add("red");
                 hidarimai.classList.add("blue");
-                migimai.textContent = "+" + pay[0];
-                sitamai.textContent = "+" + pay[1];
-                uemai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[0] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                uemai.textContent = "+" + (pay[1] * -1);
                 hidarimai.textContent = map;
               } else if (sita.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3376,9 +3376,9 @@
                 sitamai.classList.add("red");
                 uemai.classList.add("red");
                 hidarimai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[0];
-                uemai.textContent = "+" + pay[1];
+                migimai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[0] * -1);
+                uemai.textContent = "+" + (pay[1] * -1);
                 hidarimai.textContent = map;
               } else if (ue.classList.contains("ton")) {
                 tenM -= pay[1];
@@ -3389,9 +3389,9 @@
                 sitamai.classList.add("red");
                 uemai.classList.add("red");
                 hidarimai.classList.add("blue");
-                migimai.textContent = "+" + pay[1];
-                sitamai.textContent = "+" + pay[1];
-                uemai.textContent = "+" + pay[0];
+                migimai.textContent = "+" + (pay[1] * -1);
+                sitamai.textContent = "+" + (pay[1] * -1);
+                uemai.textContent = "+" + (pay[0] * -1);
                 hidarimai.textContent = map;
               }
             }
