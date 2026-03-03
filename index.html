@@ -2554,6 +2554,31 @@
                 startB.classList.add("sitaS")
                 break;
             }
+            switch (saisum) {
+              case 2:
+              case 6:
+              case 10:
+                ten.classList.add("yama");
+                ten.textContent = saisum;
+                break;
+              case 3:
+              case 7:
+              case 11:
+                ten.classList.add("yama");
+                ten.textContent = saisum;
+                break;
+              case 4:
+              case 8:
+              case 12:
+                ten.classList.add("yama");
+                ten.textContent = saisum;
+                break;
+              case 5:
+              case 9:
+                ten.classList.add("yama");
+                ten.textContent = saisum;
+                break;
+            }
           } else if (yonsan === 3) {
             switch (start) {
               case 1:
@@ -2623,6 +2648,11 @@
         return oyaTen >= tenM && oyaTen >= tenH && oyaTen >= tenS;
       }
       startB.addEventListener("click", function () {
+        migiten.classList.remove("yama");
+        ueten.classList.remove("yama");
+        sitaten.classList.remove("yama");
+        hidariten.classList.remove("yama");
+        update();
         startB.classList.add("off");
         sai1.classList.add("off");
         centermu.classList.remove("off");
