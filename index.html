@@ -2042,6 +2042,7 @@
       const sai1 = document.querySelector(".sai1");
       const sai2 = document.querySelector(".sai2");
       let start = 0;
+      let starts = 0;
       const startB = document.querySelector(".start");
       let startclasses = ["migiS","ueS","hidariS","sitaS","off"];
       let yonsan = 0;
@@ -2403,6 +2404,7 @@
               kityaH = 2;
               kityaS = 1;
               start = 1;
+              starts = 1;
               break;
             case 3:
             case 7:
@@ -2417,6 +2419,7 @@
               kityaH = 3;
               kityaS = 2;
               start = 2;
+              starts = 2;
               break;
             case 4:
             case 8:
@@ -2431,6 +2434,7 @@
               kityaH = 4;
               kityaS = 3;
               start = 3;
+              starts = 3;
               break;
             case 5:
             case 9:
@@ -2444,6 +2448,7 @@
               kityaH = 1;
               kityaS = 4;
               start = 4;
+              starts = 4;
               break;
           }
         } else if (yonsan === 3) {
@@ -2460,6 +2465,7 @@
               kityaH = 2;
               kityaS = 1;
               start = 1;
+              starts = 1;
               break;
             case 3:
             case 6:
@@ -2473,6 +2479,7 @@
               kityaH = 3;
               kityaS = 2;
               start = 2;
+              starts = 2;
               break;
             case 4:
             case 7:
@@ -2485,6 +2492,7 @@
               kityaH = 1;
               kityaS = 3;
               start = 3;
+              starts = 3;
               break;
           }
         }
@@ -2560,7 +2568,7 @@
           saisum = n1 + n2;
           startB.classList.remove(...startclasses);
           if (yonsan === 4) {
-            switch (start) {
+            switch (starts) {
               case 1:
                 startB.classList.add("migiS")
                 break;
@@ -2604,7 +2612,7 @@
                 break;
             }
           } else if (yonsan === 3) {
-            switch (start) {
+            switch (starts) {
               case 1:
                 startB.classList.add("migiS")
                 break;
