@@ -1699,6 +1699,61 @@
         background-color: rgb(255,200,70);
         color: rgb(70,70,70);
       }
+      .rikaku {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 80vw;
+        height: 70vh;
+        background: rgb(255,255,230);
+      }
+      .sinri {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-25%);
+        background-color: rgb(230,220,240);
+        width: 80%;
+        height: 20%;
+        border: solid 2vw;
+        border-color: rgb(0,0,0);
+        border-radius: 2vw;
+      }
+      .sinri::after {
+        content: "立直";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-75%);
+        color: rgb(0,0,0);
+        font-family: yujiboku;
+        font-size: 12vw;
+        white-space: nowrap;
+      }
+      .dabri {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,80%);
+        background-color: rgb(230,220,240);
+        width: 80%;
+        height: 20%;
+        border: solid 2vw;
+        border-color: rgb(0,0,0);
+        border-radius: 2vw;
+      }
+      .dabri::after {
+        content: "ダブル立直";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: rgb(0,0,0);
+        font-family: yujiboku;
+        font-size: 12vw;
+        white-space: nowrap;
+      }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1760,6 +1815,10 @@
       <div class="riS"></div>
       <div class="hoS"></div>
       <div class="riboS"></div>
+    </div>
+    <div class="rikaku">
+      <div class="sinri"></div>
+      <div class="dabri"></div>
     </div>
     <div class="sitamai"></div>
     <div class="sitazyun"></div>
@@ -2050,6 +2109,9 @@
       const riU = document.querySelector(".riU");
       const riH = document.querySelector(".riH");
       const riS = document.querySelector(".riS");
+      const rikaku = document.querySelector(".rikaku");
+      const sinri = document.querySelector(".sinri");
+      const dabri = document.querySelector(".dabri");
       const hoM = document.querySelector(".hoM");
       const hoU = document.querySelector(".hoU");
       const hoH = document.querySelector(".hoH");
@@ -2258,6 +2320,7 @@
       hidarimai.classList.add("off");
       uemai.classList.add("off");
       sitamai.classList.add("off");
+      rikaku.classList.add("off");
       loaddata();
       
       yonmatonB.addEventListener("click", function () {
@@ -2753,30 +2816,60 @@
         kyotakuHm.textContent = "×" + honba;
       });
       riM.addEventListener("click", function () {
-        riM.classList.add("off");
-        riboM.classList.remove("off");
-        tenM -= 1000;
-        rihon += 1;
-        update();
+        rikaku.classList.remove("off");
+        whori = 1;
       });
       riU.addEventListener("click", function () {
-        riU.classList.add("off");
-        riboU.classList.remove("off");
-        tenU -= 1000;
-        rihon += 1;
-        update();
+        rikaku.classList.remove("off");
+        whori = 2;
       });
       riH.addEventListener("click", function () {
-        riH.classList.add("off");
-        riboH.classList.remove("off");
-        tenH -= 1000;
+        rikaku.classList.remove("off");
+        whori = 3;
+      });
+      riS.addEventListener("click", function () {
+        rikaku.classList.remove("off");
+        whori = 4;
+      });
+      sinri.addEventListener("click", function () {
+        if (whori === 1) {
+          riM.classList.add("off");
+          riboM.classList.remove("off");
+          tenM -= 1000;
+        } else if (whori === 2) {
+          riU.classList.add("off");
+          riboU.classList.remove("off");
+          tenU -= 1000;
+        } else if (whori === 3) {
+          riH.classList.add("off");
+          riboH.classList.remove("off");
+          tenH -= 1000;
+        } else if (whori === 4) {
+          riS.classList.add("off");
+          riboS.classList.remove("off");
+          tenS -= 1000;
+        }
         rihon += 1;
         update();
       });
-      riS.addEventListener("click", function () {
-        riS.classList.add("off");
-        riboS.classList.remove("off");
-        tenS -= 1000;
+      dabri.addEventListener("click", function () {
+        if (whori === 1) {
+          riM.classList.add("off");
+          riboM.classList.remove("off");
+          tenM -= 2000;
+        } else if (whori === 2) {
+          riU.classList.add("off");
+          riboU.classList.remove("off");
+          tenU -= 2000;
+        } else if (whori === 3) {
+          riH.classList.add("off");
+          riboH.classList.remove("off");
+          tenH -= 2000;
+        } else if (whori === 4) {
+          riS.classList.add("off");
+          riboS.classList.remove("off");
+          tenS -= 2000;
+        }
         rihon += 1;
         update();
       });
