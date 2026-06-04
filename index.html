@@ -2524,27 +2524,27 @@
         if (yonsan === 4) {
           if (el.classList.contains("ton")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("nan");
+            el.classList.add("pei");
           } else if (el.classList.contains("nan")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("sya");
+            el.classList.add("ton");
           } else if (el.classList.contains("sya")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("pei");
+            el.classList.add("nan");
           } else if (el.classList.contains("pei")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("ton");
+            el.classList.add("sya");
           }
         } else if (yonsan === 3) {
           if (el.classList.contains("ton")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("nan");
+            el.classList.add("sya");
           } else if (el.classList.contains("nan")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("sya");
+            el.classList.add("ton");
           } else if (el.classList.contains("sya")) {
             el.classList.remove(...hougakuclasses);
-            el.classList.add("ton");
+            el.classList.add("nan");
           }
         }
       }
